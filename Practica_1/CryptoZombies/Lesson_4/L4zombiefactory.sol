@@ -1,4 +1,3 @@
-
 pragma solidity ^0.4.25;
 
 // LECCION 2 - CAPITULO 5: Herencia
