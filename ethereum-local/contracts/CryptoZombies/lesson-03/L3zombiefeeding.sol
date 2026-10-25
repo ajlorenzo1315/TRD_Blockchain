@@ -10,7 +10,7 @@ import "./L3zombiefactory.sol";
  * para consultar los genes de un CryptoKitty.
  */
 
-contract KittyInterface {
+contract Lesson3KittyInterface  {
   function getKitty(uint256 _id) external view returns (
     bool isGestating,
     bool isReady,
@@ -34,9 +34,9 @@ contract KittyInterface {
  * - Aplica el sufijo genetico 99 a los kitty.
  */
  
-contract ZombieFeeding is ZombieFactory {
+contract Lesson3ZombieFeeding  is Lesson3ZombieFactory {
 
-  KittyInterface kittyContract;
+  Lesson3KittyInterface kittyContract;
 
   function setKittyContractAddress(address _address) external onlyOwner {
     kittyContract = KittyInterface(_address);

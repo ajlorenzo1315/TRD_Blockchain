@@ -15,7 +15,7 @@ pragma solidity ^0.4.25;
 * Es diferente del propietario de cada zombi.
 */
 
-contract Ownable {
+contract Lesson3Ownable{
   address private _owner;
 
   event OwnershipTransferred(

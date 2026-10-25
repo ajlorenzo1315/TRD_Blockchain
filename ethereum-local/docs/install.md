@@ -1,6 +1,3 @@
-Tienes instalado Node.js 18.19.1 y npm 9.2.0. Para utilizar Hardhat 3 necesitamos actualizar Node.js. Te recomiendo instalar Node.js 24 LTS mediante NVM, que permite cambiar de versión sin modificar la instalación del sistema.
-
-Como estás trabajando en WSL/Ubuntu, sigue estos pasos.
 
 ## 1. Instalar NVM
 

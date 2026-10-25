@@ -11,7 +11,7 @@ import "./L3zombiefeeding.sol";
  * - Consulta los zombis de un propietario.
  */
 
-contract ZombieHelper is ZombieFeeding {
+contract Lesson3ZombieHelper  is Lesson3ZombieFeeding  {
 
   modifier aboveLevel(uint _level, uint _zombieId) {
     require(zombies[_zombieId].level >= _level);

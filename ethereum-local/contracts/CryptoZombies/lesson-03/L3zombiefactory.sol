@@ -1,8 +1,8 @@
 pragma solidity ^0.4.25;
 
-import "./ownable.sol";
+import "./L3ownable.sol";
 
-contract ZombieFactory is Ownable {
+contract Lesson3ZombieFactory  is Lesson3Ownable {
 
     event NewZombie(uint zombieId, string name, uint dna);
 
