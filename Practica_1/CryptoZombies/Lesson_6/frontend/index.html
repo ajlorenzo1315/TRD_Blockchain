@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CryptoZombies - Lección 6</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.4/dist/web3.min.js"></script>
+  <script src="./contract-config.js"></script>
+  <script src="./app-core.js"></script>
+  <script defer src="./app.js"></script>
+  <style>
+    body { max-width: 850px; margin: 2rem auto; padding: 0 1rem; font-family: system-ui, sans-serif; line-height: 1.5; }
+    .zombie { border: 1px solid #aaa; border-radius: 8px; padding: 1rem; margin: .75rem 0; }
+    form { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+    input, button { padding: .55rem; }
+    #txStatus { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>CryptoZombies · Lección 6</h1>
+  <p>Cuenta: <span id="account">Sin conectar</span></p>
+  <button id="connect">Conectar MetaMask</button>
+  <button id="refresh">Actualizar ejército</button>
+  <p id="txStatus" role="status"></p>
+  <form id="create"><input id="name" placeholder="Nombre del zombi" required /><button>Crear zombi</button></form>
+  <form id="levelup"><input id="zombieId" type="number" min="0" placeholder="ID del zombi" required /><button>Subir nivel (0.001 ETH)</button></form>
+  <form id="feed"><input id="feedZombieId" type="number" min="0" placeholder="ID del zombi" required /><input id="kittyId" type="number" min="0" placeholder="ID CryptoKitty" required /><button>Alimentar</button></form>
+  <section id="zombies" aria-label="Mi ejército"></section>
+</body>
+</html>
