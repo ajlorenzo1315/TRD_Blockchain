@@ -7,4 +7,4 @@ const contract = await viem.deployContract(
   "contracts/CryptoZombies/lesson-06/L6zombieownership.sol:Lesson6ZombieOwnership",
 );
 console.log("Lesson6ZombieOwnership deployed at:", contract.address);
-console.log("Next: node scripts/export-lesson-06-abi.mjs", contract.address);
+console.log("Next: node scripts/extended/export-lesson-06-abi.mjs", contract.address);

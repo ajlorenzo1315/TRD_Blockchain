@@ -5,7 +5,7 @@ pragma solidity ^0.4.25;
 // sus permisos administrativos.
 import "./L4ownable.sol";
 
-contract ZombieFactory is Ownable {
+contract Lesson4ZombieFactory is Lesson4Ownable {
 
     // LECCION 1 - CAPITULO 13: Eventos
     // Notifica la creacion de un nuevo zombi.

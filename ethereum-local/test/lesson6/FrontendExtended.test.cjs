@@ -3,7 +3,7 @@ const { describe, it } = require('node:test');
 const core = require('../../frontend/lesson-06/app-core.cjs');
 const fs = require('node:fs');
 const path = require('node:path');
-const frontend = path.resolve(__dirname, '../../frontend/lesson-06-extended');
+const frontend = path.resolve(__dirname, '../../frontend/lesson-06');
 describe('CryptoZombies - Lección 6 Extendida - frontend exclusivamente', () => {
   it('01. exporta todas las funciones del frontend', () => {
     for (const fn of ['requireAddress','normalizeZombie','renderZombie','feeToWei','isReady','dnaTraits','zombieSvg','battleOutcome','requireId']) assert.equal(typeof core[fn], 'function');
