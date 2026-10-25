@@ -30,19 +30,15 @@ La Lección 4 no sustituye a las anteriores: utiliza sus conceptos para construi
 Los contratos están separados por responsabilidades:
 
 ```text
-Lesson4Ownable
-    |
-    v
-Lesson4ZombieFactory
-    |
-    v
-Lesson4ZombieFeeding
-    |
-    v
-Lesson4ZombieHelper
-    |
-    v
-Lesson4ZombieAttack
+Ownable
+   |
+ZombieFactory
+   |
+ZombieFeeding
+   |
+ZombieHelper
+   |
+ZombieAttack
 ```
 
 ### Archivos
