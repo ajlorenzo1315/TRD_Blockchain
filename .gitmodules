@@ -1,0 +1,3 @@
+[submodule "external/zombie-char-component"]
+	path = external/zombie-char-component
+	url = https://github.com/loomnetwork/zombie-char-component.git

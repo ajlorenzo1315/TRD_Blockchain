@@ -1,12 +1,11 @@
-
 pragma solidity ^0.4.25;
 
 // LECCION 2 - CAPITULO 5: Herencia
-// Importamos Lesson4Ownable para reutilizar
+// Importamos Ownable para reutilizar
 // sus permisos administrativos.
 import "./L4ownable.sol";
 
-contract Lesson4ZombieFactory is Lesson4Ownable {
+contract ZombieFactory is Ownable {
 
     // LECCION 1 - CAPITULO 13: Eventos
     // Notifica la creacion de un nuevo zombi.
@@ -60,7 +59,7 @@ contract Lesson4ZombieFactory is Lesson4Ownable {
     // LECCION 2 - CAPITULO 3: msg.sender
     // LECCION 2 - CAPITULO 5: Herencia
     //
-    // internal permite que Lesson4ZombieFeeding
+    // internal permite que ZombieFeeding
     // y los demas contratos derivados creen zombis.
     function _createZombie(string _name, uint _dna) internal {
 
