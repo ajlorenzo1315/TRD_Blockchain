@@ -39,7 +39,7 @@ contract Lesson3ZombieFeeding  is Lesson3ZombieFactory {
   Lesson3KittyInterface kittyContract;
 
   function setKittyContractAddress(address _address) external onlyOwner {
-    kittyContract = KittyInterface(_address);
+    kittyContract = Lesson3KittyInterface(_address);
   }
 
   function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
