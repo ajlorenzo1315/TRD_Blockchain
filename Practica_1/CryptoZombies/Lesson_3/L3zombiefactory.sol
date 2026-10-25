@@ -1,7 +1,17 @@
 pragma solidity ^0.4.25;
 
-import "./ownable.sol";
+import "./L3ownable.sol";
 
+/**
+ * CryptoZombies - Leccion 3
+ *
+ * ZombieFactory:
+ * - Crea zombis.
+ * - Genera su ADN inicial.
+ * - Almacena nombre, ADN, nivel y cooldown.
+ * - Asigna cada zombi a un propietario.
+ */
+ 
 contract ZombieFactory is Ownable {
 
     event NewZombie(uint zombieId, string name, uint dna);
