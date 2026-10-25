@@ -514,6 +514,5 @@ La ejecución mediante Hardhat complementa el aprendizaje al permitir compilar y
 1. [CryptoZombies — Plataforma educativa](https://cryptozombies.io/)
 2. [CryptoZombies — Lecciones en español](https://github.com/CryptozombiesHQ/cryptozombie-lessons/tree/master/es/1)
 3. [CryptoZombies — Código original por capítulos](https://github.com/CryptozombiesHQ/cryptozombies-lesson-code/tree/master/lesson-1)
-4. [CryptoZombies — Proyecto consolidado](https://github.com/pmuens/cryptozombies)
-5. [Solidity — Documentación oficial](https://docs.soliditylang.org/)
-6. [Hardhat — Documentación oficial](https://hardhat.org/docs)
+4. [Solidity — Documentación oficial](https://docs.soliditylang.org/)
+5. [Hardhat — Documentación oficial](https://hardhat.org/docs)
