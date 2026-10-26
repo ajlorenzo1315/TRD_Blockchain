@@ -23,13 +23,11 @@ contract TokenContractOpenZeppelin is ERC20, Ownable {
     function getUser(address _user) public view returns (string memory name, uint256 tokens) {
     return ( 
         users[_user].name, 
-        balanceOf(_user) /  1 ether;
+        balanceOf(_user) / 1 ether;
     );
     }
 
-    constructor()
-        ERC20("Token Practica", "TPR")
-        Ownable(msg.sender)
+    constructor() ERC20("Token Practica", "TPR") Ownable(msg.sender)
     {
         _mint(msg.sender, 100 * 10 ** decimals());
     }

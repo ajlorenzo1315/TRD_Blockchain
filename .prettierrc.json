@@ -1,0 +1,23 @@
+{
+  "plugins": ["prettier-plugin-solidity"],
+  "printWidth": 100,
+  "tabWidth": 4,
+  "useTabs": false,
+  "singleQuote": false,
+  "semi": true,
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": "*.sol",
+      "options": {
+        "tabWidth": 4
+      }
+    },
+    {
+      "files": ["*.json", "*.md", "*.html", "*.yml", "*.yaml"],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}
