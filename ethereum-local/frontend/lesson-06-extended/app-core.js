@@ -48,11 +48,68 @@
       t.accessory === 2 ? '<circle cx="130" cy="105" r="7" fill="none" stroke="#ffe18d" stroke-width="4"/>' : '';
     return `<svg class="zombie-art" viewBox="0 0 180 205" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zombi generado a partir de su ADN"><ellipse cx="90" cy="191" rx="68" ry="9" fill="#15152b" opacity=".25"/><path d="M35 201q-2-67 55-67t55 67" fill="${shirts[t.shirt]}"/><path d="M65 144l25 20 25-20" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="6"/><rect x="75" y="123" width="30" height="30" rx="9" fill="${skins[t.skin]}"/><path d="M47 74Q47 32 90 32t43 42v33q-2 38-43 38t-43-38Z" fill="${skins[t.skin]}" stroke="#303044" stroke-width="3"/><circle cx="47" cy="100" r="9" fill="${skins[t.skin]}"/><circle cx="133" cy="100" r="9" fill="${skins[t.skin]}"/>${hair}<ellipse cx="70" cy="86" rx="${eyes}" ry="9" fill="white"/><ellipse cx="110" cy="86" rx="${eyes}" ry="9" fill="white"/><circle cx="72" cy="87" r="4" fill="#26243b"/><circle cx="108" cy="87" r="4" fill="#26243b"/><path d="M89 91l-5 11h11" fill="none" stroke="#627765" stroke-width="3"/>${mouth}${accessory}</svg>`;
   }
+  // Reproducción de la composición y orden de capas de ZombieChar.vue.
+  // Las medidas originales en vh se normalizan a un lienzo responsivo de 50 × 42 unidades.
+  const LOOM_BASE = './external/zombie-char-component/zombieparts/';
+  const LOOM_LAYOUT = [
+    ['left-feet','left-feet-1',18.3,30,4,'clothes'],
+    ['right-feet','right-feet-1',22.3,30.3,3.3,'clothes'],
+    ['left-leg','left-leg-1',18.3,27,4,'clothes'],
+    ['right-leg','right-leg-1',22.3,27.6,3.3,'clothes'],
+    ['left-thigh','left-thigh-1',17.3,22,6,'clothes'],
+    ['right-thigh','right-thigh-1',20.4,22,6,'clothes'],
+    ['left-forearm','left-forearm-1',22.3,20,4,'skin'],
+    ['right-forearm','right-forearm-1',26.4,20,4,'skin'],
+    ['right-upper-arm','right-upper-arm-1',23.4,16,6,'skin'],
+    ['torso','torso-1',15.6,13,13,'clothes'],
+    ['shirt','shirt',15.6,13,13,'clothes'],
+    ['left-upper-arm','left-upper-arm-1',19.3,16,6,'skin'],
+    ['left-forearm','left-forearm-1',22.3,20,4,'skin'],
+    ['right-forearm','right-forearm-1',26.4,20,4,'skin'],
+    ['left-hand','hand1-1',24.3,19,4,'skin'],
+    ['right-hand','hand-2-1',28.4,19,4,'skin'],
+    ['head','head',13,-4,28,'skin'],
+    ['eyes','eyes',23,8,13,'eyes'],
+    ['mouth','mouth-1',26.6,15,6,'none']
+  ];
+  function loomGenes(dna) {
+    const str = BigInt(dna).toString().padStart(16, '0').slice(-16);
+    return {
+      head: Number(str.slice(0,2)) % 7 + 1,
+      eyes: Number(str.slice(2,4)) % 11 + 1,
+      shirt: Number(str.slice(4,6)) % 6 + 1,
+      skin: Number(str.slice(6,8)) / 100 * 360,
+      eyeColor: Number(str.slice(8,10)) / 100 * 360,
+      clothes: Number(str.slice(10,12)) / 100 * 360
+    };
+  }
+  function loomParts(dna, override) {
+    const genes = { ...loomGenes(dna), ...(override || {}) };
+    const hue = { skin: genes.skin, eyes: genes.eyeColor, clothes: genes.clothes };
+    return LOOM_LAYOUT.map(([part, file, x, y, w, color]) => {
+      const name = file === 'head' ? `head-${genes.head}` :
+        file === 'eyes' ? `eyes-${genes.eyes}` :
+        file === 'shirt' ? `shirt-${genes.shirt}` : file;
+      return {
+        part,
+        src: LOOM_BASE + name + '@2x.png',
+        left: x / 50 * 100,
+        top: (y + 4) / 42 * 100,
+        width: w / 50 * 100,
+        hue: color === 'none' ? 0 : hue[color]
+      };
+    });
+  }
+  function loomPortrait(dna, override) {
+    const layers = loomParts(dna, override);
+    const imgs = layers.map(layer => `<img class="loom-layer" src="${layer.src}" alt="" loading="lazy" style="left:${layer.left}%;top:${layer.top}%;width:${layer.width}%;filter:hue-rotate(${layer.hue}deg)" />`).join('');
+    return `<div class="loom-portrait" role="img" aria-label="Zombi compuesto con las capas originales de Loom"><div class="loom-fallback">${zombieSvg(dna)}</div><div class="loom-layers" aria-hidden="true">${imgs}</div></div>`;
+  }
   function renderZombie(raw, id, nowSeconds = Math.floor(Date.now()/1000)) {
     const z = normalizeZombie(raw);
     const ready = isReady(z, nowSeconds);
     const idLabel = id === undefined ? '' : `<span class="zombie-id">#${escapeHtml(id)}</span>`;
-    return `<article class="zombie-card">${idLabel}<div class="portrait">${zombieSvg(z.dna)}</div><div class="zombie-body"><h3>${escapeHtml(z.name)}</h3><div class="stat-grid"><span>Nivel <b>${escapeHtml(z.level)}</b></span><span>Victorias <b>${escapeHtml(z.winCount)}</b></span><span>Derrotas <b>${escapeHtml(z.lossCount)}</b></span></div><p class="dna">ADN ${escapeHtml(z.dna)}</p><p class="cooldown ${ready ? 'ready' : 'waiting'}">${ready ? '● Disponible para criar' : '◷ Cría disponible desde ' + escapeHtml(z.readyTime)}</p></div></article>`;
+    return `<article class="zombie-card">${idLabel}<div class="portrait">${loomPortrait(z.dna)}</div><div class="zombie-body"><h3>${escapeHtml(z.name)}</h3><div class="stat-grid"><span>Nivel <b>${escapeHtml(z.level)}</b></span><span>Victorias <b>${escapeHtml(z.winCount)}</b></span><span>Derrotas <b>${escapeHtml(z.lossCount)}</b></span></div><p class="dna">ADN ${escapeHtml(z.dna)}</p><p class="cooldown ${ready ? 'ready' : 'waiting'}">${ready ? '● Disponible para criar' : '◷ Cría disponible desde ' + escapeHtml(z.readyTime)}</p></div></article>`;
   }
   function battleOutcome(beforeA, afterA, beforeD, afterD) {
     const a0 = normalizeZombie(beforeA), a1 = normalizeZombie(afterA);
@@ -61,5 +118,5 @@
     if (BigInt(a1.lossCount) > BigInt(a0.lossCount)) return 'derrota';
     return 'indeterminado';
   }
-  return { requireAddress, requireId, normalizeZombie, escapeHtml, renderZombie, feeToWei, isReady, dnaTraits, zombieSvg, battleOutcome };
+  return { requireAddress, requireId, normalizeZombie, escapeHtml, renderZombie, feeToWei, isReady, dnaTraits, zombieSvg, loomParts, loomPortrait, loomGenes, battleOutcome };
 });

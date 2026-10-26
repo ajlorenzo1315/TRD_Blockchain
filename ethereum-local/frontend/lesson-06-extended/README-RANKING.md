@@ -1,0 +1,3 @@
+# Ranking público de zombis en Hardhat local
+
+No se modifica ningún contrato Solidity. El ranking consulta el evento `NewZombie` desde el bloque 0, lee `zombies(id)` y `ownerOf(id)` y ordena por `winCount` descendente. Los filtros por nombre, nivel y antigüedad no alteran el criterio principal. El bloque de creación aporta la fecha aproximada de creación en la cadena local. Un reinicio del nodo Hardhat borra el historial local; hay que desplegar de nuevo y actualizar `contract-config.js`. La consulta inicial puede tardar si hay muchos zombis; requiere un nodo Hardhat accesible desde el navegador y CORS habilitado. Los controles de ADN solo afectan a la previsualización, mientras que `createRandomZombie` asigna ADN desde Solidity.
