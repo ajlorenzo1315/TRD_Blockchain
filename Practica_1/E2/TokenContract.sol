@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.30;
+// pragma solidity 0.8.30;
+//REMIX
+pragma solidity 0.8.34;
 
 contract TokenContract {
     address public owner;
@@ -68,9 +70,5 @@ contract TokenContract {
     function getContractBalance() public view returns (uint256) {
         return address(this).balance;
     }
-
-    // Evento 
-
-    event TokensPurchased(address indexed buyer, uint256 amount);
 
 }   
