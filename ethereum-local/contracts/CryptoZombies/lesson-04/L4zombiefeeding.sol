@@ -8,32 +8,35 @@ import "./L4zombiefactory.sol";
 // Esta interfaz permite consultar datos
 // de un CryptoKitty sin implementar su contrato.
 contract Lesson4KittyInterface {
-
     // LECCION 2: Funciones externas
     // external: se invoca desde otro contrato.
     // view: consulta datos sin modificarlos.
     //
     // Se devuelven diez valores.
     // El ultimo contiene los genes del gato.
-    function getKitty(uint256 _id) external view returns (
-        bool isGestating,
-        bool isReady,
-        uint256 cooldownIndex,
-        uint256 nextActionAt,
-        uint256 siringWithId,
-        uint256 birthTime,
-        uint256 matronId,
-        uint256 sireId,
-        uint256 generation,
-        uint256 genes
-    );
+    function getKitty(
+        uint256 _id
+    )
+        external
+        view
+        returns (
+            bool isGestating,
+            bool isReady,
+            uint256 cooldownIndex,
+            uint256 nextActionAt,
+            uint256 siringWithId,
+            uint256 birthTime,
+            uint256 matronId,
+            uint256 sireId,
+            uint256 generation,
+            uint256 genes
+        );
 }
 
 // LECCION 2: Herencia
 // Lesson4ZombieFeeding obtiene las funciones y
 // variables de Lesson4ZombieFactory y Lesson4Ownable.
 contract Lesson4ZombieFeeding is Lesson4ZombieFactory {
-
     // LECCION 2: Referencias a contratos externos
     // Almacena la interfaz del contrato CryptoKitties.
     Lesson4KittyInterface kittyContract;
@@ -86,7 +89,6 @@ contract Lesson4ZombieFeeding is Lesson4ZombieFactory {
         uint _targetDna,
         string _species
     ) internal ownerOf(_zombieId) {
-
         // LECCION 1: Structs
         // storage evita crear una copia independiente.
         Zombie storage myZombie = zombies[_zombieId];
@@ -108,11 +110,8 @@ contract Lesson4ZombieFeeding is Lesson4ZombieFactory {
         //
         // Si es kitty, los ultimos dos digitos
         // del descendiente pasan a ser 99.
-        if (
-            keccak256(abi.encodePacked(_species)) ==
-            keccak256(abi.encodePacked("kitty"))
-        ) {
-            newDna = newDna - newDna % 100 + 99;
+        if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
+            newDna = newDna - (newDna % 100) + 99;
         }
 
         // LECCION 2: Creacion del descendiente
@@ -129,12 +128,11 @@ contract Lesson4ZombieFeeding is Lesson4ZombieFactory {
     // Obtiene el ADN del gato y lo utiliza
     // para generar un nuevo zombi.
     function feedOnKitty(uint _zombieId, uint _kittyId) public {
-
         uint kittyDna;
 
         // Ignora los primeros nueve resultados.
         // Guarda el decimo: genes.
-        (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
+        (, , , , , , , , , kittyDna) = kittyContract.getKitty(_kittyId);
 
         // LECCION 4:
         // Esta llamada comprueba la propiedad

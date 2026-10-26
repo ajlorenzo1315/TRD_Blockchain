@@ -14,12 +14,12 @@ El objetivo es comprender cómo construir contratos inteligentes mediante herenc
 
 ## 2. Organización de los contratos
 
-| Archivo | Contrato | Responsabilidad |
-|---|---|---|
-| `L3ownable.sol` | `Lesson3Ownable` | Administración y permisos |
-| `L3zombiefactory.sol` | `Lesson3ZombieFactory` | Creación y almacenamiento |
+| Archivo               | Contrato               | Responsabilidad             |
+| --------------------- | ---------------------- | --------------------------- |
+| `L3ownable.sol`       | `Lesson3Ownable`       | Administración y permisos   |
+| `L3zombiefactory.sol` | `Lesson3ZombieFactory` | Creación y almacenamiento   |
 | `L3zombiefeeding.sol` | `Lesson3ZombieFeeding` | Alimentación y reproducción |
-| `L3zombiehelper.sol` | `Lesson3ZombieHelper` | Niveles y consultas |
+| `L3zombiehelper.sol`  | `Lesson3ZombieHelper`  | Niveles y consultas         |
 
 La herencia sigue esta secuencia:
 
@@ -58,11 +58,11 @@ El evento `OwnershipTransferred` permite registrar los cambios de administrador.
 
 La estructura `Zombie` contiene cuatro campos:
 
-| Campo | Tipo | Descripción |
-|---|---|---|
-| `name` | `string` | Nombre |
-| `dna` | `uint` | ADN |
-| `level` | `uint32` | Nivel |
+| Campo       | Tipo     | Descripción               |
+| ----------- | -------- | ------------------------- |
+| `name`      | `string` | Nombre                    |
+| `dna`       | `uint`   | ADN                       |
+| `level`     | `uint32` | Nivel                     |
 | `readyTime` | `uint32` | Momento de disponibilidad |
 
 ### Creación
@@ -147,17 +147,17 @@ El coste de esta operación aumenta con el número total de zombis almacenados.
 
 ## 7. Diferencias con la Lección 2
 
-| Característica | Lección 2 | Lección 3 |
-|---|---|---|
-| Creación de zombis | Sí | Sí |
-| Propietarios | Sí | Sí |
-| Alimentación | Sí | Sí |
-| Nivel | No | Sí |
-| ReadyTime | No | Sí |
-| Administración Ownable | No | Sí |
-| Configuración de CryptoKitties restringida | No | Sí |
-| Modificación de nombre y ADN por nivel | No | Sí |
-| Consulta de zombis por propietario | No | Sí |
+| Característica                             | Lección 2 | Lección 3 |
+| ------------------------------------------ | --------- | --------- |
+| Creación de zombis                         | Sí        | Sí        |
+| Propietarios                               | Sí        | Sí        |
+| Alimentación                               | Sí        | Sí        |
+| Nivel                                      | No        | Sí        |
+| ReadyTime                                  | No        | Sí        |
+| Administración Ownable                     | No        | Sí        |
+| Configuración de CryptoKitties restringida | No        | Sí        |
+| Modificación de nombre y ADN por nivel     | No        | Sí        |
+| Consulta de zombis por propietario         | No        | Sí        |
 
 ## 8. Compilación
 

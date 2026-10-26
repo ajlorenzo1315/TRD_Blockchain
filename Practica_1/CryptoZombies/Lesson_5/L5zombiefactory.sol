@@ -5,7 +5,6 @@ import "./L5safemath.sol";
 
 // LECCIONES 1-5: fabrica base que conserva el estado de zombis y hereda el control administrativo.
 contract Lesson5ZombieFactory is Lesson5Ownable {
-
     // LECCION 5 - CAPITULO 10: permite escribir numero.add(1) para uint256.
     using Lesson5SafeMath for uint256;
     // LECCION 5 - CAPITULO 11: habilita operaciones seguras para uint32.
@@ -24,21 +23,21 @@ contract Lesson5ZombieFactory is Lesson5Ownable {
 
     // LECCIONES 1-4: estructura con ADN, nivel, cooldown y estadisticas.
     struct Zombie {
-      string name;
-      uint dna;
-      uint32 level;
-      uint32 readyTime;
-      uint16 winCount;
-      uint16 lossCount;
+        string name;
+        uint dna;
+        uint32 level;
+        uint32 readyTime;
+        uint16 winCount;
+        uint16 lossCount;
     }
 
     // LECCION 1: coleccion persistente de zombis; el indice es el tokenId de ERC721.
     Zombie[] public zombies;
 
     // LECCION 2: asociacion tokenId -> propietario.
-    mapping (uint => address) public zombieToOwner;
+    mapping(uint => address) public zombieToOwner;
     // LECCION 5 - CAPITULO 3: saldo ERC721; debe coincidir con los zombis asignados a cada direccion.
-    mapping (address => uint) ownerZombieCount;
+    mapping(address => uint) ownerZombieCount;
 
     // LECCION 5 - CAPITULO 11: alta del zombi y actualizacion segura del saldo del creador.
     function _createZombie(string _name, uint _dna) internal {
@@ -60,8 +59,7 @@ contract Lesson5ZombieFactory is Lesson5Ownable {
         // LECCION 5 - CAPITULO 11: SafeMath impide desbordamiento del contador de propiedad.
         require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
-        randDna = randDna - randDna % 100;
+        randDna = randDna - (randDna % 100);
         _createZombie(_name, randDna);
     }
-
 }

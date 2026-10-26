@@ -1,4 +1,3 @@
-
 pragma solidity ^0.4.25;
 
 /**
@@ -18,17 +17,10 @@ pragma solidity ^0.4.25;
  * de la funcion getKitty(uint256).
  */
 contract Lesson3MockKitty {
-
-    function getKitty(uint256 _id)
-        external
-        pure
-        returns (uint256[10] memory result)
-    {
+    function getKitty(uint256 _id) external pure returns (uint256[10] memory result) {
         result[0] = 0;
         result[1] = 1;
 
-        result[9] = uint256(
-            keccak256(abi.encodePacked(_id))
-        ) % (10 ** 16);
+        result[9] = uint256(keccak256(abi.encodePacked(_id))) % (10 ** 16);
     }
 }

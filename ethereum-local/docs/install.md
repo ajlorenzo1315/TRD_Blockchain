@@ -1,4 +1,3 @@
-
 ## 1. Instalar NVM
 
 Primero comprueba si ya está instalado:

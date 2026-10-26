@@ -1,21 +1,16 @@
 pragma solidity ^0.4.25;
 
 contract Lesson2MockKitty {
-
     // Genera un ADN diferente a partir del ID.
     // El mismo ID siempre produce el mismo ADN.
-    function _generateKittyDna(uint256 _id)
-        private
-        pure
-        returns (uint256)
-    {
-        return uint256(
-            keccak256(abi.encodePacked(_id))
-        ) % (10 ** 16);
+    function _generateKittyDna(uint256 _id) private pure returns (uint256) {
+        return uint256(keccak256(abi.encodePacked(_id))) % (10 ** 16);
     }
 
     // Mantiene la interfaz de CryptoKitties.
-    function getKitty(uint256 _id)
+    function getKitty(
+        uint256 _id
+    )
         external
         pure
         returns (

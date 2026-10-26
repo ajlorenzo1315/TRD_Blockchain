@@ -1,4 +1,3 @@
-
 pragma solidity ^0.4.25;
 
 // ============================================================
@@ -8,7 +7,6 @@ pragma solidity ^0.4.25;
 // ZombieFactory será el contrato que almacenará y creará zombis.
 
 contract ZombieFactory {
-
     // ========================================================
     // CAPÍTULO 13: EVENTOS
     // ========================================================
@@ -24,7 +22,6 @@ contract ZombieFactory {
 
     event NewZombie(uint zombieId, string name, uint dna);
 
-
     // ========================================================
     // CAPÍTULO 3: VARIABLES DE ESTADO Y ENTEROS
     // ========================================================
@@ -34,7 +31,6 @@ contract ZombieFactory {
     // decimales utilizados para representar el ADN.
 
     uint dnaDigits = 16;
-
 
     // ========================================================
     // CAPÍTULO 4: OPERACIONES MATEMÁTICAS
@@ -46,7 +42,6 @@ contract ZombieFactory {
     // Este valor permitirá limitar el ADN mediante módulo.
 
     uint dnaModulus = 10 ** dnaDigits;
-
 
     // ========================================================
     // CAPÍTULO 5: ESTRUCTURAS
@@ -62,7 +57,6 @@ contract ZombieFactory {
         uint dna;
     }
 
-
     // ========================================================
     // CAPÍTULO 6: ARRAYS
     // ========================================================
@@ -74,7 +68,6 @@ contract ZombieFactory {
     // Los zombis creados se almacenarán aquí.
 
     Zombie[] public zombies;
-
 
     // ========================================================
     // CAPÍTULO 7: DECLARACIÓN DE FUNCIONES
@@ -97,7 +90,6 @@ contract ZombieFactory {
     // Se obtiene el ID del zombi y se emite NewZombie.
 
     function _createZombie(string _name, uint _dna) private {
-
         // Crea una estructura Zombie con nombre y ADN.
         // push() la introduce al final del array.
         //
@@ -113,7 +105,6 @@ contract ZombieFactory {
 
         emit NewZombie(id, _name, _dna);
     }
-
 
     // ========================================================
     // CAPÍTULO 10: FUNCIONES Y VALORES DE RETORNO
@@ -131,12 +122,7 @@ contract ZombieFactory {
     // Se utiliza keccak256 para calcular un hash.
     // Después se convierte el resultado a uint.
 
-    function _generateRandomDna(string _str)
-        private
-        view
-        returns (uint)
-    {
-
+    function _generateRandomDna(string _str) private view returns (uint) {
         // abi.encodePacked convierte el texto en bytes.
         // keccak256 calcula un hash de 256 bits.
         // uint convierte el hash en un número entero.
@@ -156,7 +142,6 @@ contract ZombieFactory {
         return rand % dnaModulus;
     }
 
-
     // ========================================================
     // CAPÍTULO 12: INTEGRANDO TODOS LOS CONCEPTOS
     // ========================================================
@@ -171,7 +156,6 @@ contract ZombieFactory {
     // 4. Provoca la emisión del evento NewZombie.
 
     function createRandomZombie(string _name) public {
-
         // Genera el ADN a partir del nombre recibido.
 
         uint randDna = _generateRandomDna(_name);
@@ -180,5 +164,4 @@ contract ZombieFactory {
 
         _createZombie(_name, randDna);
     }
-
 }

@@ -20,15 +20,15 @@ El contrato permite registrar usuarios, distribuir tokens y comprarlos a un prec
 
 ## 3. Funcionalidades
 
-| Función | Descripción | Acceso |
-|---|---|---|
-| `constructor()` | Asigna 100 tokens al propietario inicial | Despliegue |
-| `double(uint)` | Devuelve el doble de un número | Público |
-| `register(string)` | Registra el nombre del usuario | Público |
-| `giveToken(address,uint256)` | Transfiere tokens desde el propietario | Solo propietario |
-| `buyTokens(uint256)` | Permite comprar tokens con Ether | Público, payable |
-| `getContractBalance()` | Consulta el saldo de Ether del contrato | Público, view |
-| `users(address)` | Consulta el nombre y los tokens de un usuario | Público |
+| Función                      | Descripción                                   | Acceso           |
+| ---------------------------- | --------------------------------------------- | ---------------- |
+| `constructor()`              | Asigna 100 tokens al propietario inicial      | Despliegue       |
+| `double(uint)`               | Devuelve el doble de un número                | Público          |
+| `register(string)`           | Registra el nombre del usuario                | Público          |
+| `giveToken(address,uint256)` | Transfiere tokens desde el propietario        | Solo propietario |
+| `buyTokens(uint256)`         | Permite comprar tokens con Ether              | Público, payable |
+| `getContractBalance()`       | Consulta el saldo de Ether del contrato       | Público, view    |
+| `users(address)`             | Consulta el nombre y los tokens de un usuario | Público          |
 
 ## 4. Funcionamiento
 
@@ -91,18 +91,18 @@ Si alguna condición no se cumple, la transacción se revierte y muestra el corr
 
 Los siguientes son casos de prueba definidos para verificar el contrato.
 
-| Prueba | Operación | Resultado esperado |
-|---|---|---|
-| Inicialización | Desplegar contrato | Propietario con 100 tokens |
-| Registro | `register("Alice")` | Nombre registrado |
-| Función pura | `double(5)` | Devuelve 10 |
-| Transferencia | `giveToken(destino, 5)` | Destinatario recibe 5 tokens |
-| Compra válida | Comprar 2 tokens enviando 10 ETH | Compra correcta |
-| Ether insuficiente | Comprar 2 tokens enviando 5 ETH | Transacción revertida |
-| Tokens insuficientes | Comprar 101 tokens enviando 505 ETH | Transacción revertida |
-| Cantidad inválida | Comprar 0 tokens | Transacción revertida |
-| Consulta de saldo | `getContractBalance()` | Devuelve el saldo en wei |
-| Control de acceso | Un usuario distinto del propietario ejecuta `giveToken()` | Transacción revertida |
+| Prueba               | Operación                                                 | Resultado esperado           |
+| -------------------- | --------------------------------------------------------- | ---------------------------- |
+| Inicialización       | Desplegar contrato                                        | Propietario con 100 tokens   |
+| Registro             | `register("Alice")`                                       | Nombre registrado            |
+| Función pura         | `double(5)`                                               | Devuelve 10                  |
+| Transferencia        | `giveToken(destino, 5)`                                   | Destinatario recibe 5 tokens |
+| Compra válida        | Comprar 2 tokens enviando 10 ETH                          | Compra correcta              |
+| Ether insuficiente   | Comprar 2 tokens enviando 5 ETH                           | Transacción revertida        |
+| Tokens insuficientes | Comprar 101 tokens enviando 505 ETH                       | Transacción revertida        |
+| Cantidad inválida    | Comprar 0 tokens                                          | Transacción revertida        |
+| Consulta de saldo    | `getContractBalance()`                                    | Devuelve el saldo en wei     |
+| Control de acceso    | Un usuario distinto del propietario ejecuta `giveToken()` | Transacción revertida        |
 
 Para realizar una compra desde Remix:
 
@@ -120,19 +120,19 @@ Tras una compra correcta de 2 tokens por 10 ETH, el saldo del contrato será:
 
 ## 7. Conceptos de Solidity utilizados
 
-| Concepto | Utilidad |
-|---|---|
-| `address` | Identifica una cuenta Ethereum |
-| `struct` | Agrupa los datos de cada usuario |
-| `mapping` | Relaciona direcciones con usuarios |
-| `modifier` | Restringe el acceso a determinadas funciones |
-| `msg.sender` | Identifica al emisor de la llamada |
-| `msg.value` | Obtiene la cantidad de Ether enviada en wei |
-| `payable` | Permite recibir Ether |
-| `require` | Comprueba condiciones y revierte si fallan |
-| `pure` | Función que no lee ni modifica el estado |
-| `view` | Función que puede consultar el estado sin modificarlo |
-| `address(this).balance` | Consulta el saldo de Ether del contrato |
+| Concepto                | Utilidad                                              |
+| ----------------------- | ----------------------------------------------------- |
+| `address`               | Identifica una cuenta Ethereum                        |
+| `struct`                | Agrupa los datos de cada usuario                      |
+| `mapping`               | Relaciona direcciones con usuarios                    |
+| `modifier`              | Restringe el acceso a determinadas funciones          |
+| `msg.sender`            | Identifica al emisor de la llamada                    |
+| `msg.value`             | Obtiene la cantidad de Ether enviada en wei           |
+| `payable`               | Permite recibir Ether                                 |
+| `require`               | Comprueba condiciones y revierte si fallan            |
+| `pure`                  | Función que no lee ni modifica el estado              |
+| `view`                  | Función que puede consultar el estado sin modificarlo |
+| `address(this).balance` | Consulta el saldo de Ether del contrato               |
 
 ## 8. Limitaciones
 

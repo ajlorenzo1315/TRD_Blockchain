@@ -6,7 +6,6 @@ pragma solidity ^0.4.25;
 import "./L4zombiefeeding.sol";
 
 contract ZombieHelper is ZombieFeeding {
-
     // LECCION 4 - CAPITULO 1: Funciones payable
     // Precio inicial para aumentar un nivel.
     //
@@ -30,7 +29,6 @@ contract ZombieHelper is ZombieFeeding {
     // onlyOwner impide que cualquier usuario
     // retire el dinero del contrato.
     function withdraw() external onlyOwner {
-
         // LECCION 3: Ownable
         // Consulta quien administra el contrato.
         address _owner = owner();
@@ -58,7 +56,6 @@ contract ZombieHelper is ZombieFeeding {
     // msg.value contiene la cantidad enviada
     // junto con la transaccion.
     function levelUp(uint _zombieId) external payable {
-
         // El pago debe coincidir exactamente
         // con la tarifa configurada.
         require(msg.value == levelUpFee);
@@ -78,7 +75,6 @@ contract ZombieHelper is ZombieFeeding {
         uint _zombieId,
         string _newName
     ) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
-
         // Modifica el nombre almacenado.
         zombies[_zombieId].name = _newName;
     }
@@ -92,15 +88,13 @@ contract ZombieHelper is ZombieFeeding {
         uint _zombieId,
         uint _newDna
     ) external aboveLevel(20, _zombieId) ownerOf(_zombieId) {
-
         zombies[_zombieId].dna = _newDna;
     }
 
     // LECCION 3: Funciones view y arrays en memoria
     // Devuelve los IDs de los zombis
     // pertenecientes a una direccion.
-    function getZombiesByOwner(address _owner) external view returns(uint[]) {
-
+    function getZombiesByOwner(address _owner) external view returns (uint[]) {
         // memory crea un array temporal.
         // Su longitud coincide con el numero
         // de zombis que tiene el propietario.
@@ -112,11 +106,9 @@ contract ZombieHelper is ZombieFeeding {
         // LECCION 1: Bucles for
         // Recorre todos los zombis almacenados.
         for (uint i = 0; i < zombies.length; i++) {
-
             // LECCION 2: Mappings
             // Comprueba el propietario de cada zombi.
             if (zombieToOwner[i] == _owner) {
-
                 // Guarda el ID del zombi.
                 result[counter] = i;
 
@@ -128,5 +120,4 @@ contract ZombieHelper is ZombieFeeding {
         // Devuelve los identificadores encontrados.
         return result;
     }
-
 }

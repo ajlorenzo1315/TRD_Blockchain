@@ -6,7 +6,7 @@
 
 ## 1. Objetivos
 
-Esta práctica tiene como finalidad aprender a configurar una cartera de Ethereum con **MetaMask**, habilitar una red de pruebas, solicitar ETH de prueba mediante un *faucet*, comprobar las operaciones en un explorador de bloques y efectuar una transferencia entre dos direcciones.
+Esta práctica tiene como finalidad aprender a configurar una cartera de Ethereum con **MetaMask**, habilitar una red de pruebas, solicitar ETH de prueba mediante un _faucet_, comprobar las operaciones en un explorador de bloques y efectuar una transferencia entre dos direcciones.
 
 **Importante:** Sepolia es una red de pruebas. Su ETH no tiene valor económico real y no debe confundirse con el ETH de Ethereum Mainnet.
 
@@ -74,13 +74,13 @@ Se consulta la dirección en [Sepolia Etherscan](https://sepolia.etherscan.io/ad
 
 Se abre la edición de Sepolia y se comprueban los siguientes valores:
 
-| Campo | Valor |
-|---|---|
-| Nombre | Sepolia |
-| RPC | `https://ethereum-sepolia-rpc.publicnode.com` |
-| Chain ID | `11155111` |
+| Campo                    | Valor                                                            |
+| ------------------------ | ---------------------------------------------------------------- |
+| Nombre                   | Sepolia                                                          |
+| RPC                      | `https://ethereum-sepolia-rpc.publicnode.com`                    |
+| Chain ID                 | `11155111`                                                       |
 | Símbolo de moneda nativa | `ETH` o etiqueta `SepoliaETH` según la configuración de MetaMask |
-| Explorador | `https://sepolia.etherscan.io` |
+| Explorador               | `https://sepolia.etherscan.io`                                   |
 
 El identificador **11155111** permite verificar que se utiliza la red de pruebas Ethereum Sepolia. En las capturas MetaMask advierte sobre el símbolo `ETH` y sugiere `SepoliaETH`; esto es una cuestión de etiqueta de presentación, no un cambio de blockchain.
 
@@ -134,26 +134,28 @@ Después de la operación, la captura muestra **0,0496 SepoliaETH** en Account 1
 
 ![17 - Saldo final de Account 1](images/17.png)
 ![17 - Saldo final de Account 1](images/17_1.png)
+
 ### Paso 16. Comprobar el saldo de Account 2
 
 Se cambia a **Account 2** y se observa **0,000100 SepoliaETH**, correspondiente a la cantidad enviada desde Account 1. Esta captura acredita la recepción en la segunda cuenta.
 
 ![18 - Saldo recibido en Account 2](images/18.png)
 ![18 - Saldo recibido en Account 2](images/18_1.png)
+
 > **Verificación adicional recomendada:** para documentar de forma completa el envío, abrir **Actividad → transferencia realizada → Ver en explorador** y guardar una captura con el hash, estado `Success`, bloque, origen, destino y tarifa real. Las capturas incluidas prueban el saldo recibido, pero no muestran todavía el hash de esta segunda transacción.
 
 ## 6. Resultados
 
-| Comprobación | Resultado observado |
-|---|---|
-| Cartera configurada | MetaMask disponible con Account 1 y Account 2 |
-| Red de pruebas | Ethereum Sepolia (`11155111`) |
-| Fondos solicitados | 0,05 SepoliaETH |
-| Recepción verificada | 0,05 ETH en Sepolia Etherscan |
-| Transferencia preparada | 0,0001 SepoliaETH de Account 1 a Account 2 |
-| Comisión estimada | ≈ 0,0003 SepoliaETH |
-| Saldo posterior Account 1 | 0,0496 SepoliaETH |
-| Saldo posterior Account 2 | 0,000100 SepoliaETH |
+| Comprobación              | Resultado observado                           |
+| ------------------------- | --------------------------------------------- |
+| Cartera configurada       | MetaMask disponible con Account 1 y Account 2 |
+| Red de pruebas            | Ethereum Sepolia (`11155111`)                 |
+| Fondos solicitados        | 0,05 SepoliaETH                               |
+| Recepción verificada      | 0,05 ETH en Sepolia Etherscan                 |
+| Transferencia preparada   | 0,0001 SepoliaETH de Account 1 a Account 2    |
+| Comisión estimada         | ≈ 0,0003 SepoliaETH                           |
+| Saldo posterior Account 1 | 0,0496 SepoliaETH                             |
+| Saldo posterior Account 2 | 0,000100 SepoliaETH                           |
 
 ## 7. Conclusiones
 
@@ -165,4 +167,3 @@ La práctica demuestra el uso de una cartera EVM y una red pública de pruebas p
 - [Google Cloud Web3 — Ethereum Sepolia Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia)
 - [Sepolia Etherscan — cuenta de la práctica](https://sepolia.etherscan.io/address/0xa4619773E2aD0f27458085eAD192FA4C637a8F3E)
 - [ChainList — Ethereum Sepolia (11155111)](https://chainlist.org/chain/11155111)
-

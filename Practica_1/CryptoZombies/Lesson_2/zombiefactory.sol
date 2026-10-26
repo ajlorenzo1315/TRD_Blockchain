@@ -1,8 +1,6 @@
-
 pragma solidity ^0.4.25;
 
 contract ZombieFactory {
-
     // LECCION 1 - CAPITULO 13: Eventos
     event NewZombie(uint zombieId, string name, uint dna);
 
@@ -19,10 +17,10 @@ contract ZombieFactory {
 
     // LECCION 2 - CAPITULO 2: Mappings y direcciones
     // Relaciona el ID de un zombi con su propietario.
-    mapping (uint => address) public zombieToOwner;
+    mapping(uint => address) public zombieToOwner;
 
     // Guarda cuantos zombis tiene cada direccion.
-    mapping (address => uint) ownerZombieCount;
+    mapping(address => uint) ownerZombieCount;
 
     // LECCION 2 - CAPITULO 3: msg.sender
     // LECCION 2 - CAPITULO 5: Herencia
@@ -38,9 +36,7 @@ contract ZombieFactory {
         emit NewZombie(id, _name, _dna);
     }
 
-    function _generateRandomDna(string _str)
-        private view returns (uint)
-    {
+    function _generateRandomDna(string _str) private view returns (uint) {
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
     }

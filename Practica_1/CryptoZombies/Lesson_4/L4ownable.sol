@@ -9,7 +9,6 @@ pragma solidity ^0.4.25;
 // retirada de fondos y configuracion de tarifas.
 
 contract Ownable {
-
     // LECCION 3: Variables de tipo address
     // Guarda la direccion del administrador.
     // private impide acceder directamente desde
@@ -21,10 +20,7 @@ contract Ownable {
     //
     // indexed permite filtrar los eventos por
     // propietario anterior y nuevo propietario.
-    event OwnershipTransferred(
-        address indexed previousOwner,
-        address indexed newOwner
-    );
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     // LECCION 3: Constructores
     // Se ejecuta durante el despliegue.
@@ -43,7 +39,7 @@ contract Ownable {
 
     // LECCION 1: Funciones de lectura
     // view significa que no modifica el estado.
-    function owner() public view returns(address) {
+    function owner() public view returns (address) {
         return _owner;
     }
 
@@ -62,7 +58,7 @@ contract Ownable {
 
     // LECCION 2 - CAPITULO 3: msg.sender
     // Comprueba si quien llama es el administrador.
-    function isOwner() public view returns(bool) {
+    function isOwner() public view returns (bool) {
         return msg.sender == _owner;
     }
 

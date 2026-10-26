@@ -10,13 +10,13 @@ Hasta la Lección 4, un zombi era un elemento de un array asociado a una direcci
 
 La Lección 5 introduce **ERC-721**, un estándar de **tokens no fungibles (NFT)**. Cada zombi es único porque posee un identificador entero (`tokenId`), que coincide con su índice en el array `zombies`. Dos tokens distintos no son intercambiables como si fueran una misma unidad de moneda: pueden tener diferente ADN, nivel y estadísticas.
 
-| Lección | Conceptos principales | Qué reutilizamos |
-|---|---|---|
-| 1 | `struct`, array, mappings, ADN, eventos | `Zombie`, `zombies`, `NewZombie` |
-| 2 | Herencia, interfaces, `msg.sender`, CryptoKitties | `ZombieFeeding`, `KittyInterface` |
-| 3 | Visibilidad, modificadores, permisos, consultas | `Ownable`, `getZombiesByOwner` |
-| 4 | `payable`, cooldown, ataques, pseudoaleatoriedad | `ZombieAttack`, `levelUp` |
-| **5** | **ERC-721, transferencias, aprobaciones, SafeMath, NatSpec** | **`ZombieOwnership`, `ERC721`, `SafeMath`** |
+| Lección | Conceptos principales                                        | Qué reutilizamos                            |
+| ------- | ------------------------------------------------------------ | ------------------------------------------- |
+| 1       | `struct`, array, mappings, ADN, eventos                      | `Zombie`, `zombies`, `NewZombie`            |
+| 2       | Herencia, interfaces, `msg.sender`, CryptoKitties            | `ZombieFeeding`, `KittyInterface`           |
+| 3       | Visibilidad, modificadores, permisos, consultas              | `Ownable`, `getZombiesByOwner`              |
+| 4       | `payable`, cooldown, ataques, pseudoaleatoriedad             | `ZombieAttack`, `levelUp`                   |
+| **5**   | **ERC-721, transferencias, aprobaciones, SafeMath, NatSpec** | **`ZombieOwnership`, `ERC721`, `SafeMath`** |
 
 ## 2. Organización de los archivos
 
@@ -51,14 +51,14 @@ Archivo: `L5erc721.sol`.
 
 La interfaz declara dos eventos y cuatro funciones:
 
-| Miembro | Para qué sirve |
-|---|---|
-| `Transfer(_from, _to, _tokenId)` | Publica un cambio de propietario |
-| `Approval(_owner, _approved, _tokenId)` | Publica una autorización |
-| `balanceOf(_owner)` | Cuenta tokens del propietario |
-| `ownerOf(_tokenId)` | Consulta el propietario del token |
-| `transferFrom(_from, _to, _tokenId)` | Transfiere un token |
-| `approve(_approved, _tokenId)` | Autoriza a otra cuenta |
+| Miembro                                 | Para qué sirve                    |
+| --------------------------------------- | --------------------------------- |
+| `Transfer(_from, _to, _tokenId)`        | Publica un cambio de propietario  |
+| `Approval(_owner, _approved, _tokenId)` | Publica una autorización          |
+| `balanceOf(_owner)`                     | Cuenta tokens del propietario     |
+| `ownerOf(_tokenId)`                     | Consulta el propietario del token |
+| `transferFrom(_from, _to, _tokenId)`    | Transfiere un token               |
+| `approve(_approved, _tokenId)`          | Autoriza a otra cuenta            |
 
 Los eventos tienen parámetros `indexed`, que permiten a los exploradores y frontends filtrar los logs por direcciones e identificadores. Una declaración de interfaz indica **qué** debe ofrecer el contrato, pero no **cómo** debe implementarlo.
 
@@ -131,9 +131,7 @@ La autorización no convierte al mercado en propietario: solo habilita a esa dir
 ## 9. Capítulo 7 — `approve()`
 
 ```solidity
-function approve(address _approved, uint256 _tokenId)
-  external payable onlyOwnerOf(_tokenId)
-{
+function approve(address _approved, uint256 _tokenId) external payable onlyOwnerOf(_tokenId) {
   zombieApprovals[_tokenId] = _approved;
   emit Approval(msg.sender, _approved, _tokenId);
 }
@@ -212,11 +210,11 @@ En una suma, la biblioteca calcula `c = a + b` y verifica `assert(c >= a)`. Si l
 
 El contrato no utiliza únicamente enteros de 256 bits:
 
-| Campo | Tipo | Biblioteca |
-|---|---|---|
-| `ownerZombieCount` | `uint256` (`uint`) | `Lesson5SafeMath` |
-| `level` | `uint32` | `Lesson5SafeMath32` |
-| `winCount`, `lossCount` | `uint16` | `Lesson5SafeMath16` |
+| Campo                   | Tipo               | Biblioteca          |
+| ----------------------- | ------------------ | ------------------- |
+| `ownerZombieCount`      | `uint256` (`uint`) | `Lesson5SafeMath`   |
+| `level`                 | `uint32`           | `Lesson5SafeMath32` |
+| `winCount`, `lossCount` | `uint16`           | `Lesson5SafeMath16` |
 
 Por eso `L5zombiefactory.sol` declara las tres variantes de SafeMath. Los tipos más pequeños también ayudan a compactar almacenamiento, pero tienen límites máximos inferiores.
 
@@ -314,8 +312,7 @@ npx hardhat compile
 Para desplegar desde una prueba Viem:
 
 ```typescript
-const CONTRACT =
-  "contracts/CryptoZombies/lesson-05/L5zombieownership.sol:Lesson5ZombieOwnership";
+const CONTRACT = "contracts/CryptoZombies/lesson-05/L5zombieownership.sol:Lesson5ZombieOwnership";
 
 const contract = await viem.deployContract(CONTRACT);
 ```
@@ -324,20 +321,20 @@ const contract = await viem.deployContract(CONTRACT);
 
 ## 19. Pruebas recomendadas para Ethereum local
 
-| Caso | Operación | Resultado que comprobar |
-|---|---|---|
-| 01 | Crear un zombi | `ownerOf(0)` coincide con el creador |
-| 02 | Consultar balance | `balanceOf(creador) == 1` |
-| 03 | Transferir desde el dueño | Cambian `ownerOf` y ambos balances |
-| 04 | Transferir sin permiso | Revierte |
-| 05 | Aprobar un tercero | Emite `Approval` |
-| 06 | Aprobar un token ajeno | Revierte |
-| 07 | Transferencia delegada | Demuestra el problema de `msg.sender` en `_transfer` |
-| 08 | Transferir con `_from` falso | Documenta que el contrato no valida ese argumento |
-| 09 | Transferir a `address(0)` | Documenta el comportamiento original |
-| 10 | Consultar `getZombiesByOwner` | Lista coherente después de una transferencia normal |
-| 11 | Subir de nivel | `uint32` incrementado mediante SafeMath |
-| 12 | Combate | Contadores `uint16` incrementados mediante SafeMath |
+| Caso | Operación                     | Resultado que comprobar                              |
+| ---- | ----------------------------- | ---------------------------------------------------- |
+| 01   | Crear un zombi                | `ownerOf(0)` coincide con el creador                 |
+| 02   | Consultar balance             | `balanceOf(creador) == 1`                            |
+| 03   | Transferir desde el dueño     | Cambian `ownerOf` y ambos balances                   |
+| 04   | Transferir sin permiso        | Revierte                                             |
+| 05   | Aprobar un tercero            | Emite `Approval`                                     |
+| 06   | Aprobar un token ajeno        | Revierte                                             |
+| 07   | Transferencia delegada        | Demuestra el problema de `msg.sender` en `_transfer` |
+| 08   | Transferir con `_from` falso  | Documenta que el contrato no valida ese argumento    |
+| 09   | Transferir a `address(0)`     | Documenta el comportamiento original                 |
+| 10   | Consultar `getZombiesByOwner` | Lista coherente después de una transferencia normal  |
+| 11   | Subir de nivel                | `uint32` incrementado mediante SafeMath              |
+| 12   | Combate                       | Contadores `uint16` incrementados mediante SafeMath  |
 
 Estas son **propuestas de pruebas**, no resultados ejecutados. Las pruebas que evidencian fallos del código original deben comprobar y documentar ese comportamiento, no ocultarlo.
 
@@ -365,7 +362,5 @@ Estas son **propuestas de pruebas**, no resultados ejecutados. Las pruebas que e
 4. [Documentación oficial de Solidity](https://docs.soliditylang.org/)
 5. [Documentación de Hardhat](https://hardhat.org/docs)
 6. [Estándar ERC-72](https://eips.ethereum.org/EIPS/eip-721)
-
-
 
 **Nota:** se han conservado deliberadamente las características y defectos de la versión histórica del tutorial. Los nombres `Lesson5...` son una adaptación local para evitar colisiones de contratos entre lecciones.

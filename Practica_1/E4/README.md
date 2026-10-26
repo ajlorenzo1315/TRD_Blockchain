@@ -13,7 +13,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract TokenContractOpenZeppelin is ERC20, Ownable {
-    // ...
+  // ...
 }
 ```
 
@@ -24,19 +24,19 @@ La implementación usa la interfaz de **OpenZeppelin Contracts 5.x**, cuyo const
 
 ## 3. Modificaciones respecto al ejercicio anterior
 
-| Elemento | Antes: `TokenContract` | Ahora: `TokenContractOpenZeppelin` | Motivo |
-|---|---|---|---|
-| Propietario | Variable `address public owner` | `Ownable(msg.sender)` y `owner()` | Reutilizar control de propiedad de OpenZeppelin. |
-| Restricción de permisos | Modificador `onlyOwner` escrito manualmente | `onlyOwner` heredado | Evitar repetir la comprobación de permisos. |
-| Saldos | `users[direccion].tokens` | `balanceOf(direccion)` | Una sola fuente de verdad para los tokens. |
-| Tokens iniciales | `users[owner].tokens = 100` | `_mint(msg.sender, 100 * 10 ** decimals())` | Crear 100 tokens ERC-20 reales. |
-| Transferencia interna | Restar y sumar valores del `mapping` | `_transfer(owner(), receptor, unidades)` | Utilizar la contabilidad y el evento `Transfer` de ERC-20. |
-| Registro de nombres | `users[direccion].name` | Se conserva | Mantener la funcionalidad del ejercicio anterior. |
-| Regalos | `giveToken` | Se conserva, utilizando `_transferTokens` y `onlyOwner` heredado | Preservar la lógica de negocio. |
-| Compra | `buyTokens` | Se conserva, pagando 5 ETH por token | Mantener el caso de uso. |
-| Precio | `TOKEN_PRICE = 5 ether` | Se conserva | Mantener el precio original. |
-| Consulta de saldo | `users[direccion].tokens` | `getUser`, `getMyTokens`, `getUserTokens` y `balanceOf` | Facilitar consultas sin duplicar saldos. |
-| Saldo ETH | `getContractBalance()` en wei | Consulta en ETH enteros y consulta exacta en wei | Hacer la salida más legible sin perder la posibilidad de comprobar el valor exacto. |
+| Elemento                | Antes: `TokenContract`                      | Ahora: `TokenContractOpenZeppelin`                               | Motivo                                                                              |
+| ----------------------- | ------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Propietario             | Variable `address public owner`             | `Ownable(msg.sender)` y `owner()`                                | Reutilizar control de propiedad de OpenZeppelin.                                    |
+| Restricción de permisos | Modificador `onlyOwner` escrito manualmente | `onlyOwner` heredado                                             | Evitar repetir la comprobación de permisos.                                         |
+| Saldos                  | `users[direccion].tokens`                   | `balanceOf(direccion)`                                           | Una sola fuente de verdad para los tokens.                                          |
+| Tokens iniciales        | `users[owner].tokens = 100`                 | `_mint(msg.sender, 100 * 10 ** decimals())`                      | Crear 100 tokens ERC-20 reales.                                                     |
+| Transferencia interna   | Restar y sumar valores del `mapping`        | `_transfer(owner(), receptor, unidades)`                         | Utilizar la contabilidad y el evento `Transfer` de ERC-20.                          |
+| Registro de nombres     | `users[direccion].name`                     | Se conserva                                                      | Mantener la funcionalidad del ejercicio anterior.                                   |
+| Regalos                 | `giveToken`                                 | Se conserva, utilizando `_transferTokens` y `onlyOwner` heredado | Preservar la lógica de negocio.                                                     |
+| Compra                  | `buyTokens`                                 | Se conserva, pagando 5 ETH por token                             | Mantener el caso de uso.                                                            |
+| Precio                  | `TOKEN_PRICE = 5 ether`                     | Se conserva                                                      | Mantener el precio original.                                                        |
+| Consulta de saldo       | `users[direccion].tokens`                   | `getUser`, `getMyTokens`, `getUserTokens` y `balanceOf`          | Facilitar consultas sin duplicar saldos.                                            |
+| Saldo ETH               | `getContractBalance()` en wei               | Consulta en ETH enteros y consulta exacta en wei                 | Hacer la salida más legible sin perder la posibilidad de comprobar el valor exacto. |
 
 ### 3.1. Propiedad: de `owner` manual a `Ownable`
 
@@ -182,21 +182,21 @@ Esto cambia ligeramente el ejercicio anterior, que aceptaba pagos superiores al 
 
 ### Pruebas propuestas
 
-| Nº | Cuenta | Operación | Resultado esperado |
-|---|---|---|---|
-| 1 | Account 1 | `owner()` | Dirección de Account 1. |
-| 2 | Cualquiera | `name()` y `symbol()` | `Token Practica` y `TPR`. |
-| 3 | Cualquiera | `totalSupply()` | `100000000000000000000` unidades mínimas. |
-| 4 | Account 1 | `getMyTokens()` | `100` TPR. |
-| 5 | Cualquiera | `double(5)` | `10`. |
-| 6 | Account 2 | `register("Ana")` | `getUser(Account 2)` devuelve `Ana` y `0`. |
-| 7 | Account 1 | `giveToken(Account 2, 10)` | Account 1: 90 TPR; Account 2: 10 TPR. |
-| 8 | Account 2 | `giveToken(Account 1, 1)` | Revierte: no es el propietario. |
-| 9 | Account 2 | `buyTokens(1)` con **VALUE = 5 Ether** | Account 1: 89 TPR; Account 2: 11 TPR. |
-| 10 | Cualquiera | `getContractBalance()` | `5`. |
-| 11 | Cualquiera | `getContractBalanceWei()` | `5000000000000000000`. |
-| 12 | Account 1 | `transfer(Account 2, 5000000000000000000)` | Transfiere 5 TPR; Account 1: 84 y Account 2: 16. |
-| 13 | Cualquiera | `getUser(Account 2)` | `Ana`, `16`. |
+| Nº  | Cuenta     | Operación                                  | Resultado esperado                               |
+| --- | ---------- | ------------------------------------------ | ------------------------------------------------ |
+| 1   | Account 1  | `owner()`                                  | Dirección de Account 1.                          |
+| 2   | Cualquiera | `name()` y `symbol()`                      | `Token Practica` y `TPR`.                        |
+| 3   | Cualquiera | `totalSupply()`                            | `100000000000000000000` unidades mínimas.        |
+| 4   | Account 1  | `getMyTokens()`                            | `100` TPR.                                       |
+| 5   | Cualquiera | `double(5)`                                | `10`.                                            |
+| 6   | Account 2  | `register("Ana")`                          | `getUser(Account 2)` devuelve `Ana` y `0`.       |
+| 7   | Account 1  | `giveToken(Account 2, 10)`                 | Account 1: 90 TPR; Account 2: 10 TPR.            |
+| 8   | Account 2  | `giveToken(Account 1, 1)`                  | Revierte: no es el propietario.                  |
+| 9   | Account 2  | `buyTokens(1)` con **VALUE = 5 Ether**     | Account 1: 89 TPR; Account 2: 11 TPR.            |
+| 10  | Cualquiera | `getContractBalance()`                     | `5`.                                             |
+| 11  | Cualquiera | `getContractBalanceWei()`                  | `5000000000000000000`.                           |
+| 12  | Account 1  | `transfer(Account 2, 5000000000000000000)` | Transfiere 5 TPR; Account 1: 84 y Account 2: 16. |
+| 13  | Cualquiera | `getUser(Account 2)`                       | `Ana`, `16`.                                     |
 
 > **Importante:** en `giveToken` y `buyTokens` se introducen cantidades de **tokens completos** (por ejemplo, `10` o `1`). En la función estándar `transfer` de ERC-20 se introducen **unidades mínimas** (por ejemplo, `5000000000000000000` para 5 TPR). Para la compra, establecer `VALUE` en **5 Ether**, no en 5 wei.
 

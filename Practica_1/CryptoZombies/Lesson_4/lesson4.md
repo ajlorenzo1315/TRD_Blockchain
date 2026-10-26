@@ -16,12 +16,12 @@ El trabajo permite comprender cómo se gestionan pagos, permisos, estados persis
 
 ## 2. Conocimientos acumulados
 
-| Lección | Conceptos principales | Resultado |
-|---|---|---|
-| 1 | Variables, funciones, estructuras, arrays, eventos, hash | Crear zombis |
-| 2 | Herencia, mappings, `msg.sender`, `require`, interfaces | Propiedad y reproducción |
-| 3 | `Ownable`, modificadores, niveles, cooldown, consultas | Control administrativo y niveles |
-| 4 | `payable`, ETH, retiradas, aleatoriedad, combate | Batallas y monetización |
+| Lección | Conceptos principales                                    | Resultado                        |
+| ------- | -------------------------------------------------------- | -------------------------------- |
+| 1       | Variables, funciones, estructuras, arrays, eventos, hash | Crear zombis                     |
+| 2       | Herencia, mappings, `msg.sender`, `require`, interfaces  | Propiedad y reproducción         |
+| 3       | `Ownable`, modificadores, niveles, cooldown, consultas   | Control administrativo y niveles |
+| 4       | `payable`, ETH, retiradas, aleatoriedad, combate         | Batallas y monetización          |
 
 La Lección 4 no sustituye a las anteriores: utiliza sus conceptos para construir una aplicación con mayor complejidad.
 
@@ -43,13 +43,13 @@ ZombieAttack
 
 ### Archivos
 
-| Archivo | Responsabilidad |
-|---|---|
-| `L4ownable.sol` | Administración del contrato |
+| Archivo               | Responsabilidad                     |
+| --------------------- | ----------------------------------- |
+| `L4ownable.sol`       | Administración del contrato         |
 | `L4zombiefactory.sol` | Creación y almacenamiento de zombis |
-| `L4zombiefeeding.sol` | Reproducción y cooldown |
-| `L4zombiehelper.sol` | Pagos, niveles y consultas |
-| `L4zombieattack.sol` | Sistema de combate |
+| `L4zombiefeeding.sol` | Reproducción y cooldown             |
+| `L4zombiehelper.sol`  | Pagos, niveles y consultas          |
+| `L4zombieattack.sol`  | Sistema de combate                  |
 
 El contrato final hereda las funciones públicas y externas de los anteriores.
 
@@ -67,14 +67,14 @@ El administrador del contrato no tiene por qué ser propietario de todos los zom
 
 La estructura `Zombie` contiene:
 
-| Campo | Tipo | Significado |
-|---|---|---|
-| `name` | `string` | Nombre |
-| `dna` | `uint` | ADN |
-| `level` | `uint32` | Nivel |
+| Campo       | Tipo     | Significado              |
+| ----------- | -------- | ------------------------ |
+| `name`      | `string` | Nombre                   |
+| `dna`       | `uint`   | ADN                      |
+| `level`     | `uint32` | Nivel                    |
 | `readyTime` | `uint32` | Tiempo de disponibilidad |
-| `winCount` | `uint16` | Victorias |
-| `lossCount` | `uint16` | Derrotas |
+| `winCount`  | `uint16` | Victorias                |
+| `lossCount` | `uint16` | Derrotas                 |
 
 Los nuevos campos son `winCount` y `lossCount`.
 
@@ -250,11 +250,11 @@ El zombi objetivo puede pertenecer a otra cuenta.
 
 Supongamos que existen dos zombis:
 
-| Campo | Zombi A | Zombi B |
-|---|---|---|
-| Nivel | 1 | 1 |
-| Victorias | 0 | 0 |
-| Derrotas | 0 | 0 |
+| Campo       | Zombi A   | Zombi B   |
+| ----------- | --------- | --------- |
+| Nivel       | 1         | 1         |
+| Victorias   | 0         | 0         |
+| Derrotas    | 0         | 0         |
 | Propietario | Usuario A | Usuario B |
 
 El usuario A inicia un ataque con el zombi A contra el zombi B.
@@ -347,7 +347,7 @@ El contrato principal se despliega mediante su nombre plenamente cualificado:
 
 ```typescript
 const contract = await viem.deployContract(
-  "contracts/CryptoZombies/lesson-04/L4zombieattack.sol:Lesson4ZombieAttack"
+  "contracts/CryptoZombies/lesson-04/L4zombieattack.sol:Lesson4ZombieAttack",
 );
 ```
 
@@ -355,19 +355,19 @@ La configuración de Hardhat debe incluir el compilador Solidity `0.4.25`.
 
 ## 13. Comparación con la Lección 3
 
-| Característica | Lección 3 | Lección 4 |
-|---|---|---|
-| Crear zombis | Sí | Sí |
-| Administración | Sí | Sí |
-| Nivel inicial | Sí | Sí |
-| Cooldown almacenado | Sí | Sí |
-| Cooldown aplicado en reproducción | No | Sí |
-| Subir de nivel pagando | No | Sí |
-| Retirar ETH | No | Sí |
-| Cambiar nombre y ADN | Restringido por nivel | Accesible al alcanzar el nivel |
-| Victorias y derrotas | No | Sí |
-| Combates | No | Sí |
-| Generación pseudoaleatoria para combates | No | Sí |
+| Característica                           | Lección 3             | Lección 4                      |
+| ---------------------------------------- | --------------------- | ------------------------------ |
+| Crear zombis                             | Sí                    | Sí                             |
+| Administración                           | Sí                    | Sí                             |
+| Nivel inicial                            | Sí                    | Sí                             |
+| Cooldown almacenado                      | Sí                    | Sí                             |
+| Cooldown aplicado en reproducción        | No                    | Sí                             |
+| Subir de nivel pagando                   | No                    | Sí                             |
+| Retirar ETH                              | No                    | Sí                             |
+| Cambiar nombre y ADN                     | Restringido por nivel | Accesible al alcanzar el nivel |
+| Victorias y derrotas                     | No                    | Sí                             |
+| Combates                                 | No                    | Sí                             |
+| Generación pseudoaleatoria para combates | No                    | Sí                             |
 
 ## 14. Referencias
 
@@ -376,4 +376,3 @@ La configuración de Hardhat debe incluir el compilador Solidity `0.4.25`.
 3. [CryptoZombies — Lección 4 en español](https://github.com/CryptozombiesHQ/cryptozombie-lessons/tree/master/es/4)
 4. [Documentación oficial de Solidity](https://docs.soliditylang.org/)
 5. [Documentación de Hardhat](https://hardhat.org/docs)
-

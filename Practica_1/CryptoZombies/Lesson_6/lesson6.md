@@ -42,7 +42,7 @@ La diferencia fundamental es que **JavaScript presenta y solicita acciones**, mi
 **Fragmento representativo:**
 
 ```javascript
-new Web3(window.ethereum)
+new Web3(window.ethereum);
 ```
 
 **Paso a paso:**
@@ -63,7 +63,7 @@ new Web3(window.ethereum)
 **Fragmento representativo:**
 
 ```javascript
-window.ethereum.request({ method: "eth_requestAccounts" })
+window.ethereum.request({ method: "eth_requestAccounts" });
 ```
 
 **Paso a paso:**
@@ -84,7 +84,7 @@ window.ethereum.request({ method: "eth_requestAccounts" })
 **Fragmento representativo:**
 
 ```javascript
-new web3.eth.Contract(window.LESSON6_ABI, window.LESSON6_ADDRESS)
+new web3.eth.Contract(window.LESSON6_ABI, window.LESSON6_ADDRESS);
 ```
 
 **Paso a paso:**
@@ -105,7 +105,7 @@ new web3.eth.Contract(window.LESSON6_ABI, window.LESSON6_ADDRESS)
 **Fragmento representativo:**
 
 ```javascript
-contract.methods.zombies(0).call()
+contract.methods.zombies(0).call();
 ```
 
 **Paso a paso:**
@@ -126,7 +126,7 @@ contract.methods.zombies(0).call()
 **Fragmento representativo:**
 
 ```javascript
-window.ethereum.on("accountsChanged", callback)
+window.ethereum.on("accountsChanged", callback);
 ```
 
 **Paso a paso:**
@@ -168,7 +168,7 @@ const ids = await contract.methods.getZombiesByOwner(account).call();
 **Fragmento representativo:**
 
 ```javascript
-contract.methods.createRandomZombie("Alice").send({ from: account })
+contract.methods.createRandomZombie("Alice").send({ from: account });
 ```
 
 **Paso a paso:**
@@ -189,7 +189,7 @@ contract.methods.createRandomZombie("Alice").send({ from: account })
 **Fragmento representativo:**
 
 ```javascript
-contract.methods.levelUp(0).send({ from: account, value: web3.utils.toWei("0.001", "ether") })
+contract.methods.levelUp(0).send({ from: account, value: web3.utils.toWei("0.001", "ether") });
 ```
 
 **Paso a paso:**
@@ -210,7 +210,7 @@ contract.methods.levelUp(0).send({ from: account, value: web3.utils.toWei("0.001
 **Fragmento representativo:**
 
 ```javascript
-contract.events.Transfer({ filter: { _to: account } })
+contract.events.Transfer({ filter: { _to: account } });
 ```
 
 **Paso a paso:**
@@ -315,17 +315,17 @@ Abre `http://127.0.0.1:8080` y pulsa «Conectar MetaMask».
 
 ## Qué hace cada función JavaScript
 
-| Función | Archivo | Propósito | Capítulo |
-|---|---|---|---|
-| `connect()` | `app.js` | Solicita cuentas y crea la instancia del contrato | 2, 3, 5 |
-| `refresh()` | `app.js` | Recupera IDs, consulta zombis y actualiza HTML | 4, 6 |
-| `send()` | `app.js` | Firma y envía operaciones que cambian el estado | 7, 8 |
-| `bind()` | `app.js` | Asocia botones y formularios con acciones | 7, 8 |
-| `normalizeZombie()` | `app-core.js` | Convierte datos ABI a un formato uniforme | 6 |
-| `escapeHtml()` | `app-core.js` | Evita interpretar nombres como HTML | 6 |
-| `renderZombie()` | `app-core.js` | Genera la tarjeta de cada zombi | 6 |
-| `feeToWei()` | `app-core.js` | Convierte la tarifa ETH a wei | 8 |
-| `isReady()` | `app-core.js` | Compara el cooldown con la hora indicada | 6 |
+| Función             | Archivo       | Propósito                                         | Capítulo |
+| ------------------- | ------------- | ------------------------------------------------- | -------- |
+| `connect()`         | `app.js`      | Solicita cuentas y crea la instancia del contrato | 2, 3, 5  |
+| `refresh()`         | `app.js`      | Recupera IDs, consulta zombis y actualiza HTML    | 4, 6     |
+| `send()`            | `app.js`      | Firma y envía operaciones que cambian el estado   | 7, 8     |
+| `bind()`            | `app.js`      | Asocia botones y formularios con acciones         | 7, 8     |
+| `normalizeZombie()` | `app-core.js` | Convierte datos ABI a un formato uniforme         | 6        |
+| `escapeHtml()`      | `app-core.js` | Evita interpretar nombres como HTML               | 6        |
+| `renderZombie()`    | `app-core.js` | Genera la tarjeta de cada zombi                   | 6        |
+| `feeToWei()`        | `app-core.js` | Convierte la tarifa ETH a wei                     | 8        |
+| `isReady()`         | `app-core.js` | Compara el cooldown con la hora indicada          | 6        |
 
 ## Limitaciones que debes poder explicar
 

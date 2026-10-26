@@ -1,6 +1,6 @@
 # Práctica 1 · Ejercicio 1 — CryptoZombies y Solidity
 
-> **Asignatura:** Blockchain · **Entorno:** Ethereum local con Hardhat · **Actividad:** *Solidity: Beginner to Intermediate Smart Contracts*
+> **Asignatura:** Blockchain · **Entorno:** Ethereum local con Hardhat · **Actividad:** _Solidity: Beginner to Intermediate Smart Contracts_
 
 ## 1. Objetivo de la práctica
 
@@ -47,16 +47,16 @@ El presente README se sitúa en `Practica_1/E1/`. El entorno de ejecución se en
 
 ## 3. Herramientas recomendadas para experimentar
 
-| Herramienta | Uso en el aprendizaje |
-| --- | --- |
-| [CryptoZombies](https://cryptozombies.io/) | Lecciones interactivas de Solidity y juego cripto-coleccionable. |
-| [Remix IDE](https://remix.ethereum.org/) | Edición, compilación y despliegue de contratos desde el navegador. |
-| [Hardhat](https://hardhat.org/) | Compilación, nodo Ethereum local, despliegues y depuración. |
-| [Solidity](https://docs.soliditylang.org/) | Documentación oficial del lenguaje. |
-| [MetaMask](https://metamask.io/) | Conexión y firma de transacciones con una cartera de pruebas; opcional en esta demo local. |
-| [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/) | Referencia de contratos reutilizables, estándares y buenas prácticas. |
-| [Ethers.js](https://docs.ethers.org/) / [Web3.js](https://docs.web3js.org/) | Interacción programática con contratos Ethereum. |
-| [Ethereum.org](https://ethereum.org/developers/) | Recursos sobre cuentas, gas, transacciones, EVM y contratos inteligentes. |
+| Herramienta                                                                 | Uso en el aprendizaje                                                                      |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [CryptoZombies](https://cryptozombies.io/)                                  | Lecciones interactivas de Solidity y juego cripto-coleccionable.                           |
+| [Remix IDE](https://remix.ethereum.org/)                                    | Edición, compilación y despliegue de contratos desde el navegador.                         |
+| [Hardhat](https://hardhat.org/)                                             | Compilación, nodo Ethereum local, despliegues y depuración.                                |
+| [Solidity](https://docs.soliditylang.org/)                                  | Documentación oficial del lenguaje.                                                        |
+| [MetaMask](https://metamask.io/)                                            | Conexión y firma de transacciones con una cartera de pruebas; opcional en esta demo local. |
+| [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/)          | Referencia de contratos reutilizables, estándares y buenas prácticas.                      |
+| [Ethers.js](https://docs.ethers.org/) / [Web3.js](https://docs.web3js.org/) | Interacción programática con contratos Ethereum.                                           |
+| [Ethereum.org](https://ethereum.org/developers/)                            | Recursos sobre cuentas, gas, transacciones, EVM y contratos inteligentes.                  |
 
 **Entorno utilizado en esta demostración:** Hardhat Local, frontend HTML/CSS/JavaScript y Web3.js. Todas las operaciones se realizan con **ETH ficticio**, no en la red principal de Ethereum.
 
@@ -93,11 +93,11 @@ npx hardhat node --hostname 127.0.0.1 --port 8545
 
 Mantén esta terminal abierta. La red local utiliza:
 
-| Parámetro | Valor |
-| --- | --- |
-| RPC | `http://127.0.0.1:8545` |
-| Chain ID | `31337` |
-| Moneda | ETH de prueba |
+| Parámetro    | Valor                                                |
+| ------------ | ---------------------------------------------------- |
+| RPC          | `http://127.0.0.1:8545`                              |
+| Chain ID     | `31337`                                              |
+| Moneda       | ETH de prueba                                        |
 | Persistencia | El estado se pierde normalmente al reiniciar el nodo |
 
 ### Paso 2. Desplegar el contrato
@@ -195,20 +195,20 @@ La consulta es pública: **no requiere MetaMask**, aunque sí que el nodo Hardha
 
 La arena diferencia dos modos:
 
-| Modo | Comportamiento | Gas |
-| --- | --- | --- |
-| **Simulación** | Representa ataques, daño visual, barras de vida y ganador sin modificar la blockchain. | No |
+| Modo                   | Comportamiento                                                                                            | Gas              |
+| ---------------------- | --------------------------------------------------------------------------------------------------------- | ---------------- |
+| **Simulación**         | Representa ataques, daño visual, barras de vida y ganador sin modificar la blockchain.                    | No               |
 | **Combate real local** | Envía `attack()` al contrato, espera la confirmación y refleja el resultado registrado en Ethereum local. | Sí, ETH ficticio |
 
 **Importante:** las barras de vida son un recurso de visualización. El contrato CryptoZombies original no implementa necesariamente puntos de salud persistentes; el resultado real se determina por sus reglas de combate y por los cambios de estado producidos.
 
-Para probar un combate real, crea zombis con **cuentas diferentes**, selecciona uno que pertenezca a la cuenta atacante e indica el identificador del rival. Si el contrato aplica un período de espera (*cooldown*), respétalo antes de atacar. En una red local de pruebas puede adelantarse el tiempo de Hardhat, si la interfaz incluye esa función.
+Para probar un combate real, crea zombis con **cuentas diferentes**, selecciona uno que pertenezca a la cuenta atacante e indica el identificador del rival. Si el contrato aplica un período de espera (_cooldown_), respétalo antes de atacar. En una red local de pruebas puede adelantarse el tiempo de Hardhat, si la interfaz incluye esa función.
 
 ## 6. Comprobaciones y problemas habituales
 
 **«El ABI no incluye createRandomZombie»**: vuelve a generar `contract-config.js` con la dirección del contrato correcto y recarga la página.
 
-**«Transaction reverted without a reason string»**: la transacción ha incumplido alguna condición del contrato. Comprueba la cuenta propietaria, los IDs, las restricciones de creación, los niveles requeridos y el *cooldown*.
+**«Transaction reverted without a reason string»**: la transacción ha incumplido alguna condición del contrato. Comprueba la cuenta propietaria, los IDs, las restricciones de creación, los niveles requeridos y el _cooldown_.
 
 **No aparecen zombis después de reiniciar Hardhat**: el nodo local normalmente no conserva el estado entre ejecuciones. Despliega de nuevo el contrato y actualiza el frontend.
 

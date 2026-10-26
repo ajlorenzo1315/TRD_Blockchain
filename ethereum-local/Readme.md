@@ -15,12 +15,12 @@ Para ejecutar el código histórico sin modificaciones, puede convenir usar vers
 
 En tu terminal WSL:
 
-``` bash
-node --version 
+```bash
+node --version
 npm --version
 ```
 
-``` bash
+```bash
 me
 node --version
 v18.19.1
@@ -30,11 +30,9 @@ npm --version
 
 Hardhat 3 requiere Node.js 22.13.0 o superior.&#x20;
 
-[image](https://www.google.com/s2/favicons?domain=https://hardhat.org\&sz=32)
+[image](https://www.google.com/s2/favicons?domain=https://hardhat.org&sz=32)
 
 Hardhat 3
-
-
 
 ### Paso 2. Inicializar Hardhat
 
@@ -49,8 +47,7 @@ npx hardhat --init --template node-test-runner-viem
 
 Este comando crea la configuración, dependencias y estructura de pruebas de Hardhat 3.&#x20; [![Hardhat](https://www.google.com/s2/favicons?domain=hardhat.org&sz=32)](https://hardhat.org)
 
-
-### Paso 3. Añadir contracts 
+### Paso 3. Añadir contracts
 
 Copia el contrato Solidity que desarrollamos anteriormente a la carpeta `contracts` del nuevo proyecto:
 
@@ -93,11 +90,9 @@ ETH de prueba
 
 Hardhat genera cuentas de desarrollo con fondos ficticios. No necesitas comprar Ethereum.&#x20;
 
-[![Hardhat](https://www.google.com/s2/favicons?domain=https://v2.hardhat.org\&sz=32)](https://hardhat.org)
+[![Hardhat](https://www.google.com/s2/favicons?domain=https://v2.hardhat.org&sz=32)](https://hardhat.org)
 
 v2.hardhat.org
-
-
 
 En una segunda terminal, comprueba que el nodo responde:
 
@@ -152,8 +147,6 @@ Hardhat Ignition desplegará el contrato y mostrará su dirección Ethereum.&#x2
 [![Hardhat](https://www.google.com/s2/favicons?domain=hardhat.org&sz=32)](https://hardhat.org)
 
 Hardhat 3
-
-
 
 ## 4. Conectar Remix a tu blockchain
 

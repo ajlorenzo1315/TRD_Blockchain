@@ -8,7 +8,6 @@ import "./L4zombiehelper.sol";
 // LECCION 4: Sistema de combate
 // Este es el contrato principal que se despliega.
 contract Lesson4ZombieAttack is Lesson4ZombieHelper {
-
     // LECCION 4 - CAPITULO 3: Numeros aleatorios
     // Contador que cambia cada vez que se
     // solicita un resultado pseudoaleatorio.
@@ -25,8 +24,7 @@ contract Lesson4ZombieAttack is Lesson4ZombieHelper {
     // de los contratos derivados.
     //
     // No utiliza view porque modifica randNonce.
-    function randMod(uint _modulus) internal returns(uint) {
-
+    function randMod(uint _modulus) internal returns (uint) {
         // Incrementa el contador.
         randNonce++;
 
@@ -42,11 +40,7 @@ contract Lesson4ZombieAttack is Lesson4ZombieHelper {
         //
         // IMPORTANTE:
         // No es aleatoriedad criptograficamente segura.
-        return uint(
-            keccak256(
-                abi.encodePacked(now, msg.sender, randNonce)
-            )
-        ) % _modulus;
+        return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
     }
 
     // LECCION 4: Funcion attack
@@ -57,11 +51,7 @@ contract Lesson4ZombieAttack is Lesson4ZombieHelper {
     //
     // ownerOf exige que el remitente sea
     // propietario del atacante.
-    function attack(
-        uint _zombieId,
-        uint _targetId
-    ) external ownerOf(_zombieId) {
-
+    function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
         // LECCION 1: Structs
         // storage permite modificar directamente
         // los zombis almacenados en la blockchain.
@@ -81,7 +71,6 @@ contract Lesson4ZombieAttack is Lesson4ZombieHelper {
         // Como rand puede valer de 0 a 99,
         // <= 70 incluye 71 resultados posibles.
         if (rand <= attackVictoryProbability) {
-
             // LECCION 4: Estadisticas
             // Registra una victoria del atacante.
             myZombie.winCount++;
@@ -105,9 +94,7 @@ contract Lesson4ZombieAttack is Lesson4ZombieHelper {
             // la transaccion, incluidas las
             // estadisticas incrementadas.
             feedAndMultiply(_zombieId, enemyZombie.dna, "zombie");
-
         } else {
-
             // LECCION 4: Derrota
             // Incrementa las derrotas del atacante.
             myZombie.lossCount++;

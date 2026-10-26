@@ -14,7 +14,7 @@
 
 CryptoZombies es una plataforma educativa creada originalmente por Loom Network para aprender a programar contratos inteligentes en Solidity mediante el desarrollo de un juego de zombis coleccionables.
 
-El objetivo de esta práctica es completar los contenidos de *Solidity: Beginner to Intermediate Smart Contracts*, comprender el funcionamiento de los contratos inteligentes y comprobar su ejecución en una blockchain Ethereum local.
+El objetivo de esta práctica es completar los contenidos de _Solidity: Beginner to Intermediate Smart Contracts_, comprender el funcionamiento de los contratos inteligentes y comprobar su ejecución en una blockchain Ethereum local.
 
 Debido a los problemas de acceso a la plataforma interactiva, se utilizan los repositorios públicos que conservan el contenido y las soluciones de las lecciones originales.
 
@@ -32,14 +32,14 @@ Debido a los problemas de acceso a la plataforma interactiva, se utilizan los re
 
 Se utiliza Hardhat como entorno de desarrollo para compilar contratos, ejecutar pruebas y desplegarlos en una blockchain Ethereum local.
 
-| Herramienta | Función |
-|---|---|
-| Solidity 0.4.25 | Código histórico del curso |
-| Solidity 0.8.x | Adaptación moderna de los contratos |
-| Hardhat | Compilación, despliegue y pruebas |
-| Node.js | Ejecución de herramientas JavaScript |
-| Viem | Interacción programática con Ethereum |
-| Git y GitHub | Control de versiones y entrega |
+| Herramienta     | Función                               |
+| --------------- | ------------------------------------- |
+| Solidity 0.4.25 | Código histórico del curso            |
+| Solidity 0.8.x  | Adaptación moderna de los contratos   |
+| Hardhat         | Compilación, despliegue y pruebas     |
+| Node.js         | Ejecución de herramientas JavaScript  |
+| Viem            | Interacción programática con Ethereum |
+| Git y GitHub    | Control de versiones y entrega        |
 
 Las implementaciones originales y modernas deben compilarse con versiones compatibles de Solidity.
 
@@ -74,9 +74,7 @@ Aprender a declarar un contrato inteligente utilizando Solidity.
 ```solidity
 pragma solidity ^0.4.25;
 
-contract ZombieFactory {
-
-}
+contract ZombieFactory {}
 ```
 
 ### Explicación
@@ -137,8 +135,8 @@ Aprender a definir tipos de datos personalizados mediante `struct`.
 
 ```solidity
 struct Zombie {
-    string name;
-    uint dna;
+  string name;
+  uint dna;
 }
 ```
 
@@ -182,12 +180,7 @@ Aprender a declarar funciones con parámetros.
 Se introduce una función que recibe el nombre y el ADN de un zombi.
 
 ```solidity
-function createZombie(
-    string _name,
-    uint _dna
-) public {
-
-}
+function createZombie(string _name, uint _dna) public {}
 ```
 
 ### Explicación
@@ -225,11 +218,8 @@ La modificación queda registrada en el estado del contrato cuando la transacci�
 Comprender los modificadores de visibilidad.
 
 ```solidity
-function _createZombie(
-    string _name,
-    uint _dna
-) private {
-    zombies.push(Zombie(_name, _dna));
+function _createZombie(string _name, uint _dna) private {
+  zombies.push(Zombie(_name, _dna));
 }
 ```
 
@@ -250,11 +240,7 @@ La visibilidad permite definir qué operaciones pueden ejecutarse desde fuera de
 Aprender a devolver valores desde funciones y a utilizar funciones de lectura.
 
 ```solidity
-function _generateRandomDna(
-    string _str
-) private view returns (uint) {
-
-}
+function _generateRandomDna(string _str) private view returns (uint) {}
 ```
 
 ### Explicación
@@ -302,11 +288,9 @@ Aunque el curso denomina a esta operación generación aleatoria, el resultado e
 Integrar la generación del ADN con la creación de zombis.
 
 ```solidity
-function createRandomZombie(
-    string _name
-) public {
-    uint randDna = _generateRandomDna(_name);
-    _createZombie(_name, randDna);
+function createRandomZombie(string _name) public {
+  uint randDna = _generateRandomDna(_name);
+  _createZombie(_name, randDna);
 }
 ```
 
@@ -325,25 +309,16 @@ Se combinan funciones públicas y privadas, hashes, estructuras y arrays.
 Aprender a emitir eventos para comunicar cambios producidos durante la ejecución de contratos inteligentes.
 
 ```solidity
-event NewZombie(
-    uint zombieId,
-    string name,
-    uint dna
-);
+event NewZombie(uint zombieId, string name, uint dna);
 ```
 
 La función de creación se modifica para emitir el evento:
 
 ```solidity
-function _createZombie(
-    string _name,
-    uint _dna
-) private {
-    uint id = zombies.push(
-        Zombie(_name, _dna)
-    ) - 1;
+function _createZombie(string _name, uint _dna) private {
+  uint id = zombies.push(Zombie(_name, _dna)) - 1;
 
-    emit NewZombie(id, _name, _dna);
+  emit NewZombie(id, _name, _dna);
 }
 ```
 
@@ -402,50 +377,34 @@ Consolidar los conceptos aprendidos y revisar el funcionamiento completo de la f
 pragma solidity ^0.4.25;
 
 contract ZombieFactory {
+  event NewZombie(uint zombieId, string name, uint dna);
 
-    event NewZombie(
-        uint zombieId,
-        string name,
-        uint dna
-    );
+  uint dnaDigits = 16;
+  uint dnaModulus = 10 ** dnaDigits;
 
-    uint dnaDigits = 16;
-    uint dnaModulus = 10 ** dnaDigits;
+  struct Zombie {
+    string name;
+    uint dna;
+  }
 
-    struct Zombie {
-        string name;
-        uint dna;
-    }
+  Zombie[] public zombies;
 
-    Zombie[] public zombies;
+  function _createZombie(string _name, uint _dna) private {
+    uint id = zombies.push(Zombie(_name, _dna)) - 1;
 
-    function _createZombie(
-        string _name,
-        uint _dna
-    ) private {
-        uint id = zombies.push(
-            Zombie(_name, _dna)
-        ) - 1;
+    emit NewZombie(id, _name, _dna);
+  }
 
-        emit NewZombie(id, _name, _dna);
-    }
+  function _generateRandomDna(string _str) private view returns (uint) {
+    uint rand = uint(keccak256(abi.encodePacked(_str)));
 
-    function _generateRandomDna(
-        string _str
-    ) private view returns (uint) {
-        uint rand = uint(
-            keccak256(abi.encodePacked(_str))
-        );
+    return rand % dnaModulus;
+  }
 
-        return rand % dnaModulus;
-    }
-
-    function createRandomZombie(
-        string _name
-    ) public {
-        uint randDna = _generateRandomDna(_name);
-        _createZombie(_name, randDna);
-    }
+  function createRandomZombie(string _name) public {
+    uint randDna = _generateRandomDna(_name);
+    _createZombie(_name, randDna);
+  }
 }
 ```
 
@@ -457,14 +416,14 @@ Para validar la implementación se propone utilizar una blockchain Ethereum loca
 
 Las pruebas deben comprobar:
 
-| Prueba | Comportamiento esperado |
-|---|---|
-| Despliegue | El contrato se despliega correctamente |
-| Estado inicial | El array de zombis está vacío |
-| Creación | Se crea un zombi proporcionando su nombre |
-| Almacenamiento | El zombi queda registrado en el array |
-| ADN | El ADN está dentro del rango establecido |
-| Eventos | Se emite `NewZombie` al crear un zombi |
+| Prueba          | Comportamiento esperado                       |
+| --------------- | --------------------------------------------- |
+| Despliegue      | El contrato se despliega correctamente        |
+| Estado inicial  | El array de zombis está vacío                 |
+| Creación        | Se crea un zombi proporcionando su nombre     |
+| Almacenamiento  | El zombi queda registrado en el array         |
+| ADN             | El ADN está dentro del rango establecido      |
+| Eventos         | Se emite `NewZombie` al crear un zombi        |
 | Identificadores | Cada nuevo zombi recibe un índice consecutivo |
 
 **Estado de validación:** pendiente de incorporar los resultados reales de ejecución.

@@ -1,4 +1,3 @@
-
 pragma solidity ^0.4.25;
 
 // CAPITULO 6: Importar otro archivo Solidity.
@@ -7,8 +6,12 @@ import "./zombiefactory.sol";
 // CAPITULOS 10-11: Interfaz externa.
 // Describe la funcion getKitty de CryptoKitties.
 contract KittyInterface {
-    function getKitty(uint256 _id)
-        external view returns (
+    function getKitty(
+        uint256 _id
+    )
+        external
+        view
+        returns (
             bool isGestating,
             bool isReady,
             uint256 cooldownIndex,
@@ -26,7 +29,6 @@ contract KittyInterface {
 // ZombieFeeding hereda los datos y funciones
 // accesibles de ZombieFactory.
 contract ZombieFeeding is ZombieFactory {
-
     // CAPITULO 11: Referencia a otro contrato.
     KittyInterface kittyContract;
 
@@ -39,12 +41,7 @@ contract ZombieFeeding is ZombieFactory {
 
     // CAPITULOS 7-9: Storage, ADN y funciones.
     // CAPITULO 13: Condicionales.
-    function feedAndMultiply(
-        uint _zombieId,
-        uint _targetDna,
-        string _species
-    ) public {
-
+    function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) public {
         // CAPITULO 4: Comprobar el propietario.
         require(msg.sender == zombieToOwner[_zombieId]);
 
@@ -60,11 +57,8 @@ contract ZombieFeeding is ZombieFactory {
 
         // CAPITULO 13: if
         // Si la especie es kitty, el ADN termina en 99.
-        if (
-            keccak256(abi.encodePacked(_species)) ==
-            keccak256(abi.encodePacked("kitty"))
-        ) {
-            newDna = newDna - newDna % 100 + 99;
+        if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
+            newDna = newDna - (newDna % 100) + 99;
         }
 
         // Crear un nuevo zombi con el ADN combinado.
@@ -74,15 +68,12 @@ contract ZombieFeeding is ZombieFactory {
     // CAPITULO 12: Multiples valores de retorno.
     // Consulta el ADN del CryptoKitty y lo utiliza
     // para generar un nuevo zombi.
-    function feedOnKitty(
-        uint _zombieId,
-        uint _kittyId
-    ) public {
+    function feedOnKitty(uint _zombieId, uint _kittyId) public {
         uint kittyDna;
 
         // getKitty devuelve diez valores.
         // Solo necesitamos el ultimo: genes.
-        (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
+        (, , , , , , , , , kittyDna) = kittyContract.getKitty(_kittyId);
 
         feedAndMultiply(_zombieId, kittyDna, "kitty");
     }

@@ -8,6 +8,8 @@
     "@types/node": "^22.20.5",
     "forge-std": "github:foundry-rs/forge-std#v1.16.2",
     "hardhat": "^3.21.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-solidity": "^2.4.1",
     "typescript": "~6.0.3",
     "viem": "^2.57.11"
   }
