@@ -1,0 +1,160 @@
+# TokenContract — Smart Contract en Solidity
+
+## 1. Descripción
+
+Implementación de un contrato inteligente en Solidity que permite gestionar y comprar tokens utilizando Ether (ETH).
+
+La práctica se desarrolla en **Remix IDE**, utilizando Solidity `0.8.30` y una blockchain local simulada mediante Remix VM.
+
+El contrato permite registrar usuarios, distribuir tokens y comprarlos a un precio fijo de **5 ETH por token**.
+
+## 2. Objetivos
+
+- Comprender las estructuras de datos `struct` y `mapping`.
+- Gestionar permisos mediante modificadores (`onlyOwner`).
+- Utilizar `msg.sender` para identificar usuarios.
+- Implementar funciones `payable` para recibir Ether.
+- Validar transacciones mediante `require`.
+- Consultar el saldo del contrato inteligente.
+- Realizar pruebas de funcionamiento en Remix IDE.
+
+## 3. Funcionalidades
+
+| Función | Descripción | Acceso |
+|---|---|---|
+| `constructor()` | Asigna 100 tokens al propietario inicial | Despliegue |
+| `double(uint)` | Devuelve el doble de un número | Público |
+| `register(string)` | Registra el nombre del usuario | Público |
+| `giveToken(address,uint256)` | Transfiere tokens desde el propietario | Solo propietario |
+| `buyTokens(uint256)` | Permite comprar tokens con Ether | Público, payable |
+| `getContractBalance()` | Consulta el saldo de Ether del contrato | Público, view |
+| `users(address)` | Consulta el nombre y los tokens de un usuario | Público |
+
+## 4. Funcionamiento
+
+### Inicialización
+
+Al desplegar el contrato:
+
+- La cuenta que realiza el despliegue se convierte en `owner`.
+- El propietario recibe 100 tokens.
+- El saldo inicial del contrato es de 0 ETH.
+
+### Compra de tokens
+
+Cada token tiene un precio fijo de 5 ETH.
+
+El coste de una compra se calcula mediante:
+
+```text
+Coste = Cantidad de tokens × 5 ETH
+```
+
+Ejemplo:
+
+```text
+Comprador: 0 tokens
+Propietario: 100 tokens
+
+Compra: 2 tokens
+Pago: 10 ETH
+
+Resultado:
+Comprador: 2 tokens
+Propietario: 98 tokens
+Contrato: 10 ETH
+```
+
+La función `buyTokens()` comprueba:
+
+1. Que la cantidad solicitada sea mayor que cero.
+2. Que el Ether enviado sea suficiente.
+3. Que el propietario tenga suficientes tokens disponibles.
+
+Si alguna condición no se cumple, la transacción se revierte y muestra el correspondiente mensaje de error.
+
+**Nota:** si se envía más Ether del necesario, esta implementación conserva el exceso dentro del contrato.
+
+## 5. Implementación en Remix IDE
+
+1. Acceder a [Remix IDE](https://remix.ethereum.org/).
+2. Crear el archivo `TokenContract.sol`.
+3. Introducir el código del contrato.
+4. Seleccionar el compilador Solidity `0.8.30`.
+5. Compilar el contrato.
+6. Abrir **Deploy & Run Transactions**.
+7. Seleccionar el entorno `Remix VM`.
+8. Desplegar el contrato mediante **Deploy**.
+9. Interactuar con las funciones disponibles.
+
+## 6. Pruebas funcionales
+
+Los siguientes son casos de prueba definidos para verificar el contrato.
+
+| Prueba | Operación | Resultado esperado |
+|---|---|---|
+| Inicialización | Desplegar contrato | Propietario con 100 tokens |
+| Registro | `register("Alice")` | Nombre registrado |
+| Función pura | `double(5)` | Devuelve 10 |
+| Transferencia | `giveToken(destino, 5)` | Destinatario recibe 5 tokens |
+| Compra válida | Comprar 2 tokens enviando 10 ETH | Compra correcta |
+| Ether insuficiente | Comprar 2 tokens enviando 5 ETH | Transacción revertida |
+| Tokens insuficientes | Comprar 101 tokens enviando 505 ETH | Transacción revertida |
+| Cantidad inválida | Comprar 0 tokens | Transacción revertida |
+| Consulta de saldo | `getContractBalance()` | Devuelve el saldo en wei |
+| Control de acceso | Un usuario distinto del propietario ejecuta `giveToken()` | Transacción revertida |
+
+Para realizar una compra desde Remix:
+
+1. Seleccionar una cuenta diferente a la del propietario.
+2. Introducir `10` en **VALUE** y seleccionar `Ether`.
+3. Ejecutar `buyTokens(2)`.
+4. Consultar `users(address)` para verificar los tokens.
+5. Ejecutar `getContractBalance()`.
+
+Tras una compra correcta de 2 tokens por 10 ETH, el saldo del contrato será:
+
+```text
+10000000000000000000 wei = 10 ETH
+```
+
+## 7. Conceptos de Solidity utilizados
+
+| Concepto | Utilidad |
+|---|---|
+| `address` | Identifica una cuenta Ethereum |
+| `struct` | Agrupa los datos de cada usuario |
+| `mapping` | Relaciona direcciones con usuarios |
+| `modifier` | Restringe el acceso a determinadas funciones |
+| `msg.sender` | Identifica al emisor de la llamada |
+| `msg.value` | Obtiene la cantidad de Ether enviada en wei |
+| `payable` | Permite recibir Ether |
+| `require` | Comprueba condiciones y revierte si fallan |
+| `pure` | Función que no lee ni modifica el estado |
+| `view` | Función que puede consultar el estado sin modificarlo |
+| `address(this).balance` | Consulta el saldo de Ether del contrato |
+
+## 8. Limitaciones
+
+Esta implementación tiene fines educativos.
+
+- Los tokens no siguen el estándar ERC-20.
+- No existe una función para retirar los Ether acumulados.
+- No se implementan eventos de transferencia o compra.
+- No existe devolución automática del Ether pagado en exceso.
+- El precio es fijo y no puede modificarse.
+- No se han realizado auditorías de seguridad para producción.
+
+## 9. Tecnologías utilizadas
+
+- **Solidity:** 0.8.30.
+- **Remix IDE:** desarrollo, compilación y despliegue.
+- **Remix VM:** blockchain simulada para pruebas.
+- **Ethereum:** plataforma de contratos inteligentes.
+- **GitHub/GitLab:** control de versiones y entrega.
+
+## 10. Conclusión
+
+La práctica permite comprender cómo un contrato inteligente puede gestionar usuarios, controlar permisos y automatizar la compraventa de tokens utilizando Ether.
+
+Se implementan las funcionalidades básicas de Solidity necesarias para recibir pagos, validar condiciones y actualizar el estado de una blockchain, sin depender de un intermediario para ejecutar las operaciones.
