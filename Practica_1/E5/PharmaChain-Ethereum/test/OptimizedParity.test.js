@@ -52,14 +52,14 @@ for (const [original, optimized, kind] of variants) {
                 expect(l.activo).to.equal(true);
             });
             it("rechaza registros sin rol, nombre vacío o fabricante vacío", async () => {
-                await expect(c.connect(outsider).registrarLote("X", "Y")).to.be.reverted;
-                await expect(c.connect(lab).registrarLote("", "Y")).to.be.reverted;
-                await expect(c.connect(lab).registrarLote("X", "")).to.be.reverted;
+                await expect(c.connect(outsider).registrarLote("X", "Y")).to.revert(ethers);
+                await expect(c.connect(lab).registrarLote("", "Y")).to.revert(ethers);
+                await expect(c.connect(lab).registrarLote("X", "")).to.revert(ethers);
                 expect(await c.totalLotes()).to.equal(0n);
             });
             it("rechaza consultas inexistentes", async () => {
-                await expect(c.consultarLote(0)).to.be.reverted;
-                await expect(c.consultarLote(1)).to.be.reverted;
+                await expect(c.consultarLote(0)).to.revert(ethers);
+                await expect(c.consultarLote(1)).to.revert(ethers);
             });
             it("mantiene historial completo tras transferencias", async () => {
                 await create();
@@ -75,18 +75,16 @@ for (const [original, optimized, kind] of variants) {
             });
             it("rechaza transición directa laboratorio a farmacia y terceros", async () => {
                 await create();
-                await expect(c.connect(lab).proponerTransferencia(1, pharmacy.address)).to.be
-                    .reverted;
-                await expect(c.connect(outsider).proponerTransferencia(1, dist.address)).to.be
-                    .reverted;
+                await expect(c.connect(lab).proponerTransferencia(1, pharmacy.address)).to.revert(ethers, "Transicion de roles invalida");
+                await expect(c.connect(outsider).proponerTransferencia(1, dist.address)).to.revert(ethers, "Transicion de roles invalida");
                 await (await c.connect(lab).proponerTransferencia(1, dist.address)).wait();
-                await expect(c.connect(outsider).aceptarTransferencia(1)).to.be.reverted;
-                await expect(c.connect(lab).proponerTransferencia(1, dist.address)).to.be.reverted;
+                await expect(c.connect(outsider).aceptarTransferencia(1)).to.revert(ethers);
+                await expect(c.connect(lab).proponerTransferencia(1, dist.address)).to.revert(ethers);
             });
             it("permite cancelar por origen y por administrador, sin alterar propietario", async () => {
                 await create();
                 await (await c.connect(lab).proponerTransferencia(1, dist.address)).wait();
-                await expect(c.connect(outsider).cancelarTransferencia(1)).to.be.reverted;
+                await expect(c.connect(outsider).cancelarTransferencia(1)).to.revert(ethers);
                 await (await c.connect(lab).cancelarTransferencia(1)).wait();
                 expect((await c.consultarLote(1)).propietario).to.equal(lab.address);
                 expect((await c.consultarMovimiento(1, 2)).tipoMovimiento).to.equal(3n);
@@ -97,16 +95,16 @@ for (const [original, optimized, kind] of variants) {
             it("desactiva lote y elimina propuesta pendiente", async () => {
                 await create();
                 await (await c.connect(lab).proponerTransferencia(1, dist.address)).wait();
-                await expect(c.connect(outsider).desactivarLote(1)).to.be.reverted;
+                await expect(c.connect(outsider).desactivarLote(1)).to.revert(ethers);
                 await (await c.connect(admin).desactivarLote(1)).wait();
                 expect((await c.consultarLote(1)).activo).to.equal(false);
                 expect((await c.transferencias(1)).pendiente).to.equal(false);
-                await expect(c.connect(dist).aceptarTransferencia(1)).to.be.reverted;
-                await expect(c.connect(admin).desactivarLote(1)).to.be.reverted;
+                await expect(c.connect(dist).aceptarTransferencia(1)).to.revert(ethers);
+                await expect(c.connect(admin).desactivarLote(1)).to.revert(ethers);
             });
             it("bloquea operaciones protegidas cuando está pausado y permite reanudar", async () => {
                 await (await c.connect(admin).pausar()).wait();
-                await expect(c.connect(lab).registrarLote("X", "Y")).to.be.reverted;
+                await expect(c.connect(lab).registrarLote("X", "Y")).to.revert(ethers);
                 await (await c.connect(admin).reanudar()).wait();
                 await create();
                 expect(await c.totalLotes()).to.equal(1n);
