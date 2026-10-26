@@ -1,0 +1,56 @@
+
+Compiled 3 Solidity files with solc 0.8.34 (evm target: osaka)
+
+Running Mocha tests
+
+
+  PharmaChain
+    1. Despliegue e inicializacion
+      ✔ Asigna correctamente el administrador
+      ✔ Inicialmente no existen lotes
+      ✔ El contrato tiene una direccion valida
+      ✔ El contrato tiene bytecode desplegado
+    2. Registro de medicamentos
+      ✔ El administrador puede registrar un lote
+      ✔ Almacena correctamente todos los campos
+      ✔ Permite registrar varios lotes con IDs consecutivos
+      ✔ Mantiene independientes los datos de cada lote
+      ✔ Permite registrar medicamentos con el mismo nombre
+      ✔ Permite caracteres Unicode
+      ✔ Rechaza nombres vacios (57ms)
+      ✔ No incrementa el contador si falla el registro
+    3. Seguridad y control de acceso
+      ✔ Impide registrar a usuarios no autorizados
+      ✔ El administrador permanece inalterado tras un ataque
+      ✔ Un atacante no puede modificar el contador
+      ✔ Un ataque no modifica los lotes existentes
+      ✔ Un usuario no autorizado no puede registrar aunque el nombre sea valido
+    4. Consultas e integridad
+      ✔ Rechaza lotes inexistentes
+      ✔ Rechaza el identificador cero
+      ✔ Rechaza consultar el siguiente ID no registrado
+      ✔ Permite consultar a cualquier usuario
+      ✔ El getter publico del mapping devuelve datos correctos
+      ✔ Las consultas no modifican el estado
+    5. Eventos y trazabilidad
+      ✔ Emite LoteRegistrado con los argumentos correctos
+      ✔ Emite un evento por cada lote registrado
+      ✔ Permite filtrar eventos por ID
+      ✔ No genera eventos cuando falla una autorizacion
+      ✔ Los eventos incluyen el hash de una transaccion
+    6. Bloques y marcas temporales
+      ✔ La fecha del lote coincide con el timestamp del bloque
+      ✔ El registro genera una transaccion confirmada
+      ✔ El lote se registra a nombre del emisor de la transaccion
+    7. Consumo de gas
+Gas registro: 184065
+      ✔ Mide el gas consumido al registrar un lote
+Gas primer lote: 183825
+Gas segundo lote: 166725
+      ✔ Compara el gas del primer y segundo registro
+
+
+  33 passing (16s)
+
+
+WARNING: hre.network.connect() is deprecated and will be removed in a future version. Use hre.network.create() or hre.network.getOrCreate() instead.

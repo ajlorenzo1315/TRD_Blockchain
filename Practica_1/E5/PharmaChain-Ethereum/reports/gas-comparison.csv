@@ -1,0 +1,15 @@
+arquitectura,operacion,original,optimizado,ahorro_porcentaje
+Manuales,despliegue,1730665,1705592,1.45
+Manuales,registrarLote,255910,255910,0.00
+Manuales,proponerTransferencia,154062,154062,0.00
+Manuales,aceptarTransferencia,113002,113202,-0.18
+Manuales,proponerParaCancelar,154322,154322,0.00
+Manuales,cancelarTransferencia,98807,98871,-0.06
+Manuales,desactivarLote,27536,27536,0.00
+OpenZeppelin,despliegue,1761325,1736276,1.42
+OpenZeppelin,registrarLote,256076,256076,0.00
+OpenZeppelin,proponerTransferencia,154260,154260,0.00
+OpenZeppelin,aceptarTransferencia,113243,113443,-0.18
+OpenZeppelin,proponerParaCancelar,156596,156596,0.00
+OpenZeppelin,cancelarTransferencia,98895,98959,-0.06
+OpenZeppelin,desactivarLote,29806,29806,0.00
