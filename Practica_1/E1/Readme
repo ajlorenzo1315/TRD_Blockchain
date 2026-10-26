@@ -1,0 +1,259 @@
+# Práctica 1 · Ejercicio 1 — CryptoZombies y Solidity
+
+> **Asignatura:** Blockchain · **Entorno:** Ethereum local con Hardhat · **Actividad:** *Solidity: Beginner to Intermediate Smart Contracts*
+
+## 1. Objetivo de la práctica
+
+Ethereum ofrece distintas herramientas para aprender, programar y experimentar con contratos inteligentes. En este ejercicio se utiliza **[CryptoZombies](https://cryptozombies.io/)**, una plataforma educativa interactiva creada por el equipo de **Loom Network** que introduce Solidity mediante la construcción progresiva de un juego de zombis cripto-coleccionables.
+
+La actividad consiste en completar el itinerario **Solidity: Beginner to Intermediate Smart Contracts**, conservar el código resultante de las lecciones y publicarlo en el repositorio de GitHub/GitLab. Como complemento, se incorpora una **demostración local visual** para interactuar con los contratos desde un navegador y observar su comportamiento en una blockchain de pruebas.
+
+### Objetivos de aprendizaje
+
+- Familiarizarse con la sintaxis y los tipos de datos de Solidity.
+- Comprender estructuras, funciones, modificadores, eventos, herencia y control de acceso.
+- Estudiar la creación y gestión de zombis como activos digitales y la relación entre cuentas y propietarios.
+- Desplegar contratos en una red Ethereum local y ejecutar transacciones.
+- Diferenciar operaciones de lectura (sin transacción) y escritura (con consumo de gas de prueba).
+- Observar restricciones del contrato, como permisos, niveles y tiempos de espera.
+- Utilizar herramientas de desarrollo y depuración para verificar el funcionamiento.
+
+## 2. Organización del repositorio
+
+El presente README se sitúa en `Practica_1/E1/`. El entorno de ejecución se encuentra en el directorio **`ethereum-local/`** de este mismo repositorio.
+
+```text
+<raíz-del-repositorio>/
+├── Practica_1/
+│   └── E1/
+│       └── README.md                  # Memoria y guía del ejercicio
+└── ethereum-local/
+    ├── contracts/
+    │   └── CryptoZombies/             # Contratos de las lecciones
+    ├── scripts/
+    │   └── lesson6-extended/
+    │       └── deploy-lesson-06.ts    # Despliegue de la lección 6
+    ├── frontend/
+    │   └── lesson-06-extended/
+    │       ├── index.html             # Interfaz de la demostración
+    │       ├── app.js                 # Interacción con Ethereum
+    │       ├── contract-config.js     # Dirección y ABI del contrato
+    │       ├── ACTUALIZAR-CONTRATO.mjs # Actualización del ABI
+    │       └── external/              # Recursos gráficos de Loom
+    └── hardhat.config.*               # Configuración de Hardhat
+```
+
+> La estructura muestra los componentes principales. Otros archivos de Solidity, pruebas, scripts y recursos del frontend pueden estar presentes. Si el directorio de tu repositorio se llama `etherium-local` (en vez de `ethereum-local`), utiliza ese nombre en los comandos siguientes.
+
+## 3. Herramientas recomendadas para experimentar
+
+| Herramienta | Uso en el aprendizaje |
+| --- | --- |
+| [CryptoZombies](https://cryptozombies.io/) | Lecciones interactivas de Solidity y juego cripto-coleccionable. |
+| [Remix IDE](https://remix.ethereum.org/) | Edición, compilación y despliegue de contratos desde el navegador. |
+| [Hardhat](https://hardhat.org/) | Compilación, nodo Ethereum local, despliegues y depuración. |
+| [Solidity](https://docs.soliditylang.org/) | Documentación oficial del lenguaje. |
+| [MetaMask](https://metamask.io/) | Conexión y firma de transacciones con una cartera de pruebas; opcional en esta demo local. |
+| [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/) | Referencia de contratos reutilizables, estándares y buenas prácticas. |
+| [Ethers.js](https://docs.ethers.org/) / [Web3.js](https://docs.web3js.org/) | Interacción programática con contratos Ethereum. |
+| [Ethereum.org](https://ethereum.org/developers/) | Recursos sobre cuentas, gas, transacciones, EVM y contratos inteligentes. |
+
+**Entorno utilizado en esta demostración:** Hardhat Local, frontend HTML/CSS/JavaScript y Web3.js. Todas las operaciones se realizan con **ETH ficticio**, no en la red principal de Ethereum.
+
+## 4. Preparación del entorno local
+
+### Requisitos
+
+- Node.js y npm instalados.
+- Python 3, para servir los archivos estáticos del frontend.
+- Un navegador moderno.
+- Dependencias del proyecto instaladas desde `package.json`.
+
+Abre una terminal en la raíz del repositorio:
+
+```bash
+cd ethereum-local
+npm install
+npx hardhat compile
+```
+
+Si estás situado dentro de `Practica_1/E1/`, puedes llegar al proyecto mediante:
+
+```bash
+cd ../../ethereum-local
+```
+
+### Paso 1. Iniciar la blockchain local
+
+En una **primera terminal**, desde `ethereum-local/`:
+
+```bash
+npx hardhat node --hostname 127.0.0.1 --port 8545
+```
+
+Mantén esta terminal abierta. La red local utiliza:
+
+| Parámetro | Valor |
+| --- | --- |
+| RPC | `http://127.0.0.1:8545` |
+| Chain ID | `31337` |
+| Moneda | ETH de prueba |
+| Persistencia | El estado se pierde normalmente al reiniciar el nodo |
+
+### Paso 2. Desplegar el contrato
+
+En una **segunda terminal**, desde `ethereum-local/`:
+
+```bash
+npx hardhat run \
+  scripts/lesson6-extended/deploy-lesson-06.ts \
+  --network localhost
+```
+
+Anota la dirección que devuelve el despliegue de **`Lesson6ZombieOwnership`**. Por ejemplo, la salida tendrá este formato:
+
+```text
+Lesson6ZombieOwnership deployed at: 0x...
+```
+
+**La dirección no debe copiarse de ejecuciones anteriores:** si se reinicia Hardhat, puede ser necesario desplegar de nuevo.
+
+### Paso 3. Actualizar la dirección y el ABI del frontend
+
+Ejecuta el siguiente comando, sustituyendo el marcador por la dirección obtenida:
+
+```bash
+node frontend/lesson-06-extended/ACTUALIZAR-CONTRATO.mjs \
+  0xDIRECCION_DEL_CONTRATO
+```
+
+Este paso sincroniza `frontend/lesson-06-extended/contract-config.js` con el contrato desplegado y evita errores de configuración como **«El ABI no incluye createRandomZombie»**.
+
+Para verificar que el ABI contiene el método:
+
+```bash
+grep -n '"name": "createRandomZombie"' \
+  frontend/lesson-06-extended/contract-config.js
+```
+
+### Paso 4. Iniciar la interfaz visual
+
+En una **tercera terminal**, desde `ethereum-local/`:
+
+```bash
+python3 -m http.server 8080 \
+  --directory frontend/lesson-06-extended/
+```
+
+Abre en el navegador:
+
+**http://localhost:8080/**
+
+Si la interfaz muestra una versión antigua, fuerza la recarga con `Ctrl + Shift + R`.
+
+## 5. Recorrido por la demostración interactiva
+
+### 5.1. Editor visual y creación de zombis
+
+El editor presenta la **previsualización gráfica a la izquierda** y, a la derecha, el **nombre del zombi**, el botón **Crear** y seis controles genéticos: cabeza, ojos, camiseta, color de piel, color de ojos y color de ropa.
+
+Los personajes se construyen a partir de las capas gráficas originales del componente de Loom. Los deslizadores sirven para **explorar visualmente** las variaciones de ADN, pero **no determinan el ADN del zombi creado en Ethereum**: la función `createRandomZombie()` del contrato original genera ese ADN mediante su propia lógica.
+
+**Prueba sugerida:** selecciona una cuenta Hardhat, introduce un nombre y crea un zombi. Verifica después que aparece en la colección de esa cuenta.
+
+### 5.2. Cuentas y propiedad
+
+La demo permite cambiar entre las **cuentas de prueba desbloqueadas** del nodo Hardhat sin necesidad de instalar MetaMask.
+
+En el contrato original, `createRandomZombie()` solo permite crear el **primer zombi de cada cuenta**. Por tanto, para comprobar la creación de varios personajes iniciales, utiliza diferentes cuentas:
+
+1. Selecciona la cuenta `#0` y crea su primer zombi.
+2. Cambia a la cuenta `#1` y crea otro.
+3. Cambia a la cuenta `#2` y repite la operación.
+4. Regresa a la cuenta `#0` y verifica que la colección muestra los zombis que le pertenecen.
+
+No se modifica el contrato Solidity para eliminar esta restricción. La posibilidad de poseer varios zombis mediante otros mecanismos depende de las funciones y reglas originales del contrato.
+
+### 5.3. Mi ejército y operaciones
+
+En **02 / COLECCIÓN · Mi ejército** se pueden seleccionar zombis y visualizar su aspecto y sus estadísticas. Desde el panel de operaciones se pueden probar, cuando lo permita el contrato:
+
+- Subida de nivel y pago de la tarifa correspondiente.
+- Cambio de nombre y ADN, sujeto a los niveles exigidos.
+- Aprobación y transferencia de propiedad.
+- Consulta de identificadores, propietario y estadísticas.
+
+Las operaciones de escritura generan **transacciones con gas de prueba**; las lecturas del estado pueden hacerse sin firmar una transacción.
+
+### 5.4. Ranking público
+
+El ranking muestra los zombis registrados en la blockchain local y los **ordena siempre por victorias**, de mayor a menor. Incluye búsqueda por nombre, filtros de nivel y antigüedad, y un control deslizante para recorrer los resultados.
+
+La consulta es pública: **no requiere MetaMask**, aunque sí que el nodo Hardhat esté funcionando y el contrato esté correctamente configurado. La antigüedad solo puede calcularse cuando se dispone de información temporal suficiente de los eventos o bloques consultados.
+
+### 5.5. Combates: simulación y blockchain
+
+La arena diferencia dos modos:
+
+| Modo | Comportamiento | Gas |
+| --- | --- | --- |
+| **Simulación** | Representa ataques, daño visual, barras de vida y ganador sin modificar la blockchain. | No |
+| **Combate real local** | Envía `attack()` al contrato, espera la confirmación y refleja el resultado registrado en Ethereum local. | Sí, ETH ficticio |
+
+**Importante:** las barras de vida son un recurso de visualización. El contrato CryptoZombies original no implementa necesariamente puntos de salud persistentes; el resultado real se determina por sus reglas de combate y por los cambios de estado producidos.
+
+Para probar un combate real, crea zombis con **cuentas diferentes**, selecciona uno que pertenezca a la cuenta atacante e indica el identificador del rival. Si el contrato aplica un período de espera (*cooldown*), respétalo antes de atacar. En una red local de pruebas puede adelantarse el tiempo de Hardhat, si la interfaz incluye esa función.
+
+## 6. Comprobaciones y problemas habituales
+
+**«El ABI no incluye createRandomZombie»**: vuelve a generar `contract-config.js` con la dirección del contrato correcto y recarga la página.
+
+**«Transaction reverted without a reason string»**: la transacción ha incumplido alguna condición del contrato. Comprueba la cuenta propietaria, los IDs, las restricciones de creación, los niveles requeridos y el *cooldown*.
+
+**No aparecen zombis después de reiniciar Hardhat**: el nodo local normalmente no conserva el estado entre ejecuciones. Despliega de nuevo el contrato y actualiza el frontend.
+
+**«Instala MetaMask»**: utiliza la conexión de cuentas de prueba de Hardhat incluida en la demo local. MetaMask solo es necesaria si se desea probar el flujo de firma con una cartera.
+
+**El botón Crear no permite un segundo zombi**: es el comportamiento esperado de `createRandomZombie()` en el contrato original para una cuenta que ya tiene su zombi inicial. Cambia a otra cuenta de prueba.
+
+### Verificar la conexión RPC
+
+```bash
+curl -s http://127.0.0.1:8545 \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}'
+```
+
+El valor `0x7a69` corresponde a la cadena `31337`.
+
+## 7. Aprendizajes y conclusiones
+
+La práctica combina el aprendizaje guiado de CryptoZombies con la experimentación en un entorno Ethereum reproducible. Permite observar que un contrato inteligente no es solo código Solidity: su comportamiento depende también del **estado de la cadena**, de las **cuentas que envían transacciones**, de las **reglas de autorización** y de los **costes de ejecución**.
+
+La interfaz visual facilita la comprensión del juego, pero mantiene una separación importante entre las **simulaciones del navegador** y las **operaciones verificables ejecutadas por la EVM**. Asimismo, el uso de varias cuentas permite estudiar propiedad y permisos sin alterar la lógica del contrato original.
+
+## 8. Entrega y evidencias
+
+Para completar la entrega del ejercicio se recomienda incluir en el repositorio:
+
+- El código Solidity resultante de las lecciones del itinerario solicitado.
+- Los scripts y archivos necesarios para compilar y desplegar la demo.
+- El frontend de experimentación y sus recursos visuales.
+- Este `README.md` con las instrucciones de reproducción.
+- Capturas o evidencias de la creación, la colección, el ranking y al menos una transacción de combate, si se solicitan.
+
+No es necesario subir `node_modules/`, cachés de compilación ni claves privadas. **No se deben utilizar fondos ni cuentas reales en esta práctica.**
+
+## 9. Referencias
+
+1. [CryptoZombies — Curso interactivo de Solidity](https://cryptozombies.io/).
+2. [Solidity — Documentación oficial](https://docs.soliditylang.org/).
+3. [Hardhat — Documentación](https://hardhat.org/docs).
+4. [Ethereum.org — Recursos para desarrolladores](https://ethereum.org/developers/).
+5. [Remix IDE](https://remix.ethereum.org/).
+6. [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/).
+7. [Loom Network — GitHub](https://github.com/loomnetwork).
+
+---
+
+**Ámbito:** práctica académica y demostración local. La interfaz complementa el código de las lecciones y no sustituye la realización del itinerario interactivo solicitado.
