@@ -1,0 +1,249 @@
+# Práctica 1 — Ethereum y contratos inteligentes con Solidity
+
+**Asignatura:** Tecnologías de Registro Distribuido y Blockchain\
+**Máster:** Ciberseguridad\
+**Universidad:** Universidade de Vigo\
+**Fecha de entrega:** 27 de octubre de 2026
+
+## 1. Introducción
+
+Esta práctica tiene como objetivo comprender el funcionamiento de Ethereum y desarrollar contratos inteligentes utilizando Solidity.
+
+Se realizan cinco ejercicios progresivos, desde el aprendizaje de Solidity mediante CryptoZombies hasta el diseño, implementación y evaluación de una aplicación blockchain propia.
+
+Como proyecto final se desarrolla **PharmaChain-Ethereum**, un sistema de trazabilidad farmacéutica basado en contratos inteligentes, que permite registrar medicamentos y gestionar su cadena de custodia entre distintos participantes.
+
+Además de los requisitos básicos, se incorporan herramientas de desarrollo profesional, pruebas automatizadas, optimizaciones de gas y una interfaz web para interactuar con los contratos.
+
+## 2. Organización de la práctica
+
+| Ejercicio | Descripción                            | Puntuación |
+| --------- | -------------------------------------- | ---------- |
+| E1        | CryptoZombies: aprendizaje de Solidity | 0,15       |
+| E2        | Contrato de tokens y compra con Ether  | 0,05       |
+| E3        | MetaMask y transacciones en Sepolia    | 0,05       |
+| E4        | Contratos de OpenZeppelin              | 0,05       |
+| E5        | Desarrollo de PharmaChain-Ethereum     | 0,20       |
+| **Total** | <br>                                   | **0,50**   |
+
+## 3. Ejercicio 1 — CryptoZombies
+
+Se utiliza la plataforma CryptoZombies para aprender progresivamente las características del lenguaje Solidity.
+
+Durante las lecciones se trabajan conceptos como:
+
+- Variables de estado, tipos de datos y estructuras.
+- Arrays y mappings.
+- Funciones y modificadores de acceso.
+- Herencia entre contratos.
+- Eventos y transacciones.
+- Propiedad y transferencia de activos.
+- Interacción entre contratos inteligentes.
+
+El código desarrollado se organiza por lecciones para facilitar la revisión de los cambios introducidos en cada una.
+
+También se utiliza una red Ethereum local para comprobar el funcionamiento de las funcionalidades implementadas.
+
+## 4. Ejercicio 2 — TokenContract
+
+Se parte de un contrato inteligente que permite registrar usuarios y distribuir tokens desde una cuenta propietaria.
+
+El contrato original contiene un suministro inicial de 100 tokens asignados al propietario.
+
+### 4.1. Funcionalidades
+
+- Identificación del propietario.
+- Registro de nombres de usuarios.
+- Consulta de tokens.
+- Transferencia de tokens.
+- Restricción de determinadas operaciones al propietario.
+- Compra de tokens utilizando Ether.
+- Comprobación de fondos y disponibilidad.
+
+### 4.2. Compra de tokens
+
+El precio establecido es:
+
+**1 token = 5 ETH**
+
+La operación debe comprobar que el comprador envía una cantidad suficiente de Ether y que existen tokens disponibles.
+
+En caso contrario, la transacción se revierte.
+
+También se incorpora una función de consulta del saldo de Ether almacenado en el contrato.
+
+### 4.3. Implementación alternativa
+
+Se desarrolla una versión basada en las bibliotecas de OpenZeppelin para comparar la implementación manual con un token ERC-20.
+
+Esta comparación permite estudiar las diferencias entre mantener balances mediante mappings propios y utilizar un estándar reconocido de Ethereum.
+
+## 5. Ejercicio 3 — MetaMask y Sepolia
+
+Se utiliza MetaMask para gestionar cuentas Ethereum y realizar transacciones en una red pública de pruebas.
+
+### 5.1. Configuración
+
+Se habilita la visualización de redes de prueba y se selecciona Sepolia.
+
+Se estudian las funcionalidades de la cartera, incluyendo la gestión de cuentas, la conexión con aplicaciones descentralizadas y la firma de transacciones.
+
+### 5.2. Obtención y envío de ETH
+
+Se contempla la obtención de Sepolia ETH mediante faucets y el envío de fondos entre cuentas.
+
+Las transacciones se pueden verificar utilizando:
+
+[https://sepolia.etherscan.io/](https://sepolia.etherscan.io/)
+
+### 5.3. Evidencias
+
+Para acreditar el ejercicio se deben incorporar capturas de las transacciones realizadas, sus identificadores y los enlaces al explorador.
+
+**Importante:** las capturas y los hashes deben corresponder a transacciones efectivamente realizadas.
+
+## 6. Ejercicio 4 — OpenZeppelin
+
+Se estudia OpenZeppelin como biblioteca de componentes reutilizables para contratos inteligentes.
+
+Se implementa una variante de TokenContract utilizando:
+
+- ERC20 para gestionar el token.
+- Ownable para restringir operaciones al propietario.
+- Funciones de emisión y transferencia de tokens.
+- Eventos para registrar operaciones.
+
+El objetivo es comparar una implementación propia con una basada en estándares ampliamente utilizados.
+
+## 7. Ejercicio 5 — PharmaChain-Ethereum
+
+### 7.1. Escenario
+
+La cadena de suministro farmacéutica requiere registrar el origen de los medicamentos, identificar a sus responsables y mantener un historial verificable de las transferencias de custodia.
+
+Se propone un sistema basado en Ethereum que permite registrar lotes farmacéuticos y controlar las operaciones realizadas por los diferentes participantes.
+
+### 7.2. Participantes
+
+El sistema contempla los siguientes roles:
+
+| Participante          | Responsabilidad                            |
+| --------------------- | ------------------------------------------ |
+| Administrador         | Gestionar permisos                         |
+| Laboratorio           | Registrar lotes farmacéuticos              |
+| Distribuidor          | Recibir y transferir medicamentos          |
+| Farmacia              | Recibir los medicamentos                   |
+| Usuario no autorizado | No puede realizar operaciones restringidas |
+
+### 7.3. Funcionalidades
+
+El contrato permite:
+
+1. Registrar nuevos lotes.
+2. Consultar la información de los lotes.
+3. Identificar al propietario actual.
+4. Proponer transferencias de custodia.
+5. Aceptar transferencias pendientes.
+6. Cancelar transferencias.
+7. Desactivar lotes.
+8. Comprobar los permisos de los participantes.
+9. Registrar operaciones mediante eventos.
+
+### 7.4. Cadena de custodia
+
+El flujo de transferencia implementado sigue el recorrido:
+
+**Laboratorio → Distribuidor → Farmacia**
+
+La propuesta de transferencia no modifica automáticamente al custodio.
+
+Para completar la operación, el destinatario debe aceptar la transferencia pendiente.
+
+Esta separación permite representar un proceso de entrega y recepción entre organizaciones.
+
+### 7.5. Control de acceso
+
+Se comparan dos modelos de gestión de permisos.
+
+**Roles manuales:** el contrato implementa directamente la lógica de autorización.
+
+**OpenZeppelin AccessControl:** se utiliza una biblioteca especializada que facilita la asignación y revocación de roles, así como la pertenencia de una cuenta a varios roles.
+
+La comparación permite evaluar diferencias funcionales, complejidad y consumo de gas.
+
+### 7.6. Optimización de gas
+
+Se estudian distintas variantes del contrato para evaluar el coste de almacenamiento y ejecución.
+
+Entre los aspectos analizados se encuentran:
+
+- Tipos de datos y estructuras.
+- Almacenamiento persistente.
+- Uso de mappings.
+- Identificadores de lotes.
+- Operaciones de registro y transferencia.
+- Coste de despliegue.
+- Diferencias entre modelos de permisos.
+
+Los resultados deben obtenerse mediante mediciones reproducibles, ejecutadas bajo las mismas condiciones de red y compilación.
+
+### 7.7. Pruebas
+
+Se utiliza Hardhat para ejecutar pruebas automatizadas sobre los contratos.
+
+Las pruebas contemplan:
+
+- Registro correcto de lotes.
+- Rechazo de datos inválidos.
+- Generación de identificadores.
+- Comprobación de permisos.
+- Emisión de eventos.
+- Transferencias válidas.
+- Rechazo de transferencias no autorizadas.
+- Validación de la cadena de custodia.
+- Diferencias entre implementaciones de roles.
+
+### 7.8. Frontend
+
+Se desarrolla una interfaz web para interactuar con la blockchain local.
+
+La interfaz está orientada a facilitar la selección de cuentas y la ejecución de operaciones de negocio sin necesidad de utilizar directamente la consola de Solidity.
+
+Su objetivo es proporcionar un entorno visual de experimentación para el registro de medicamentos y la simulación de transferencias.
+
+### 7.9. Limitaciones
+
+La implementación constituye un prototipo académico.
+
+Aunque Ethereum permite verificar las operaciones registradas, la blockchain no garantiza por sí sola que los datos introducidos sobre un medicamento sean verdaderos ni que la transferencia física se haya producido.
+
+Para un despliegue real serían necesarios mecanismos adicionales de identificación, integración logística, privacidad y cumplimiento normativo.
+
+## 8. Herramientas utilizadas
+
+| Tecnología   | Aplicación                         |
+| ------------ | ---------------------------------- |
+| Solidity     | Programación de contratos          |
+| Ethereum     | Plataforma blockchain              |
+| Remix IDE    | Compilación y pruebas              |
+| Hardhat      | Red local y pruebas automatizadas  |
+| Truffle      | Despliegue y gestión de contratos  |
+| OpenZeppelin | Contratos y control de acceso      |
+| MetaMask     | Gestión de cuentas y transacciones |
+| Sepolia      | Red pública de pruebas             |
+| JavaScript   | Pruebas y frontend                 |
+| Git y GitHub | Control de versiones               |
+
+## 9. Conclusiones
+
+La práctica permite estudiar el desarrollo de contratos inteligentes desde los conceptos fundamentales de Solidity hasta la construcción de una aplicación descentralizada.
+
+El proyecto PharmaChain-Ethereum amplía los requisitos iniciales al incorporar distintas implementaciones del mismo sistema, pruebas automatizadas y herramientas de análisis de gas.
+
+La comparación entre modelos de permisos y variantes optimizadas permite evaluar no solo la corrección funcional, sino también el coste de ejecutar operaciones en Ethereum.
+
+Por último, la interfaz web facilita la experimentación con cuentas, roles y transacciones, aproximando el prototipo a una aplicación empresarial de trazabilidad farmacéutica.
+
+# Referencias
+
+- [TRD_Blockchain](https://github.com/ajlorenzo1315/TRD_Blockchain)

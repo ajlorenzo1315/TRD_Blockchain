@@ -66,10 +66,7 @@ Use `viem.assertions` for contract-specific checks. Pass the **unawaited** trans
 ```ts
 // Reverts
 await viem.assertions.revert(counter.write.inc({ account: banned }));
-await viem.assertions.revertWith(
-  counter.write.inc({ account: banned }),
-  "Not authorized",
-);
+await viem.assertions.revertWith(counter.write.inc({ account: banned }), "Not authorized");
 await viem.assertions.revertWithCustomError(
   counter.write.inc({ account: banned }),
   counter,
@@ -84,9 +81,7 @@ await viem.assertions.revertWithCustomErrorWithArgs(
 
 // Events
 await viem.assertions.emit(counter.write.inc(), counter, "Increment");
-await viem.assertions.emitWithArgs(counter.write.inc(), counter, "Increment", [
-  1n,
-]);
+await viem.assertions.emitWithArgs(counter.write.inc(), counter, "Increment", [1n]);
 
 // ETH balance changes (positive = received, negative = spent, before gas)
 await viem.assertions.balancesHaveChanged(game.write.claim(), {
@@ -107,12 +102,9 @@ await viem.assertions.revertWithCustomErrorWithArgs(
   "BadValue",
   [(n: bigint) => n > 100n, "another error arg"],
 );
-await viem.assertions.emitWithArgs(
-  counter.write.incBy([3n]),
-  counter,
-  "Increment",
-  [(by: bigint) => by >= 1n],
-);
+await viem.assertions.emitWithArgs(counter.write.incBy([3n]), counter, "Increment", [
+  (by: bigint) => by >= 1n,
+]);
 
 // `anyValue` matches anything — handy for fields you don't care about.
 await viem.assertions.revertWithCustomErrorWithArgs(

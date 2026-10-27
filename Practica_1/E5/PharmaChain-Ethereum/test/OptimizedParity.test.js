@@ -75,11 +75,19 @@ for (const [original, optimized, kind] of variants) {
             });
             it("rechaza transición directa laboratorio a farmacia y terceros", async () => {
                 await create();
-                await expect(c.connect(lab).proponerTransferencia(1, pharmacy.address)).to.revert(ethers, "Transicion de roles invalida");
-                await expect(c.connect(outsider).proponerTransferencia(1, dist.address)).to.revert(ethers, "Transicion de roles invalida");
+                await expect(c.connect(lab).proponerTransferencia(1, pharmacy.address)).to.revert(
+                    ethers,
+                    "Transicion de roles invalida",
+                );
+                await expect(c.connect(outsider).proponerTransferencia(1, dist.address)).to.revert(
+                    ethers,
+                    "Transicion de roles invalida",
+                );
                 await (await c.connect(lab).proponerTransferencia(1, dist.address)).wait();
                 await expect(c.connect(outsider).aceptarTransferencia(1)).to.revert(ethers);
-                await expect(c.connect(lab).proponerTransferencia(1, dist.address)).to.revert(ethers);
+                await expect(c.connect(lab).proponerTransferencia(1, dist.address)).to.revert(
+                    ethers,
+                );
             });
             it("permite cancelar por origen y por administrador, sin alterar propietario", async () => {
                 await create();

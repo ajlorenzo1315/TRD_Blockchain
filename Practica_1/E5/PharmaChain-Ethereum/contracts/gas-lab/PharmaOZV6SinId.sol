@@ -6,11 +6,7 @@ import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
 import {GestionV6SinId} from "./GestionV6SinId.sol";
 
 // Versión con controles de seguridad de OpenZeppelin.
-contract PharmaOZV6SinId is
-    GestionV6SinId,
-    AccessControl,
-    Pausable
-{
+contract PharmaOZV6SinId is GestionV6SinId, AccessControl, Pausable {
     bytes32 public constant LABORATORIO_ROLE = keccak256("LABORATORIO_ROLE");
     bytes32 public constant DISTRIBUIDOR_ROLE = keccak256("DISTRIBUIDOR_ROLE");
     bytes32 public constant FARMACIA_ROLE = keccak256("FARMACIA_ROLE");

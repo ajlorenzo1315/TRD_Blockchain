@@ -23,14 +23,29 @@ abstract contract GestionLotesYTransferenciasOptimizednoID {
     mapping(uint256 => Transferencia) public transferencias;
 
     event LoteRegistrado(uint256 indexed id, string nombre, address indexed propietario);
-    event TransferenciaPropuesta(uint256 indexed id, address indexed origen, address indexed destino);
-    event TransferenciaAceptada(uint256 indexed id, address indexed origen, address indexed destino);
-    event TransferenciaCancelada(uint256 indexed id, address indexed origen, address indexed destino);
+    event TransferenciaPropuesta(
+        uint256 indexed id,
+        address indexed origen,
+        address indexed destino
+    );
+    event TransferenciaAceptada(
+        uint256 indexed id,
+        address indexed origen,
+        address indexed destino
+    );
+    event TransferenciaCancelada(
+        uint256 indexed id,
+        address indexed origen,
+        address indexed destino
+    );
     event LoteDesactivado(uint256 indexed id);
 
     function _esLaboratorio(address usuario) internal view virtual returns (bool);
     function _esAdministrador(address usuario) internal view virtual returns (bool);
-    function _transicionValida(address origen, address destino) internal view virtual returns (bool);
+    function _transicionValida(
+        address origen,
+        address destino
+    ) internal view virtual returns (bool);
     function _comprobarActivo() internal view virtual;
 
     modifier loteExistente(uint256 id) {
@@ -122,7 +137,12 @@ abstract contract GestionLotesYTransferenciasOptimizednoID {
         return lotes[id];
     }
 
-    enum TipoMovimiento { Registro, Propuesta, Aceptacion, Cancelacion }
+    enum TipoMovimiento {
+        Registro,
+        Propuesta,
+        Aceptacion,
+        Cancelacion
+    }
 
     struct Movimiento {
         TipoMovimiento tipoMovimiento;
@@ -133,20 +153,30 @@ abstract contract GestionLotesYTransferenciasOptimizednoID {
 
     mapping(uint256 => Movimiento[]) private historialLotes;
 
-    function _registrarMovimiento(uint256 id, TipoMovimiento tipoMovimiento, address origen, address destino) internal {
-        historialLotes[id].push(Movimiento({
-            tipoMovimiento: tipoMovimiento,
-            origen: origen,
-            destino: destino,
-            fecha: block.timestamp
-        }));
+    function _registrarMovimiento(
+        uint256 id,
+        TipoMovimiento tipoMovimiento,
+        address origen,
+        address destino
+    ) internal {
+        historialLotes[id].push(
+            Movimiento({
+                tipoMovimiento: tipoMovimiento,
+                origen: origen,
+                destino: destino,
+                fecha: block.timestamp
+            })
+        );
     }
 
     function totalMovimientos(uint256 id) external view loteExistente(id) returns (uint256) {
         return historialLotes[id].length;
     }
 
-    function consultarMovimiento(uint256 id, uint256 indice) external view loteExistente(id) returns (Movimiento memory) {
+    function consultarMovimiento(
+        uint256 id,
+        uint256 indice
+    ) external view loteExistente(id) returns (Movimiento memory) {
         require(indice < historialLotes[id].length, "Movimiento inexistente");
         return historialLotes[id][indice];
     }

@@ -6,11 +6,7 @@ import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
 import {GestionV8HistorialPacked} from "./GestionV8HistorialPacked.sol";
 
 // Versión con controles de seguridad de OpenZeppelin.
-contract PharmaOZV8HistorialPacked is
-    GestionV8HistorialPacked,
-    AccessControl,
-    Pausable
-{
+contract PharmaOZV8HistorialPacked is GestionV8HistorialPacked, AccessControl, Pausable {
     bytes32 public constant LABORATORIO_ROLE = keccak256("LABORATORIO_ROLE");
     bytes32 public constant DISTRIBUIDOR_ROLE = keccak256("DISTRIBUIDOR_ROLE");
     bytes32 public constant FARMACIA_ROLE = keccak256("FARMACIA_ROLE");

@@ -1,35 +1,457 @@
-'use strict';
-const $=id=>document.getElementById(id);
-const NAMES=['PharmaChainRolesManuales','PharmaChainRolesManualesOptimized','PharmaChainRolesOpenZeppelin','PharmaChainRolesOpenZeppelinOptimized'];
-const labels=['Administrador','Laboratorio','Distribuidor','Farmacia'];
-const short=v=>String(v??'').length>18?`${String(v).slice(0,9)}…${String(v).slice(-6)}`:String(v??'');
-const escapeHtml=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let accounts=[],lots=[],ledger=[],roleMap={},selectedId=null,busy=false;
-async function api(path,body){const r=await fetch('/api/'+path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});let data;try{data=await r.json()}catch{throw Error('Respuesta no válida del servidor')};if(!r.ok)throw Error(data.error||'Error HTTP '+r.status);return data}
-function message(s,ok=true){$('result').textContent=s;$('result').className='notice '+(ok?'ok':'error')}
-async function run(fn){if(busy)return;busy=true;document.querySelectorAll('button').forEach(b=>b.disabled=true);try{await fn()}catch(e){message(explain(e.message),false)}finally{busy=false;document.querySelectorAll('button').forEach(b=>b.disabled=false)}}
-function explain(s){if(/No eres laboratorio|not laboratorio/i.test(s))return 'La cuenta seleccionada no tiene el rol LABORATORIO. Pulsa «Configurar roles de demostración» y «Elegir cuenta adecuada». Detalle: '+s;if(/no desplegado|no hay bytecode|falta build/i.test(s))return 'Los contratos no están desplegados en la red actual. Ejecuta npm run truffle:compile y npm run truffle:migrate con npm run chain activo. '+s;if(/revert|execute a function/i.test(s))return 'El contrato ha rechazado esta operación. Comprueba roles, estado del lote y destinatario. '+s;return s}
-function current(){return $('contract').value}
-function lot(){return lots.find(l=>String(l.id)===String(selectedId))}
-function accountIndex(address){return accounts.findIndex(a=>a.toLowerCase()===String(address||'').toLowerCase())}
-function accountLabel(address){const i=accountIndex(address);return i<0?short(address):`${labels[i]||'Cuenta '+i} (${short(address)})`}
-function setAccount(address){if(accounts.some(a=>a.toLowerCase()===String(address).toLowerCase())){$('account').value=accounts.find(a=>a.toLowerCase()===String(address).toLowerCase());updateRole()}}
-function updateRole(){const a=$('account').value;const r=roleMap[a?.toLowerCase()]||'Sin verificar';$('accountRole').textContent='Rol: '+r}
-function showFields(){const m=$('method').value;for(const id of ['nameField','makerField'])$(id).hidden=m!=='registrarLote';$('lotField').hidden=['registrarLote','pausar','reanudar'].includes(m);$('destinationField').hidden=m!=='proponerTransferencia';const hints={registrarLote:'Requiere cuenta con rol laboratorio. No necesitas introducir el ID: el contrato lo asigna automáticamente.',proponerTransferencia:'Selecciona un lote activo. Solo el custodio actual puede proponer una transferencia válida.',aceptarTransferencia:'Solo la cuenta destinataria de una propuesta pendiente puede aceptar.',cancelarTransferencia:'Solo el custodio de origen o el administrador pueden cancelar una propuesta.',desactivarLote:'Requiere administrador. El lote dejará de estar operativo.',pausar:'Solo el administrador puede pausar un contrato compatible.',reanudar:'Solo el administrador puede reanudar un contrato compatible.'};$('actionHint').textContent=hints[m]||''}
-function chooseActor(){const m=$('method').value,l=lot();if(m==='registrarLote')setAccount(accounts[1]);else if(['desactivarLote','pausar','reanudar'].includes(m))setAccount(accounts[0]);else if(m==='proponerTransferencia'&&l){setAccount(l.propietario);const i=accountIndex(l.propietario);$('destination').value=accounts[i===1?2:i===2?3:2]||accounts[2]}else if(m==='aceptarTransferencia'&&l?.pendiente)setAccount(l.destino);else if(m==='cancelarTransferencia'&&l)setAccount(l.propietario)}
-function selectLot(id){selectedId=Number(id);$('lot').value=String(id);renderLots();renderStepper();run(trace)}
-function renderLots(){const q=$('search').value.toLowerCase().trim();const matches=lots.filter(l=>`#${l.id} ${l.nombre} ${l.fabricante}`.toLowerCase().includes(q));$('lotCount').textContent=`${lots.length} lotes`;$('lotlist').replaceChildren();if(!matches.length){const el=document.createElement('div');el.className='empty';el.textContent=lots.length?'No hay resultados para la búsqueda.':'No hay medicamentos registrados. Pulsa «Registrar nuevo lote».';$('lotlist').append(el);return}for(const l of matches){const b=document.createElement('button');b.type='button';b.className='lotcard'+(l.id===selectedId?' selected':'');const title=document.createElement('strong');title.textContent=`#${l.id} · ${l.nombre}`;const detail=document.createElement('small');detail.textContent=`${l.fabricante} · Custodio: ${accountLabel(l.propietario)}`;const tag=document.createElement('span');tag.className='pill'+(!l.activo?' inactive':l.pendiente?' pending':'');tag.textContent=!l.activo?'Inactivo':l.pendiente?'Pendiente':'Activo';b.append(title,detail,document.createElement('br'),tag);b.onclick=()=>selectLot(l.id);$('lotlist').append(b)}}
-function renderStepper(){const l=lot();for(const id of ['step-register','step-distributor','step-pharmacy'])$(id).className='step';if(!l){$('step-register').classList.add('current');return}$('step-register').classList.add('done');const i=accountIndex(l.propietario);$('step-distributor').classList.add(i>=2?'done':'current');$('step-pharmacy').classList.add(i>=3?'done':i===2?'current':'');if(l.pendiente){const target=accountIndex(l.destino);$(target===2?'step-distributor':'step-pharmacy').classList.add('current')}}
-function args(){const m=$('method').value;if(m==='registrarLote')return [$('name').value.trim(),$('maker').value.trim()];if(m==='proponerTransferencia')return [String(selectedId),$('destination').value];if(['aceptarTransferencia','cancelarTransferencia','desactivarLote'].includes(m))return [String(selectedId)];return []}
-function validate(){const m=$('method').value;if(m==='registrarLote'&&(!$('name').value.trim()||!$('maker').value.trim()))throw Error('Indica nombre y fabricante para registrar el medicamento.');if(!['registrarLote','pausar','reanudar'].includes(m)&&!lot())throw Error('Selecciona primero un lote del catálogo.');if(m==='proponerTransferencia'&&!$('destination').value)throw Error('Selecciona un destinatario.')}
-async function refresh(){const status=await api('status');accounts=status.accounts;const oldAccount=$('account').value;const oldDest=$('destination').value;$('network').textContent=`Red ${status.chainId} · ${Object.values(status.contracts).filter(Boolean).length}/4 contratos`;$('network').className='chip '+(status.contracts[current()]?'good':'bad');$('account').replaceChildren();$('destination').replaceChildren();accounts.forEach((a,i)=>{$('account').add(new Option(`${labels[i]||'Cuenta '+i} · ${short(a)}`,a));$('destination').add(new Option(`${labels[i]||'Cuenta '+i} · ${short(a)}`,a))});if(accounts.includes(oldAccount))$('account').value=oldAccount;else if(accounts[1])$('account').value=accounts[1];$('destination').value=accounts.includes(oldDest)?oldDest:accounts[2];const d=await api('lotes/'+encodeURIComponent(current()));lots=d.items;$('total').textContent=d.total;$('active').textContent=lots.filter(l=>l.activo).length;$('pending').textContent=lots.filter(l=>l.pendiente).length;if(!lots.some(l=>l.id===selectedId))selectedId=lots.length?lots[lots.length-1].id:null;$('lot').replaceChildren();lots.forEach(l=>$('lot').add(new Option(`#${l.id} · ${l.nombre}`,String(l.id))));if(selectedId!==null)$('lot').value=String(selectedId);ledger=await api('ledger');renderLots();renderStepper();renderLedger();await inspect(false);if(selectedId!==null)await trace();else{$('flow').innerHTML='<div class="empty">Registra el primer medicamento para comenzar la trazabilidad.</div>';$('state').textContent='Sin lote seleccionado.'}}
-async function inspect(show=true){const d=await api('inspect/'+encodeURIComponent(current()));roleMap={};d.roles.forEach(x=>roleMap[x.account.toLowerCase()]=x.role);updateRole();if(show){$('roles').hidden=false;$('roles').textContent=`Contrato: ${d.address}\nPausado: ${d.paused}\n`+d.roles.map((r,i)=>`${labels[i]||'Cuenta '+i}: ${r.role}`).join('\n')}}
-function renderLedger(){const list=ledger.filter(x=>x.contract===current());$('gas').textContent=list.reduce((s,x)=>s+Number(x.gasUsed),0).toLocaleString('es-ES');$('ledger').replaceChildren();for(const x of list.slice(0,60)){const tr=document.createElement('tr');for(const v of [x.action,accountLabel(x.from),Number(x.gasUsed).toLocaleString('es-ES'),x.costEth,x.block,short(x.txHash)]){const td=document.createElement('td');td.textContent=v;tr.append(td)}tr.lastChild.title=x.txHash;$('ledger').append(tr)}if(!list.length)$('ledger').innerHTML='<tr><td colspan="6">Sin transacciones de esta sesión.</td></tr>';const chart=$('gasChart');chart.replaceChildren();const max=Math.max(1,...list.slice(0,15).map(x=>Number(x.gasUsed)));for(const x of list.slice(0,15)){const row=document.createElement('div');row.className='barrow';const title=document.createElement('span');title.textContent=x.action;title.title=x.action;const track=document.createElement('div');track.className='track';const fill=document.createElement('div');fill.className='fill';fill.style.width=(Number(x.gasUsed)/max*100)+'%';track.append(fill);const val=document.createElement('b');val.textContent=Number(x.gasUsed).toLocaleString('es-ES');row.append(title,track,val);chart.append(row)}if(!list.length)chart.textContent='No hay recibos todavía.'}
-async function trace(){if(selectedId===null)return;const d=await api('workbench/evidence/'+encodeURIComponent(current())+'/'+selectedId);const types=['Registro','Propuesta','Aceptación','Cancelación'];$('flow').replaceChildren();d.movements.forEach((m,i)=>{if(i){const a=document.createElement('span');a.className='arrow';a.textContent='→';$('flow').append(a)}const el=document.createElement('div');el.className='event';const title=document.createElement('b');title.textContent=types[m.type]||'Movimiento '+m.type;const detail=document.createElement('div');detail.textContent=`${accountLabel(m.from)} → ${accountLabel(m.to)}`;const date=document.createElement('small');date.textContent=new Date(Number(m.timestamp)*1000).toLocaleString('es-ES');el.append(title,detail,date);$('flow').append(el)});if(!d.movements.length)$('flow').textContent='No hay movimientos registrados.';$('state').textContent=`Lote #${d.id} · ${d.lot.nombre} · Fabricante: ${d.lot.fabricante} · Custodio actual: ${accountLabel(d.lot.propietario)} · ${d.lot.activo?'ACTIVO':'INACTIVO'} · ${d.transfer.pendiente?'PENDIENTE hacia '+accountLabel(d.transfer.destino):'Sin transferencia pendiente'}`}
-async function preview(){validate();const r=await api('workbench/preview',{name:current(),from:$('account').value,method:$('method').value,args:args()});message(r.accepted?`SIMULACIÓN ACEPTADA\nGas estimado: ${r.estimatedGas}\nNo se ha enviado ninguna transacción.`:`SIMULACIÓN RECHAZADA\n${explain(r.reason)}`,r.accepted)}
-async function execute(){validate();const method=$('method').value;const r=await api('action',{name:current(),action:method,from:$('account').value,id:String(selectedId??''),destino:$('destination').value,nombre:$('name').value.trim(),fabricante:$('maker').value.trim()});message(`TRANSACCIÓN CONFIRMADA\nOperación: ${r.action}\nGas real: ${r.gasUsed}\nBloque: ${r.block}\nHash: ${r.txHash}`);const old=lots.length?Math.max(...lots.map(l=>l.id)):0;await refresh();if(method==='registrarLote'&&lots.some(l=>l.id===old+1)){selectedId=old+1;$('lot').value=String(selectedId);renderLots();renderStepper();await trace()}}
-async function setup(){const r=await api('setup',{name:current()});message(`Roles configurados. ${r.transactions.length} transacciones confirmadas.`);await refresh()}
-async function scenario(){const r=await api('scenario',{name:current()});selectedId=r.id;message(`Cadena de custodia completa: lote #${r.id}. ${r.transactions.length} transacciones reales.`);await refresh()}
-async function tests(mode){const r=mode==='negative'?await api('run-tests',{name:current()}):await api('audit/run',{name:current(),mode:'full'});const items=r.results||[];$('tests').replaceChildren();for(const t of items){const d=document.createElement('div');d.className='testitem '+(t.passed?'pass':'fail');d.textContent=`${t.skipped?'OMITIDA':t.passed?'PASS':'FAIL'} · ${t.title||t.label}\n${t.detail||''}`;$('tests').append(d)}message(`Pruebas terminadas: ${r.passed}/${r.total} superadas.`,r.failed===0);await refresh()}
-async function exportEvidence(){if(selectedId===null)throw Error('Selecciona un lote.');const d=await api('workbench/evidence/'+encodeURIComponent(current())+'/'+selectedId);const url=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`pharmachain-${current()}-lote-${selectedId}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
-function bind(){NAMES.forEach(n=>$('contract').add(new Option(n.replace('PharmaChainRoles',''),n)));$('contract').onchange=()=>run(async()=>{selectedId=null;await refresh()});$('account').onchange=updateRole;$('method').onchange=()=>{showFields();chooseActor()};$('lot').onchange=()=>{selectedId=Number($('lot').value);renderLots();renderStepper();run(trace)};$('search').oninput=renderLots;const actions={reload:refresh,setup,inspect:()=>inspect(true),new:async()=>{$('method').value='registrarLote';showFields();chooseActor();$('name').focus()},autofill:chooseActor,preview,execute,trace,scenario,negative:()=>tests('negative'),audit:()=>tests('audit'),export:exportEvidence};for(const [id,fn] of Object.entries(actions))$(id).onclick=()=>run(fn);showFields();refresh().catch(e=>message(explain(e.message),false))}bind();
+"use strict";
+const $ = (id) => document.getElementById(id);
+const NAMES = [
+    "PharmaChainRolesManuales",
+    "PharmaChainRolesManualesOptimized",
+    "PharmaChainRolesOpenZeppelin",
+    "PharmaChainRolesOpenZeppelinOptimized",
+];
+const labels = ["Administrador", "Laboratorio", "Distribuidor", "Farmacia"];
+const short = (v) =>
+    String(v ?? "").length > 18
+        ? `${String(v).slice(0, 9)}…${String(v).slice(-6)}`
+        : String(v ?? "");
+const escapeHtml = (v) =>
+    String(v ?? "").replace(
+        /[&<>"']/g,
+        (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+    );
+let accounts = [],
+    lots = [],
+    ledger = [],
+    roleMap = {},
+    selectedId = null,
+    busy = false;
+async function api(path, body) {
+    const r = await fetch(
+        "/api/" + path,
+        body === undefined
+            ? {}
+            : {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(body),
+              },
+    );
+    let data;
+    try {
+        data = await r.json();
+    } catch {
+        throw Error("Respuesta no válida del servidor");
+    }
+    if (!r.ok) throw Error(data.error || "Error HTTP " + r.status);
+    return data;
+}
+function message(s, ok = true) {
+    $("result").textContent = s;
+    $("result").className = "notice " + (ok ? "ok" : "error");
+}
+async function run(fn) {
+    if (busy) return;
+    busy = true;
+    document.querySelectorAll("button").forEach((b) => (b.disabled = true));
+    try {
+        await fn();
+    } catch (e) {
+        message(explain(e.message), false);
+    } finally {
+        busy = false;
+        document.querySelectorAll("button").forEach((b) => (b.disabled = false));
+    }
+}
+function explain(s) {
+    if (/No eres laboratorio|not laboratorio/i.test(s))
+        return (
+            "La cuenta seleccionada no tiene el rol LABORATORIO. Pulsa «Configurar roles de demostración» y «Elegir cuenta adecuada». Detalle: " +
+            s
+        );
+    if (/no desplegado|no hay bytecode|falta build/i.test(s))
+        return (
+            "Los contratos no están desplegados en la red actual. Ejecuta npm run truffle:compile y npm run truffle:migrate con npm run chain activo. " +
+            s
+        );
+    if (/revert|execute a function/i.test(s))
+        return (
+            "El contrato ha rechazado esta operación. Comprueba roles, estado del lote y destinatario. " +
+            s
+        );
+    return s;
+}
+function current() {
+    return $("contract").value;
+}
+function lot() {
+    return lots.find((l) => String(l.id) === String(selectedId));
+}
+function accountIndex(address) {
+    return accounts.findIndex((a) => a.toLowerCase() === String(address || "").toLowerCase());
+}
+function accountLabel(address) {
+    const i = accountIndex(address);
+    return i < 0 ? short(address) : `${labels[i] || "Cuenta " + i} (${short(address)})`;
+}
+function setAccount(address) {
+    if (accounts.some((a) => a.toLowerCase() === String(address).toLowerCase())) {
+        $("account").value = accounts.find(
+            (a) => a.toLowerCase() === String(address).toLowerCase(),
+        );
+        updateRole();
+    }
+}
+function updateRole() {
+    const a = $("account").value;
+    const r = roleMap[a?.toLowerCase()] || "Sin verificar";
+    $("accountRole").textContent = "Rol: " + r;
+}
+function showFields() {
+    const m = $("method").value;
+    for (const id of ["nameField", "makerField"]) $(id).hidden = m !== "registrarLote";
+    $("lotField").hidden = ["registrarLote", "pausar", "reanudar"].includes(m);
+    $("destinationField").hidden = m !== "proponerTransferencia";
+    const hints = {
+        registrarLote:
+            "Requiere cuenta con rol laboratorio. No necesitas introducir el ID: el contrato lo asigna automáticamente.",
+        proponerTransferencia:
+            "Selecciona un lote activo. Solo el custodio actual puede proponer una transferencia válida.",
+        aceptarTransferencia:
+            "Solo la cuenta destinataria de una propuesta pendiente puede aceptar.",
+        cancelarTransferencia:
+            "Solo el custodio de origen o el administrador pueden cancelar una propuesta.",
+        desactivarLote: "Requiere administrador. El lote dejará de estar operativo.",
+        pausar: "Solo el administrador puede pausar un contrato compatible.",
+        reanudar: "Solo el administrador puede reanudar un contrato compatible.",
+    };
+    $("actionHint").textContent = hints[m] || "";
+}
+function chooseActor() {
+    const m = $("method").value,
+        l = lot();
+    if (m === "registrarLote") setAccount(accounts[1]);
+    else if (["desactivarLote", "pausar", "reanudar"].includes(m)) setAccount(accounts[0]);
+    else if (m === "proponerTransferencia" && l) {
+        setAccount(l.propietario);
+        const i = accountIndex(l.propietario);
+        $("destination").value = accounts[i === 1 ? 2 : i === 2 ? 3 : 2] || accounts[2];
+    } else if (m === "aceptarTransferencia" && l?.pendiente) setAccount(l.destino);
+    else if (m === "cancelarTransferencia" && l) setAccount(l.propietario);
+}
+function selectLot(id) {
+    selectedId = Number(id);
+    $("lot").value = String(id);
+    renderLots();
+    renderStepper();
+    run(trace);
+}
+function renderLots() {
+    const q = $("search").value.toLowerCase().trim();
+    const matches = lots.filter((l) =>
+        `#${l.id} ${l.nombre} ${l.fabricante}`.toLowerCase().includes(q),
+    );
+    $("lotCount").textContent = `${lots.length} lotes`;
+    $("lotlist").replaceChildren();
+    if (!matches.length) {
+        const el = document.createElement("div");
+        el.className = "empty";
+        el.textContent = lots.length
+            ? "No hay resultados para la búsqueda."
+            : "No hay medicamentos registrados. Pulsa «Registrar nuevo lote».";
+        $("lotlist").append(el);
+        return;
+    }
+    for (const l of matches) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "lotcard" + (l.id === selectedId ? " selected" : "");
+        const title = document.createElement("strong");
+        title.textContent = `#${l.id} · ${l.nombre}`;
+        const detail = document.createElement("small");
+        detail.textContent = `${l.fabricante} · Custodio: ${accountLabel(l.propietario)}`;
+        const tag = document.createElement("span");
+        tag.className = "pill" + (!l.activo ? " inactive" : l.pendiente ? " pending" : "");
+        tag.textContent = !l.activo ? "Inactivo" : l.pendiente ? "Pendiente" : "Activo";
+        b.append(title, detail, document.createElement("br"), tag);
+        b.onclick = () => selectLot(l.id);
+        $("lotlist").append(b);
+    }
+}
+function renderStepper() {
+    const l = lot();
+    for (const id of ["step-register", "step-distributor", "step-pharmacy"])
+        $(id).className = "step";
+    if (!l) {
+        $("step-register").classList.add("current");
+        return;
+    }
+    $("step-register").classList.add("done");
+    const i = accountIndex(l.propietario);
+    $("step-distributor").classList.add(i >= 2 ? "done" : "current");
+    $("step-pharmacy").classList.add(i >= 3 ? "done" : i === 2 ? "current" : "");
+    if (l.pendiente) {
+        const target = accountIndex(l.destino);
+        $(target === 2 ? "step-distributor" : "step-pharmacy").classList.add("current");
+    }
+}
+function args() {
+    const m = $("method").value;
+    if (m === "registrarLote") return [$("name").value.trim(), $("maker").value.trim()];
+    if (m === "proponerTransferencia") return [String(selectedId), $("destination").value];
+    if (["aceptarTransferencia", "cancelarTransferencia", "desactivarLote"].includes(m))
+        return [String(selectedId)];
+    return [];
+}
+function validate() {
+    const m = $("method").value;
+    if (m === "registrarLote" && (!$("name").value.trim() || !$("maker").value.trim()))
+        throw Error("Indica nombre y fabricante para registrar el medicamento.");
+    if (!["registrarLote", "pausar", "reanudar"].includes(m) && !lot())
+        throw Error("Selecciona primero un lote del catálogo.");
+    if (m === "proponerTransferencia" && !$("destination").value)
+        throw Error("Selecciona un destinatario.");
+}
+async function refresh() {
+    const status = await api("status");
+    accounts = status.accounts;
+    const oldAccount = $("account").value;
+    const oldDest = $("destination").value;
+    $("network").textContent =
+        `Red ${status.chainId} · ${Object.values(status.contracts).filter(Boolean).length}/4 contratos`;
+    $("network").className = "chip " + (status.contracts[current()] ? "good" : "bad");
+    $("account").replaceChildren();
+    $("destination").replaceChildren();
+    accounts.forEach((a, i) => {
+        $("account").add(new Option(`${labels[i] || "Cuenta " + i} · ${short(a)}`, a));
+        $("destination").add(new Option(`${labels[i] || "Cuenta " + i} · ${short(a)}`, a));
+    });
+    if (accounts.includes(oldAccount)) $("account").value = oldAccount;
+    else if (accounts[1]) $("account").value = accounts[1];
+    $("destination").value = accounts.includes(oldDest) ? oldDest : accounts[2];
+    const d = await api("lotes/" + encodeURIComponent(current()));
+    lots = d.items;
+    $("total").textContent = d.total;
+    $("active").textContent = lots.filter((l) => l.activo).length;
+    $("pending").textContent = lots.filter((l) => l.pendiente).length;
+    if (!lots.some((l) => l.id === selectedId))
+        selectedId = lots.length ? lots[lots.length - 1].id : null;
+    $("lot").replaceChildren();
+    lots.forEach((l) => $("lot").add(new Option(`#${l.id} · ${l.nombre}`, String(l.id))));
+    if (selectedId !== null) $("lot").value = String(selectedId);
+    ledger = await api("ledger");
+    renderLots();
+    renderStepper();
+    renderLedger();
+    await inspect(false);
+    if (selectedId !== null) await trace();
+    else {
+        $("flow").innerHTML =
+            '<div class="empty">Registra el primer medicamento para comenzar la trazabilidad.</div>';
+        $("state").textContent = "Sin lote seleccionado.";
+    }
+}
+async function inspect(show = true) {
+    const d = await api("inspect/" + encodeURIComponent(current()));
+    roleMap = {};
+    d.roles.forEach((x) => (roleMap[x.account.toLowerCase()] = x.role));
+    updateRole();
+    if (show) {
+        $("roles").hidden = false;
+        $("roles").textContent =
+            `Contrato: ${d.address}\nPausado: ${d.paused}\n` +
+            d.roles.map((r, i) => `${labels[i] || "Cuenta " + i}: ${r.role}`).join("\n");
+    }
+}
+function renderLedger() {
+    const list = ledger.filter((x) => x.contract === current());
+    $("gas").textContent = list.reduce((s, x) => s + Number(x.gasUsed), 0).toLocaleString("es-ES");
+    $("ledger").replaceChildren();
+    for (const x of list.slice(0, 60)) {
+        const tr = document.createElement("tr");
+        for (const v of [
+            x.action,
+            accountLabel(x.from),
+            Number(x.gasUsed).toLocaleString("es-ES"),
+            x.costEth,
+            x.block,
+            short(x.txHash),
+        ]) {
+            const td = document.createElement("td");
+            td.textContent = v;
+            tr.append(td);
+        }
+        tr.lastChild.title = x.txHash;
+        $("ledger").append(tr);
+    }
+    if (!list.length)
+        $("ledger").innerHTML = '<tr><td colspan="6">Sin transacciones de esta sesión.</td></tr>';
+    const chart = $("gasChart");
+    chart.replaceChildren();
+    const max = Math.max(1, ...list.slice(0, 15).map((x) => Number(x.gasUsed)));
+    for (const x of list.slice(0, 15)) {
+        const row = document.createElement("div");
+        row.className = "barrow";
+        const title = document.createElement("span");
+        title.textContent = x.action;
+        title.title = x.action;
+        const track = document.createElement("div");
+        track.className = "track";
+        const fill = document.createElement("div");
+        fill.className = "fill";
+        fill.style.width = (Number(x.gasUsed) / max) * 100 + "%";
+        track.append(fill);
+        const val = document.createElement("b");
+        val.textContent = Number(x.gasUsed).toLocaleString("es-ES");
+        row.append(title, track, val);
+        chart.append(row);
+    }
+    if (!list.length) chart.textContent = "No hay recibos todavía.";
+}
+async function trace() {
+    if (selectedId === null) return;
+    const d = await api("workbench/evidence/" + encodeURIComponent(current()) + "/" + selectedId);
+    const types = ["Registro", "Propuesta", "Aceptación", "Cancelación"];
+    $("flow").replaceChildren();
+    d.movements.forEach((m, i) => {
+        if (i) {
+            const a = document.createElement("span");
+            a.className = "arrow";
+            a.textContent = "→";
+            $("flow").append(a);
+        }
+        const el = document.createElement("div");
+        el.className = "event";
+        const title = document.createElement("b");
+        title.textContent = types[m.type] || "Movimiento " + m.type;
+        const detail = document.createElement("div");
+        detail.textContent = `${accountLabel(m.from)} → ${accountLabel(m.to)}`;
+        const date = document.createElement("small");
+        date.textContent = new Date(Number(m.timestamp) * 1000).toLocaleString("es-ES");
+        el.append(title, detail, date);
+        $("flow").append(el);
+    });
+    if (!d.movements.length) $("flow").textContent = "No hay movimientos registrados.";
+    $("state").textContent =
+        `Lote #${d.id} · ${d.lot.nombre} · Fabricante: ${d.lot.fabricante} · Custodio actual: ${accountLabel(d.lot.propietario)} · ${d.lot.activo ? "ACTIVO" : "INACTIVO"} · ${d.transfer.pendiente ? "PENDIENTE hacia " + accountLabel(d.transfer.destino) : "Sin transferencia pendiente"}`;
+}
+async function preview() {
+    validate();
+    const r = await api("workbench/preview", {
+        name: current(),
+        from: $("account").value,
+        method: $("method").value,
+        args: args(),
+    });
+    message(
+        r.accepted
+            ? `SIMULACIÓN ACEPTADA\nGas estimado: ${r.estimatedGas}\nNo se ha enviado ninguna transacción.`
+            : `SIMULACIÓN RECHAZADA\n${explain(r.reason)}`,
+        r.accepted,
+    );
+}
+async function execute() {
+    validate();
+    const method = $("method").value;
+    const r = await api("action", {
+        name: current(),
+        action: method,
+        from: $("account").value,
+        id: String(selectedId ?? ""),
+        destino: $("destination").value,
+        nombre: $("name").value.trim(),
+        fabricante: $("maker").value.trim(),
+    });
+    message(
+        `TRANSACCIÓN CONFIRMADA\nOperación: ${r.action}\nGas real: ${r.gasUsed}\nBloque: ${r.block}\nHash: ${r.txHash}`,
+    );
+    const old = lots.length ? Math.max(...lots.map((l) => l.id)) : 0;
+    await refresh();
+    if (method === "registrarLote" && lots.some((l) => l.id === old + 1)) {
+        selectedId = old + 1;
+        $("lot").value = String(selectedId);
+        renderLots();
+        renderStepper();
+        await trace();
+    }
+}
+async function setup() {
+    const r = await api("setup", { name: current() });
+    message(`Roles configurados. ${r.transactions.length} transacciones confirmadas.`);
+    await refresh();
+}
+async function scenario() {
+    const r = await api("scenario", { name: current() });
+    selectedId = r.id;
+    message(
+        `Cadena de custodia completa: lote #${r.id}. ${r.transactions.length} transacciones reales.`,
+    );
+    await refresh();
+}
+async function tests(mode) {
+    const r =
+        mode === "negative"
+            ? await api("run-tests", { name: current() })
+            : await api("audit/run", { name: current(), mode: "full" });
+    const items = r.results || [];
+    $("tests").replaceChildren();
+    for (const t of items) {
+        const d = document.createElement("div");
+        d.className = "testitem " + (t.passed ? "pass" : "fail");
+        d.textContent = `${t.skipped ? "OMITIDA" : t.passed ? "PASS" : "FAIL"} · ${t.title || t.label}\n${t.detail || ""}`;
+        $("tests").append(d);
+    }
+    message(`Pruebas terminadas: ${r.passed}/${r.total} superadas.`, r.failed === 0);
+    await refresh();
+}
+async function exportEvidence() {
+    if (selectedId === null) throw Error("Selecciona un lote.");
+    const d = await api("workbench/evidence/" + encodeURIComponent(current()) + "/" + selectedId);
+    const url = URL.createObjectURL(
+        new Blob([JSON.stringify(d, null, 2)], { type: "application/json" }),
+    );
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `pharmachain-${current()}-lote-${selectedId}.json`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function bind() {
+    NAMES.forEach((n) => $("contract").add(new Option(n.replace("PharmaChainRoles", ""), n)));
+    $("contract").onchange = () =>
+        run(async () => {
+            selectedId = null;
+            await refresh();
+        });
+    $("account").onchange = updateRole;
+    $("method").onchange = () => {
+        showFields();
+        chooseActor();
+    };
+    $("lot").onchange = () => {
+        selectedId = Number($("lot").value);
+        renderLots();
+        renderStepper();
+        run(trace);
+    };
+    $("search").oninput = renderLots;
+    const actions = {
+        reload: refresh,
+        setup,
+        inspect: () => inspect(true),
+        new: async () => {
+            $("method").value = "registrarLote";
+            showFields();
+            chooseActor();
+            $("name").focus();
+        },
+        autofill: chooseActor,
+        preview,
+        execute,
+        trace,
+        scenario,
+        negative: () => tests("negative"),
+        audit: () => tests("audit"),
+        export: exportEvidence,
+    };
+    for (const [id, fn] of Object.entries(actions)) $(id).onclick = () => run(fn);
+    showFields();
+    refresh().catch((e) => message(explain(e.message), false));
+}
+bind();

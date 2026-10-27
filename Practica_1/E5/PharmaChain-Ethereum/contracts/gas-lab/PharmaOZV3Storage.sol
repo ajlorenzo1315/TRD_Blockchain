@@ -6,11 +6,7 @@ import {Pausable} from "@openzeppelin/contracts/utils/Pausable.sol";
 import {GestionV3Storage} from "./GestionV3Storage.sol";
 
 // Versión con controles de seguridad de OpenZeppelin.
-contract PharmaOZV3Storage is
-    GestionV3Storage,
-    AccessControl,
-    Pausable
-{
+contract PharmaOZV3Storage is GestionV3Storage, AccessControl, Pausable {
     bytes32 public constant LABORATORIO_ROLE = keccak256("LABORATORIO_ROLE");
     bytes32 public constant DISTRIBUIDOR_ROLE = keccak256("DISTRIBUIDOR_ROLE");
     bytes32 public constant FARMACIA_ROLE = keccak256("FARMACIA_ROLE");

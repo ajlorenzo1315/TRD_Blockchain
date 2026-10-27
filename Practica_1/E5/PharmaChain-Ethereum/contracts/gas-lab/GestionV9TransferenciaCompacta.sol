@@ -36,7 +36,9 @@ abstract contract GestionV9TransferenciaCompacta {
     mapping(uint256 => Lote) public lotes;
     mapping(uint256 => Transferencia) private _transferencias;
     // Getter con la firma de salida original; el origen se deduce del custodio.
-    function transferencias(uint256 id) external view returns (address origen, address destino, bool pendiente) {
+    function transferencias(
+        uint256 id
+    ) external view returns (address origen, address destino, bool pendiente) {
         destino = _transferencias[id].destino;
         pendiente = destino != address(0);
         origen = pendiente ? lotes[id].propietario : address(0);
@@ -80,7 +82,9 @@ abstract contract GestionV9TransferenciaCompacta {
         if (!(bytes(nombre).length > 0)) revert NombreVacio();
         if (!(bytes(fabricante).length > 0)) revert FabricanteVacio();
 
-        unchecked { ++totalLotes; }
+        unchecked {
+            ++totalLotes;
+        }
         lotes[totalLotes] = Lote({
             nombre: nombre,
             fabricante: fabricante,
@@ -128,7 +132,8 @@ abstract contract GestionV9TransferenciaCompacta {
     function cancelarTransferencia(uint256 id) external loteExistente(id) {
         Transferencia storage t = _transferencias[id];
         if (t.destino == address(0)) revert SinTransferencia();
-        if (!(msg.sender == lotes[id].propietario || _esAdministrador(msg.sender))) revert NoAutorizado();
+        if (!(msg.sender == lotes[id].propietario || _esAdministrador(msg.sender)))
+            revert NoAutorizado();
         // Conservar ambos valores antes del delete para el historial y evento.
         address origen = lotes[id].propietario;
         address destino = t.destino;

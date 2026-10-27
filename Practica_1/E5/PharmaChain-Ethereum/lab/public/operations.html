@@ -1,1 +1,199 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PharmaChain | Operations Studio</title><link rel="stylesheet" href="/assets/operations.css"></head><body><div class="layout"><aside class="side"><div class="brand">⬡ PharmaChain</div><a class="active" href="/operations.html">▣ Operaciones y lotes</a><a href="/">◈ Auditoría y pruebas</a><a href="/benchmark.html">▥ Benchmark de gas</a><p class="hint">Red Ethereum local. Las cuentas del nodo son simuladas y no representan identidades reales.</p></aside><main class="content"><header class="head"><div><h1>Centro de trazabilidad</h1><div class="muted">Gestiona medicamentos, simula operaciones y sigue cada cambio de custodia.</div></div><div class="row"><span class="chip" id="network">Conectando...</span><button class="secondary" id="reload">↻ Actualizar</button></div></header><div class="metrics"><section class="panel"><div class="muted">Lotes registrados</div><div class="metric" id="total">—</div></section><section class="panel"><div class="muted">Lotes activos</div><div class="metric" id="active">—</div></section><section class="panel"><div class="muted">Entregas pendientes</div><div class="metric" id="pending">—</div></section><section class="panel"><div class="muted">Gas registrado</div><div class="metric" id="gas">—</div></section></div><div class="grid"><section class="panel wide"><h2>01 · Entorno y participantes</h2><div class="fields"><div class="field"><label for="contract">Implementación Solidity</label><select id="contract"></select></div><div class="field"><label for="account">Cuenta emisora (firma)</label><select id="account"></select></div></div><p class="hint" id="roleHint">Las cuentas 0–3 se reservan para administrador, laboratorio, distribuidor y farmacia. Comprueba sus roles antes de operar.</p><div class="row"><button id="setup" class="secondary">Configurar roles de demostración</button><button id="inspect" class="secondary">Inspeccionar permisos</button><span class="chip" id="accountRole">Rol sin verificar</span></div><div class="notice" id="roles" hidden></div></section><section class="panel"><div class="row spread"><h2>02 · Catálogo de medicamentos</h2><span class="chip" id="lotCount">0 lotes</span></div><div class="field"><label for="search">Buscar por ID, medicamento o fabricante</label><input id="search" type="search" placeholder="Ej. #3, paracetamol, laboratorio..."></div><div id="lotlist" class="lotlist"></div><div class="row" style="margin-top:15px"><button class="secondary" id="new">+ Registrar nuevo lote</button><button class="secondary" id="export">Exportar evidencia</button></div></section><section class="panel"><h2>03 · Operación guiada</h2><div class="stepper"><div class="step" id="step-register"><b>1. Registrar</b><span>Laboratorio</span></div><div class="step" id="step-distributor"><b>2. Distribuir</b><span>Distribuidor</span></div><div class="step" id="step-pharmacy"><b>3. Farmacia</b><span>Entrega final</span></div></div><div class="fields"><div class="field"><label for="method">Operación</label><select id="method"><option value="registrarLote">Registrar medicamento</option><option value="proponerTransferencia">Proponer transferencia</option><option value="aceptarTransferencia">Aceptar recepción</option><option value="cancelarTransferencia">Cancelar propuesta</option><option value="desactivarLote">Desactivar lote</option><option value="pausar">Pausar contrato</option><option value="reanudar">Reanudar contrato</option></select></div><div class="field" id="lotField"><label for="lot">Lote seleccionado</label><select id="lot"></select></div><div class="field" id="nameField"><label for="name">Nombre del medicamento</label><input id="name" value="Paracetamol 500 mg" maxlength="120"></div><div class="field" id="makerField"><label for="maker">Fabricante</label><input id="maker" value="Laboratorio Galicia" maxlength="120"></div><div class="field" id="destinationField"><label for="destination">Organización destinataria</label><select id="destination"></select></div></div><p class="hint" id="actionHint"></p><div class="row"><button class="secondary" id="autofill">Elegir cuenta adecuada</button><button class="secondary" id="preview">Simular sin enviar</button><button class="success" id="execute">Confirmar transacción</button></div><div class="notice" id="result" role="status">Configura los roles y registra tu primer medicamento.</div></section><section class="panel wide"><div class="row spread"><div><h2>04 · Cadena de custodia del lote</h2><div class="muted">Movimientos consultados directamente del contrato, no inventados por la interfaz.</div></div><button class="secondary" id="trace">Actualizar trazabilidad</button></div><div class="timeline" id="flow"><div class="empty">Selecciona un lote para visualizar sus movimientos.</div></div><div class="notice" id="state">Sin lote seleccionado.</div></section><section class="panel"><h2>05 · Pruebas y escenarios</h2><p class="muted">Las pruebas negativas son simulaciones. El escenario completo sí genera transacciones y gas real.</p><div class="row"><button id="scenario">Ejecutar cadena completa</button><button class="secondary" id="negative">Pruebas negativas</button><button class="secondary" id="audit">Auditoría integral</button></div><div id="tests" class="notice">No se han ejecutado pruebas.</div></section><section class="panel"><h2>06 · Consumo de gas</h2><div id="gasChart" class="empty">No hay recibos registrados en esta sesión.</div></section><section class="panel wide"><div class="row spread"><h2>07 · Transacciones verificables</h2><a class="chip" href="/api/export.csv">Exportar CSV</a></div><div class="scroll"><table><thead><tr><th>Operación</th><th>Firmante</th><th>Gas real</th><th>Coste ETH</th><th>Bloque</th><th>Hash</th></tr></thead><tbody id="ledger"></tbody></table></div></section></div></main></div><script src="/assets/operations.js" defer></script></body></html>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PharmaChain | Operations Studio</title>
+    <link rel="stylesheet" href="/assets/operations.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="side">
+        <div class="brand">⬡ PharmaChain</div>
+        <a class="active" href="/operations.html">▣ Operaciones y lotes</a
+        ><a href="/">◈ Auditoría y pruebas</a><a href="/benchmark.html">▥ Benchmark de gas</a>
+        <p class="hint">
+          Red Ethereum local. Las cuentas del nodo son simuladas y no representan identidades
+          reales.
+        </p>
+      </aside>
+      <main class="content">
+        <header class="head">
+          <div>
+            <h1>Centro de trazabilidad</h1>
+            <div class="muted">
+              Gestiona medicamentos, simula operaciones y sigue cada cambio de custodia.
+            </div>
+          </div>
+          <div class="row">
+            <span class="chip" id="network">Conectando...</span
+            ><button class="secondary" id="reload">↻ Actualizar</button>
+          </div>
+        </header>
+        <div class="metrics">
+          <section class="panel">
+            <div class="muted">Lotes registrados</div>
+            <div class="metric" id="total">—</div>
+          </section>
+          <section class="panel">
+            <div class="muted">Lotes activos</div>
+            <div class="metric" id="active">—</div>
+          </section>
+          <section class="panel">
+            <div class="muted">Entregas pendientes</div>
+            <div class="metric" id="pending">—</div>
+          </section>
+          <section class="panel">
+            <div class="muted">Gas registrado</div>
+            <div class="metric" id="gas">—</div>
+          </section>
+        </div>
+        <div class="grid">
+          <section class="panel wide">
+            <h2>01 · Entorno y participantes</h2>
+            <div class="fields">
+              <div class="field">
+                <label for="contract">Implementación Solidity</label
+                ><select id="contract"></select>
+              </div>
+              <div class="field">
+                <label for="account">Cuenta emisora (firma)</label
+                ><select id="account"></select>
+              </div>
+            </div>
+            <p class="hint" id="roleHint">
+              Las cuentas 0–3 se reservan para administrador, laboratorio, distribuidor y farmacia.
+              Comprueba sus roles antes de operar.
+            </p>
+            <div class="row">
+              <button id="setup" class="secondary">Configurar roles de demostración</button
+              ><button id="inspect" class="secondary">Inspeccionar permisos</button
+              ><span class="chip" id="accountRole">Rol sin verificar</span>
+            </div>
+            <div class="notice" id="roles" hidden></div>
+          </section>
+          <section class="panel">
+            <div class="row spread">
+              <h2>02 · Catálogo de medicamentos</h2>
+              <span class="chip" id="lotCount">0 lotes</span>
+            </div>
+            <div class="field">
+              <label for="search">Buscar por ID, medicamento o fabricante</label
+              ><input id="search" type="search" placeholder="Ej. #3, paracetamol, laboratorio..." />
+            </div>
+            <div id="lotlist" class="lotlist"></div>
+            <div class="row" style="margin-top: 15px">
+              <button class="secondary" id="new">+ Registrar nuevo lote</button
+              ><button class="secondary" id="export">Exportar evidencia</button>
+            </div>
+          </section>
+          <section class="panel">
+            <h2>03 · Operación guiada</h2>
+            <div class="stepper">
+              <div class="step" id="step-register"><b>1. Registrar</b><span>Laboratorio</span></div>
+              <div class="step" id="step-distributor">
+                <b>2. Distribuir</b><span>Distribuidor</span>
+              </div>
+              <div class="step" id="step-pharmacy">
+                <b>3. Farmacia</b><span>Entrega final</span>
+              </div>
+            </div>
+            <div class="fields">
+              <div class="field">
+                <label for="method">Operación</label
+                ><select id="method">
+                  <option value="registrarLote">Registrar medicamento</option>
+                  <option value="proponerTransferencia">Proponer transferencia</option>
+                  <option value="aceptarTransferencia">Aceptar recepción</option>
+                  <option value="cancelarTransferencia">Cancelar propuesta</option>
+                  <option value="desactivarLote">Desactivar lote</option>
+                  <option value="pausar">Pausar contrato</option>
+                  <option value="reanudar">Reanudar contrato</option>
+                </select>
+              </div>
+              <div class="field" id="lotField">
+                <label for="lot">Lote seleccionado</label
+                ><select id="lot"></select>
+              </div>
+              <div class="field" id="nameField">
+                <label for="name">Nombre del medicamento</label
+                ><input id="name" value="Paracetamol 500 mg" maxlength="120" />
+              </div>
+              <div class="field" id="makerField">
+                <label for="maker">Fabricante</label
+                ><input id="maker" value="Laboratorio Galicia" maxlength="120" />
+              </div>
+              <div class="field" id="destinationField">
+                <label for="destination">Organización destinataria</label
+                ><select id="destination"></select>
+              </div>
+            </div>
+            <p class="hint" id="actionHint"></p>
+            <div class="row">
+              <button class="secondary" id="autofill">Elegir cuenta adecuada</button
+              ><button class="secondary" id="preview">Simular sin enviar</button
+              ><button class="success" id="execute">Confirmar transacción</button>
+            </div>
+            <div class="notice" id="result" role="status">
+              Configura los roles y registra tu primer medicamento.
+            </div>
+          </section>
+          <section class="panel wide">
+            <div class="row spread">
+              <div>
+                <h2>04 · Cadena de custodia del lote</h2>
+                <div class="muted">
+                  Movimientos consultados directamente del contrato, no inventados por la interfaz.
+                </div>
+              </div>
+              <button class="secondary" id="trace">Actualizar trazabilidad</button>
+            </div>
+            <div class="timeline" id="flow">
+              <div class="empty">Selecciona un lote para visualizar sus movimientos.</div>
+            </div>
+            <div class="notice" id="state">Sin lote seleccionado.</div>
+          </section>
+          <section class="panel">
+            <h2>05 · Pruebas y escenarios</h2>
+            <p class="muted">
+              Las pruebas negativas son simulaciones. El escenario completo sí genera transacciones
+              y gas real.
+            </p>
+            <div class="row">
+              <button id="scenario">Ejecutar cadena completa</button
+              ><button class="secondary" id="negative">Pruebas negativas</button
+              ><button class="secondary" id="audit">Auditoría integral</button>
+            </div>
+            <div id="tests" class="notice">No se han ejecutado pruebas.</div>
+          </section>
+          <section class="panel">
+            <h2>06 · Consumo de gas</h2>
+            <div id="gasChart" class="empty">No hay recibos registrados en esta sesión.</div>
+          </section>
+          <section class="panel wide">
+            <div class="row spread">
+              <h2>07 · Transacciones verificables</h2>
+              <a class="chip" href="/api/export.csv">Exportar CSV</a>
+            </div>
+            <div class="scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Operación</th>
+                    <th>Firmante</th>
+                    <th>Gas real</th>
+                    <th>Coste ETH</th>
+                    <th>Bloque</th>
+                    <th>Hash</th>
+                  </tr>
+                </thead>
+                <tbody id="ledger"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="/assets/operations.js" defer></script>
+  </body>
+</html>

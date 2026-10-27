@@ -77,7 +77,9 @@ abstract contract GestionV5Combinada {
         if (!(bytes(nombre).length > 0)) revert NombreVacio();
         if (!(bytes(fabricante).length > 0)) revert FabricanteVacio();
 
-        unchecked { ++totalLotes; }
+        unchecked {
+            ++totalLotes;
+        }
         lotes[totalLotes] = Lote({
             id: totalLotes,
             nombre: nombre,

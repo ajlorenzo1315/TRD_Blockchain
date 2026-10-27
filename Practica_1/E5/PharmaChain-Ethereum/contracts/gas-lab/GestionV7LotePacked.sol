@@ -76,7 +76,9 @@ abstract contract GestionV7LotePacked {
         if (!(bytes(nombre).length > 0)) revert NombreVacio();
         if (!(bytes(fabricante).length > 0)) revert FabricanteVacio();
 
-        unchecked { ++totalLotes; }
+        unchecked {
+            ++totalLotes;
+        }
         lotes[totalLotes] = Lote({
             nombre: nombre,
             fabricante: fabricante,

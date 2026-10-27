@@ -57,9 +57,10 @@ contract PharmaV1Roles is GestionV1Roles {
         return usuario == administrador;
     }
 
-    function _transicionValida(address origen, address destino)
-        internal view override returns (bool)
-    {
+    function _transicionValida(
+        address origen,
+        address destino
+    ) internal view override returns (bool) {
         Rol rolOrigen = roles[origen];
         if (rolOrigen == Rol.Laboratorio) return roles[destino] == Rol.Distribuidor;
         if (rolOrigen == Rol.Distribuidor) return roles[destino] == Rol.Farmacia;

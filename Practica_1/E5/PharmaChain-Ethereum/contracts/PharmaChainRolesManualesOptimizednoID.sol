@@ -7,14 +7,21 @@ contract PharmaChainRolesManualesOptimizednoID is GestionLotesYTransferenciasOpt
     address public immutable administrador;
     bool public paused;
 
-    enum Rol { Ninguno, Laboratorio, Distribuidor, Farmacia }
+    enum Rol {
+        Ninguno,
+        Laboratorio,
+        Distribuidor,
+        Farmacia
+    }
     mapping(address => Rol) public roles;
 
     event RolAsignado(address indexed usuario, Rol rol);
     event Paused(address indexed usuario);
     event Unpaused(address indexed usuario);
 
-    constructor() { administrador = msg.sender; }
+    constructor() {
+        administrador = msg.sender;
+    }
 
     modifier soloAdministrador() {
         require(msg.sender == administrador, "No eres el administrador");
@@ -48,10 +55,14 @@ contract PharmaChainRolesManualesOptimizednoID is GestionLotesYTransferenciasOpt
         return usuario == administrador;
     }
 
-    function _transicionValida(address origen, address destino) internal view override returns (bool) {
+    function _transicionValida(
+        address origen,
+        address destino
+    ) internal view override returns (bool) {
         Rol rolOrigen = roles[origen];
-        return (rolOrigen == Rol.Laboratorio && roles[destino] == Rol.Distribuidor)
-            || (rolOrigen == Rol.Distribuidor && roles[destino] == Rol.Farmacia);
+        return
+            (rolOrigen == Rol.Laboratorio && roles[destino] == Rol.Distribuidor) ||
+            (rolOrigen == Rol.Distribuidor && roles[destino] == Rol.Farmacia);
     }
 
     function _comprobarActivo() internal view override {

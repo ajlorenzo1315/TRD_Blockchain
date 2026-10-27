@@ -1,90 +1,1326 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PharmaChain | Validation Studio</title>
-<style>
-:root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,sans-serif;background:#0a101d;color:#e9effb}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer;border:1px solid #37547b;border-radius:9px;padding:10px 14px;background:#24436d;color:#f2f6ff;font-weight:600}button:hover{background:#315b93}button.primary{background:#3375f0;border-color:#3375f0}button.ghost{background:transparent}button:disabled{opacity:.5;cursor:wait}.layout{display:grid;grid-template-columns:238px minmax(0,1fr);min-height:100vh}.sidebar{background:#101a2b;border-right:1px solid #24334d;padding:24px 16px;position:sticky;top:0;height:100vh}.brand{font-size:21px;font-weight:800;letter-spacing:-.6px;margin-bottom:8px}.brand span{color:#69a7ff}.eyebrow{color:#8499b8;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.4px}.nav{margin-top:32px;display:grid;gap:6px}.nav button{text-align:left;background:transparent;border:0;color:#aebed5;padding:13px}.nav button.active{background:#213656;color:white}.nav button:hover{background:#20324e}.sidebar-foot{margin-top:28px;color:#8094b2;font-size:12px;line-height:1.8}.main{padding:30px;max-width:1660px;width:100%;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}.top h1{font-size:27px;letter-spacing:-.8px;margin:6px 0}.subtitle{color:#92a5c1;font-size:13px;margin:0}.toolbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.pill{font-size:12px;border:1px solid #304a69;border-radius:20px;padding:7px 11px;color:#b8c9e0}.dot{display:inline-block;background:#41d4a0;width:8px;height:8px;border-radius:50%;margin-right:7px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.card{background:#121e30;border:1px solid #273a55;border-radius:14px;padding:19px;min-width:0}.metric .num{font-size:30px;font-weight:750;letter-spacing:-1px;margin-top:12px}.metric .label{color:#8ea4c2;font-size:12px}.metric .hint{font-size:11px;color:#7e92b0;margin-top:8px}.section{margin-top:20px}.section h2{font-size:17px;margin:0 0 14px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}.section-head h2{margin:0}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.three{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px}label{font-size:12px;color:#a1b5d0;display:block;margin:12px 0 6px}select,input{width:100%;padding:11px;background:#0b1626;border:1px solid #354c6c;border-radius:8px;color:#edf4ff;min-width:0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.muted{color:#8fa4c1;font-size:12px;line-height:1.6}.table-wrap{overflow:auto;max-height:520px}table{border-collapse:collapse;width:100%;font-size:12px}th{text-align:left;color:#91a7c5;font-weight:650;background:#16253b;position:sticky;top:0}th,td{padding:12px;border-bottom:1px solid #263950;white-space:nowrap}td{color:#d8e5f7}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.ok{color:#55d8ac}.err{color:#ff8797}.tag{display:inline-block;border:1px solid #3c5373;border-radius:6px;padding:4px 7px;font-size:11px}.bar-row{display:grid;grid-template-columns:145px minmax(0,1fr) 75px;gap:12px;align-items:center;margin:12px 0;font-size:12px}.bar-bg{height:10px;background:#223451;border-radius:20px;overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,#2e73f4,#67b3ff);border-radius:20px}.notice{padding:13px;border-radius:9px;background:#1b3555;border:1px solid #36577e;white-space:pre-wrap;font-size:12px;display:none;margin-top:15px}.notice.error{background:#482633;border-color:#8b435a}.view{display:none}.view.active{display:block}.timeline{display:grid;gap:8px}.event{padding:11px;border-left:3px solid #448cff;background:#17263c;border-radius:6px;font-size:12px;overflow-wrap:anywhere}.event strong{display:block;margin-bottom:4px}.small-buttons{display:flex;gap:7px;flex-wrap:wrap}.small-buttons button{font-size:12px;padding:8px 10px}.test-row{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid #273a55;padding:12px 0;font-size:13px}.test-row:last-child{border:0}.progress{height:8px;background:#243550;border-radius:10px;overflow:hidden;margin-top:12px}.progress>div{height:100%;background:#4acaa1}.empty{padding:26px;color:#8fa4c1;text-align:center;font-size:13px}.inline{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.inline select{width:auto;max-width:390px}.footer{font-size:11px;color:#7890b0;margin-top:28px}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,1fr)}.two,.three{grid-template-columns:1fr}}@media(max-width:760px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto}.nav{display:flex;overflow:auto;margin-top:12px}.nav button{white-space:nowrap}.main{padding:16px}.grid{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}}@media(max-width:460px){.grid{grid-template-columns:1fr}}
-</style></head><body><div class="layout"><aside class="sidebar"><div class="brand">⬡ Pharma<span>Chain</span></div><div class="eyebrow">Validation Studio · v2</div><nav class="nav" id="nav"><button class="active" data-view="overview">▦ &nbsp; Resumen</button><button data-view="operations">⇄ &nbsp; Operaciones</button><button data-view="testing">✓ &nbsp; Pruebas</button><button data-view="contracts">◈ &nbsp; Contratos</button><button data-view="trace">⤳ &nbsp; Trazabilidad</button><button data-view="analytics">▥ &nbsp; Gas y costes</button></nav><div style="padding:12px"><a href="/benchmark.html" style="color:#90c5ff">▥ Benchmark frameworks ↗</a></div><div class="sidebar-foot">Entorno académico local<br>Hardhat · Truffle · Web3.js<br><span id="chainMini">Conectando…</span></div></aside><main class="main"><header class="top"><div><div class="eyebrow" id="breadcrumb">LABORATORIO / RESUMEN</div><h1 id="pageTitle">Visión general</h1><p class="subtitle">Auditoría de contratos, pruebas reproducibles y mediciones on-chain.</p></div><div class="toolbar"><span class="pill"><span class="dot" id="onlineDot"></span><span id="networkText">Conectando</span></span><button class="ghost" id="refreshBtn">↻ Actualizar</button><a href="/api/export.csv"><button>↓ CSV gas</button></a></div></header><div class="notice" id="notice"></div>
-<section class="view active" id="view-overview"><div class="grid section" id="metrics"></div><div class="two section"><div class="card"><div class="section-head"><h2>Inicio rápido</h2><span class="tag">Workflow</span></div><p class="muted">Selecciona un contrato y prepara sus roles antes de ejecutar una cadena de custodia. Las acciones generan transacciones reales en la red local.</p><label>Contrato activo</label><select class="contract-select" id="quickContract"></select><div class="actions"><button class="primary" id="quickSetup">1 · Configurar roles</button><button id="quickScenario">2 · Ejecutar custodia</button><button id="quickCompare">3 · Comparar cuatro</button></div></div><div class="card"><div class="section-head"><h2>Gas reciente</h2><span class="tag">gasUsed</span></div><div id="recentChart"></div></div></div><div class="card section"><div class="section-head"><h2>Últimas transacciones</h2><button class="ghost" data-jump="analytics">Ver análisis completo</button></div><div class="table-wrap"><table><thead><tr><th>Contrato</th><th>Operación</th><th>Gas</th><th>Bloque</th><th>Hash</th></tr></thead><tbody id="recentTx"></tbody></table></div></div></section>
-<section class="view" id="view-operations"><div class="two section"><div class="card"><h2>Ejecutar una transacción</h2><label>Contrato</label><select class="contract-select" id="operationContract"></select><label>Cuenta emisora</label><select id="from"></select><label>Operación</label><select id="action"></select><div class="form-grid" id="inputs"></div><div class="actions"><button class="primary" id="executeBtn">Enviar transacción</button><button id="setupBtn">Configurar roles</button></div><p class="muted">El servidor usa exclusivamente cuentas desbloqueadas de Hardhat. No conectes este panel a una red con fondos reales.</p></div><div class="card"><h2>Resultado de ejecución</h2><div id="operationResult" class="empty">Selecciona una operación y envíala para ver el recibo.</div><h2 style="margin-top:24px">Escenarios</h2><p class="muted">El escenario completo registra un lote y realiza laboratorio → distribuidor → farmacia.</p><button id="scenarioBtn">Ejecutar escenario completo</button></div></div></section>
-<section class="view" id="view-testing"><div class="two section"><div class="card"><div class="section-head"><h2>Pruebas negativas de seguridad</h2><span class="tag">eth_call · sin coste</span></div><label>Contrato bajo prueba</label><select class="contract-select" id="testContract"></select><div id="testCases"></div><div class="actions"><button class="primary" id="runTests">Ejecutar batería</button><a href="/api/tests-export.csv"><button>↓ CSV pruebas</button></a></div><p class="muted">Se comprueba que las operaciones inválidas revierten. No se envían transacciones ni se inventa gas consumido.</p></div><div class="card"><h2>Último resultado</h2><div id="testSummary" class="empty">Ejecuta las pruebas para ver los resultados.</div><div id="testResults"></div></div></div><div class="card section"><div class="section-head"><h2>Pruebas automatizadas de proyecto</h2><span class="tag">CLI</span></div><div class="two"><div><h3>Hardhat</h3><p class="muted">Pruebas unitarias, permisos, paridad entre versiones e historial de custodia.</p><code class="mono">npm test</code></div><div><h3>Truffle</h3><p class="muted">Pruebas de integración sobre el nodo Ethereum local.</p><code class="mono">npm run truffle:test</code></div></div><p class="muted">Estos comandos se ejecutan en la terminal, no desde el navegador. La interfaz no presenta resultados ficticios de CLI.</p></div></section>
-<section class="view" id="view-contracts"><div class="card section"><div class="section-head"><h2>Explorador de contratos</h2><span class="tag">Estado blockchain</span></div><label>Contrato</label><select class="contract-select" id="inspectContract"></select><div class="actions"><button id="inspectBtn" class="primary">Inspeccionar contrato</button></div><div id="contractDetails" class="section"></div></div></section>
-<section class="view" id="view-trace"><div class="two section"><div class="card"><h2>Registro de lotes</h2><label>Contrato</label><select class="contract-select" id="traceContract"></select><div class="actions"><button id="loadLots">Consultar lotes</button><button id="loadEvents">Ver eventos</button></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>Nombre</th><th>Custodio</th><th>Estado</th><th></th></tr></thead><tbody id="lotsTable"></tbody></table></div></div><div class="card"><h2>Movimientos del lote</h2><div id="movements" class="empty">Selecciona un lote de la tabla.</div><h2 style="margin-top:24px">Eventos recientes</h2><div id="events" class="timeline"></div></div></div></section>
-<section class="view" id="view-analytics"><div class="grid section" id="gasMetrics"></div><div class="two section"><div class="card"><div class="section-head"><h2>Gas por operación</h2><span class="tag">Recibos confirmados</span></div><div id="gasChart"></div></div><div class="card"><h2>Comparación acumulada</h2><p class="muted">Los totales reflejan las transacciones ejecutadas desde el panel, no necesariamente escenarios equivalentes. Para un benchmark justo usa el comparador y estados iniciales comparables.</p><div id="comparison"></div><button id="compareBtn">Ejecutar comparación</button></div></div><div class="card section"><div class="section-head"><h2>Historial de transacciones</h2><div class="inline"><label style="margin:0">Filtrar</label><select id="filterContract"><option value="">Todos</option></select></div></div><div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Contrato</th><th>Acción</th><th>Gas usado</th><th>Estimación</th><th>Coste ETH</th><th>Bloque</th><th>Tx hash</th></tr></thead><tbody id="ledger"></tbody></table></div></div></section>
-<footer class="footer">PharmaChain Validation Studio · Demostración académica en blockchain local · Las pruebas de simulación no consumen gas on-chain.</footer></main></div>
-<script>
-const $=id=>document.getElementById(id);const escapeHTML=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let state={status:null,ledger:[],summary:null};const fmt=n=>Number(n||0).toLocaleString('es-ES');const short=x=>String(x||'').slice(0,12)+'…';const label=x=>String(x).replace('PharmaChainRoles','');
-async function api(route,body){const r=await fetch('/api/'+route,{method:body===undefined?'GET':'POST',headers:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});const text=await r.text();let j;try{j=JSON.parse(text)}catch{throw Error(text.slice(0,200))}if(!r.ok)throw Error(j.error||r.statusText);return j}
-function notify(msg,error=false){const e=$('notice');e.style.display='block';e.className='notice'+(error?' error':'');e.textContent=msg;clearTimeout(window._notifyTimeout);window._notifyTimeout=setTimeout(()=>e.style.display='none',9000)}
-async function busy(button,fn){const b=$(button);if(b)b.disabled=true;try{await fn()}catch(e){notify(e.message,true)}finally{if(b)b.disabled=false}}
-function navigate(view){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+view));document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===view));const titles={overview:'Visión general',operations:'Centro de operaciones',testing:'Suite de pruebas',contracts:'Explorador de contratos',trace:'Trazabilidad de custodia',analytics:'Análisis de gas'};$('pageTitle').textContent=titles[view];$('breadcrumb').textContent='LABORATORIO / '+titles[view].toUpperCase()}
-document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>navigate(b.dataset.view));document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>navigate(b.dataset.jump));
-const actionFields={registrarLote:[['nombre','Nombre del medicamento','Paracetamol'],['fabricante','Fabricante','Laboratorio Galicia']],proponerTransferencia:[['id','ID del lote','1'],['destino','Dirección destino','']],aceptarTransferencia:[['id','ID del lote','1']],cancelarTransferencia:[['id','ID del lote','1']],desactivarLote:[['id','ID del lote','1']],pausar:[],reanudar:[]};
-function setFields(){const a=$('action').value;const fields=actionFields[a]||[];$('inputs').innerHTML=fields.map(([key,title,val])=>`<div><label>${escapeHTML(title)}</label><input id="field_${key}" value="${escapeHTML(key==='destino'?state.status?.accounts?.[2]||'':val)}"></div>`).join('')}
-function renderBar(items,target,limit=10){const data=items.slice(0,limit);const max=Math.max(1,...data.map(x=>Number(x.value)));$(target).innerHTML=data.map(x=>`<div class="bar-row"><span title="${escapeHTML(x.label)}">${escapeHTML(x.label.slice(0,23))}</span><div class="bar-bg"><div class="bar-fill" style="width:${Math.max(1,100*x.value/max)}%"></div></div><b>${fmt(x.value)}</b></div>`).join('')||'<div class="empty">Aún no hay transacciones medidas.</div>'}
-function render(){const s=state.status,l=state.ledger,summary=state.summary;if(!s)return;$('networkText').textContent='Chain '+s.chainId;$('chainMini').textContent='Chain ID: '+s.chainId+' · '+s.accounts.length+' cuentas';$('metrics').innerHTML=[['Contratos activos',Object.values(s.contracts).filter(Boolean).length+'/'+Object.keys(s.contracts).length,'Truffle deployments'],['Transacciones',l.length,'Registradas en esta sesión'],['Gas acumulado',fmt(l.reduce((a,x)=>a+Number(x.gasUsed),0)),'Unidades de gas'],['Pruebas ejecutadas',summary.testRuns,'Baterías de seguridad']].map(x=>`<div class="card metric"><div class="label">${x[0]}</div><div class="num">${x[1]}</div><div class="hint">${x[2]}</div></div>`).join('');$('gasMetrics').innerHTML=[['Transacciones',l.length],['Gas total',fmt(l.reduce((a,x)=>a+Number(x.gasUsed),0))],['Coste ETH',l.reduce((a,x)=>a+Number(x.costEth),0).toFixed(8)],['Gas medio',fmt(l.length?l.reduce((a,x)=>a+Number(x.gasUsed),0)/l.length:0)]].map(x=>`<div class="card metric"><div class="label">${x[0]}</div><div class="num">${x[1]}</div></div>`).join('');const txrows=l.map(x=>`<tr><td>${escapeHTML(x.time.slice(11,19))}</td><td>${escapeHTML(label(x.contract))}</td><td>${escapeHTML(x.action)}</td><td>${fmt(x.gasUsed)}</td><td>${fmt(x.gasEstimate)}</td><td>${escapeHTML(x.costEth)}</td><td>${escapeHTML(x.block)}</td><td class="mono" title="${escapeHTML(x.txHash)}">${escapeHTML(short(x.txHash))}</td></tr>`);$('ledger').innerHTML=txrows.filter((_,i)=>!$('filterContract').value||l[i].contract===$('filterContract').value).join('');$('recentTx').innerHTML=l.slice(0,6).map(x=>`<tr><td>${escapeHTML(label(x.contract))}</td><td>${escapeHTML(x.action)}</td><td>${fmt(x.gasUsed)}</td><td>${escapeHTML(x.block)}</td><td class="mono" title="${escapeHTML(x.txHash)}">${escapeHTML(short(x.txHash))}</td></tr>`).join('');const bars=l.map(x=>({label:x.action,value:Number(x.gasUsed)}));renderBar(bars,'recentChart',5);renderBar(bars,'gasChart',12);renderBar(summary.contracts.map(x=>({label:label(x.contract),value:x.gas})),'comparison',4)}
-async function refresh(){const [status,ledger,summary]=await Promise.all([api('status'),api('ledger'),api('summary')]);state={status,ledger,summary};const selectors=document.querySelectorAll('.contract-select');for(const select of selectors){const old=select.value;select.innerHTML=Object.entries(status.contracts).map(([name,addr])=>`<option value="${escapeHTML(name)}" ${addr?'':'disabled'}>${escapeHTML(label(name))}${addr?'':' · sin desplegar'}</option>`).join('');if(status.contracts[old])select.value=old}const oldFrom=$('from').value;$('from').innerHTML=status.accounts.map((a,i)=>`<option value="${escapeHTML(a)}">Cuenta ${i} · ${escapeHTML(short(a))}</option>`).join('');if(status.accounts.includes(oldFrom))$('from').value=oldFrom;const oldFilter=$('filterContract').value;$('filterContract').innerHTML='<option value="">Todos</option>'+Object.keys(status.contracts).map(n=>`<option value="${escapeHTML(n)}">${escapeHTML(label(n))}</option>`).join('');$('filterContract').value=oldFilter;render();setFields()}
-async function runAction(){const body={name:$('operationContract').value,from:$('from').value,action:$('action').value};for(const f of actionFields[body.action]||[])body[f[0]]=$('field_'+f[0]).value;const result=await api('action',body);$('operationResult').innerHTML=`<div class="tag ok">Transacción confirmada</div><p><b>Gas:</b> ${fmt(result.gasUsed)} / <b>Estimado:</b> ${fmt(result.gasEstimate)}</p><p><b>Coste:</b> ${escapeHTML(result.costEth)} ETH</p><p><b>Bloque:</b> ${escapeHTML(result.block)}</p><p class="mono" style="overflow-wrap:anywhere">${escapeHTML(result.txHash)}</p>`;notify('Transacción confirmada · '+fmt(result.gasUsed)+' gas');await refresh()}
-async function setup(name){const r=await api('setup',{name});notify('Roles configurados: '+r.transactions.length+' transacciones');await refresh()}
-async function scenario(name){const r=await api('scenario',{name});notify('Lote '+r.id+' · cadena completa · '+r.transactions.length+' transacciones');await refresh()}
-async function compare(){const r=await api('compare',{});notify('Comparación ejecutada: '+r.results.length+' transacciones confirmadas');await refresh()}
-async function inspect(){const d=await api('inspect/'+encodeURIComponent($('inspectContract').value));$('contractDetails').innerHTML=`<div class="grid"><div class="metric"><div class="label">Lotes</div><div class="num">${d.totalLotes}</div></div><div class="metric"><div class="label">Pausado</div><div class="num">${d.paused===null?'N/D':d.paused?'Sí':'No'}</div></div></div><p class="muted mono" style="overflow-wrap:anywhere">Dirección: ${escapeHTML(d.address)}</p><h3>Roles y cuentas</h3><div class="table-wrap"><table><thead><tr><th>Cuenta</th><th>Rol</th></tr></thead><tbody>${d.roles.map((r,i)=>`<tr><td title="${escapeHTML(r.account)}">${i} · ${escapeHTML(short(r.account))}</td><td>${escapeHTML(r.role)}</td></tr>`).join('')}</tbody></table></div>`}
-async function lots(){const d=await api('lotes/'+encodeURIComponent($('traceContract').value));$('lotsTable').innerHTML=d.items.map(l=>`<tr><td>${l.id}</td><td>${escapeHTML(l.nombre)}</td><td title="${escapeHTML(l.propietario)}">${escapeHTML(short(l.propietario))}</td><td><span class="tag ${l.activo?'ok':'err'}">${l.activo?l.pendiente?'Pendiente':'Activo':'Inactivo'}</span></td><td><button class="ghost" data-lot="${l.id}">Ver</button></td></tr>`).join('');document.querySelectorAll('[data-lot]').forEach(b=>b.onclick=()=>movements(b.dataset.lot))}
-async function movements(id){const d=await api('movements/'+encodeURIComponent($('traceContract').value)+'/'+id);const types=['Registro','Propuesta','Aceptación','Cancelación'];$('movements').innerHTML=`<h3>Lote #${id} · ${d.total} movimientos</h3><div class="timeline">`+d.items.map(m=>`<div class="event"><strong>${escapeHTML(types[Number(m.type)]||m.type)} · #${m.index}</strong><div>Origen: ${escapeHTML(short(m.origin))}</div><div>Destino: ${escapeHTML(short(m.destination))}</div><small>${new Date(Number(m.timestamp)*1000).toLocaleString('es-ES')}</small></div>`).join('')+'</div>'}
-async function events(){const e=await api('events/'+encodeURIComponent($('traceContract').value));$('events').innerHTML=e.slice(0,12).map(x=>`<div class="event"><strong>${escapeHTML(x.name)}</strong>Bloque ${escapeHTML(x.block)} · ${escapeHTML(short(x.hash))}</div>`).join('')||'<div class="empty">No se encontraron eventos recientes.</div>'}
-async function runTests(){const r=await api('run-tests',{name:$('testContract').value});$('testSummary').innerHTML=`<div class="metric"><div class="label">Pruebas superadas</div><div class="num ${r.passed===r.total?'ok':'err'}">${r.passed} / ${r.total}</div><div class="progress"><div style="width:${100*r.passed/r.total}%"></div></div></div>`;$('testResults').innerHTML=r.results.map(x=>`<div class="test-row"><span>${escapeHTML(x.label)}</span><b class="${x.passed?'ok':'err'}">${x.passed?'PASS':'FAIL'}</b></div>`).join('');notify('Batería completada: '+r.passed+'/'+r.total);await refresh()}
-$('action').innerHTML=Object.keys(actionFields).map(x=>`<option value="${x}">${x}</option>`).join('');$('action').onchange=setFields;$('refreshBtn').onclick=()=>busy('refreshBtn',refresh);$('executeBtn').onclick=()=>busy('executeBtn',runAction);$('quickSetup').onclick=()=>busy('quickSetup',()=>setup($('quickContract').value));$('quickScenario').onclick=()=>busy('quickScenario',()=>scenario($('quickContract').value));$('quickCompare').onclick=()=>busy('quickCompare',compare);$('setupBtn').onclick=()=>busy('setupBtn',()=>setup($('operationContract').value));$('scenarioBtn').onclick=()=>busy('scenarioBtn',()=>scenario($('operationContract').value));$('inspectBtn').onclick=()=>busy('inspectBtn',inspect);$('loadLots').onclick=()=>busy('loadLots',lots);$('loadEvents').onclick=()=>busy('loadEvents',events);$('runTests').onclick=()=>busy('runTests',runTests);$('compareBtn').onclick=()=>busy('compareBtn',compare);$('filterContract').onchange=render;
-$('testCases').innerHTML=['Atacante no registra un lote','No aceptar lote inexistente','Rechazar destino cero','Rechazar nombre vacío','Bloquear laboratorio → farmacia'].map(x=>`<div class="test-row"><span>${escapeHTML(x)}</span><span class="tag">Revert esperado</span></div>`).join('');refresh().catch(e=>notify('No se puede conectar al nodo: '+e.message,true));
-</script>
-<style>
-.audit-panel{margin-top:22px}.audit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.audit-num{font-size:26px;font-weight:800;margin-top:8px}.audit-list{max-height:520px;overflow:auto}.audit-item{padding:12px;border-bottom:1px solid #31445c;display:flex;justify-content:space-between;gap:16px;align-items:start}.audit-item small{display:block;color:#8fa4c1;margin-top:5px}.audit-actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.audit-actions select{max-width:330px}.audit-chart{display:flex;align-items:end;gap:12px;min-height:245px;padding:25px 12px 38px;border-bottom:1px solid #3b5069}.audit-column{flex:1;min-width:0;position:relative;text-align:center}.audit-column .fill{background:linear-gradient(180deg,#4ba5ff,#315dcb);border-radius:6px 6px 0 0;min-height:2px}.audit-column label{font-size:10px;position:absolute;bottom:-32px;left:0;right:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.audit-column strong{font-size:11px}.audit-note{color:#94a8c5;font-size:12px;line-height:1.7}.audit-flow{display:flex;gap:8px;align-items:center;overflow:auto;padding:15px 0}.audit-node{background:#1e3452;border:1px solid #436287;border-radius:10px;padding:13px;min-width:140px;text-align:center;font-size:12px}.audit-arrow{color:#68a9ff;font-size:24px}.audit-status{color:#5dd5a6}.audit-status.bad{color:#ff8290}@media(max-width:900px){.audit-grid{grid-template-columns:1fr}}
-</style>
-<section class="card audit-panel" id="auditStudio">
- <div class="section-head"><h2>Auditoría avanzada · pruebas reproducibles</h2><span class="pill">v3 · Hardhat + Truffle + Web3.js</span></div>
- <p class="audit-note">Ejecuta pruebas negativas sin modificar el estado (eth_call) o una cadena completa con transacciones reales, invariantes y medidas de gas. Los resultados se generan al pulsar Ejecutar; no son pruebas precalculadas.</p>
- <div class="audit-actions">
-  <select id="auditContract" aria-label="Contrato para auditar"></select>
-  <button id="auditNegative">7 controles básicos (simulación)</button>
-  <button id="auditFull" class="primary">Ejecutar flujo e invariantes</button>
-  <button id="auditAll">Auditar cuatro contratos</button>
-  <a href="/api/audit/export" download style="color:#9bc9ff">Exportar informe JSON</a>
- </div>
- <p id="auditMessage" class="audit-note"></p>
- <div class="audit-grid">
-  <div class="card"><div class="metric label">Pruebas superadas</div><div class="audit-num" id="auditPassed">—</div></div>
-  <div class="card"><div class="metric label">Fallos detectados</div><div class="audit-num" id="auditFailed">—</div></div>
-  <div class="card"><div class="metric label">Gas real de la cadena</div><div class="audit-num" id="auditGas">—</div></div>
- </div>
- <div class="two section">
-  <div class="card"><h3>Grafo de custodia</h3><div id="auditFlow" class="audit-flow"><span class="audit-note">Ejecuta el flujo completo para mostrar la secuencia.</span></div><p class="audit-note">Cada nodo representa una transición verificada mediante lectura del contrato.</p></div>
-  <div class="card"><h3>Gas por operación</h3><div id="auditChart" class="audit-chart"></div><p class="audit-note">Unidades reales gasUsed obtenidas de recibos. Las pruebas eth_call no se incluyen.</p></div>
- </div>
- <div class="two section"><div class="card"><h3>Resultados y justificación</h3><div id="auditResults" class="audit-list"></div></div><div class="card"><h3>Historial de ejecuciones</h3><div id="auditHistory" class="audit-list"></div></div></div>
-</section>
-<script>
-(()=>{
- const q=id=>document.getElementById(id),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let names=[];
- async function loadAuditVariants(){
-  const [variants,status]=await Promise.all([request('/api/variants'),request('/api/status')]);
-  names=variants.filter(v=>Boolean(status.contracts[v.id])).map(v=>v.id);
-  q('auditContract').innerHTML=variants.map(v=>`<option value="${esc(v.id)}" ${status.contracts[v.id]?'':'disabled'}>${esc(v.title)}${status.contracts[v.id]?'':' · sin desplegar'}</option>`).join('');
-  q('auditAll').disabled=names.length===0;
-  q('auditMessage').textContent=`${names.length}/${variants.length} contratos desplegados disponibles para auditoría`;
- }
- async function request(url,body){const r=await fetch(url,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});const data=await r.json();if(!r.ok)throw Error(data.error||'Error del servidor');return data}
- function show(run){
- q('auditPassed').textContent=run.passed+' / '+run.total;q('auditFailed').textContent=run.failed;q('auditGas').textContent=run.gasTotal.toLocaleString('es-ES');
- q('auditResults').innerHTML=run.results.map(t=>`<div class="audit-item"><div><b>${esc(t.title)}</b><small>${esc(t.category)} · ${esc(t.kind)} · ${esc(t.detail)}</small></div><strong class="audit-status ${t.passed?'':'bad'}">${t.passed?'PASS':'FAIL'}</strong></div>`).join('');
- const seq=['Laboratorio','Propuesta L→D','Distribuidor','Propuesta D→F','Farmacia'];q('auditFlow').innerHTML=run.steps.length?seq.map((x,i)=>`${i?'<span class="audit-arrow">→</span>':''}<div class="audit-node">${esc(x)}<small style="display:block;color:#9fc5ef">${i===0?'Registro':i===2?'Aceptación':i===4?'Aceptación':'Pendiente'}</small></div>`).join(''):'<span class="audit-note">Solo simulaciones; no se modificó la custodia.</span>';
- const max=Math.max(1,...run.steps.map(x=>Number(x.gasUsed)));q('auditChart').innerHTML=run.steps.length?run.steps.map((x,i)=>`<div class="audit-column"><strong>${Number(x.gasUsed).toLocaleString('es-ES')}</strong><div class="fill" style="height:${Math.max(5,160*Number(x.gasUsed)/max)}px"></div><label title="${esc(x.title)}">Paso ${i+1}</label></div>`).join(''):'<span class="audit-note">No hay recibos: la batería negativa utiliza eth_call.</span>';
- }
- async function history(){const runs=await request('/api/audit/runs');q('auditHistory').innerHTML=runs.length?runs.map(x=>`<div class="audit-item"><div><b>${esc(x.name.replace('PharmaChainRoles',''))}</b><small>${esc(x.date)} · ${esc(x.mode)} · ${x.passed}/${x.total} PASS · ${x.gasTotal.toLocaleString('es-ES')} gas</small></div><span class="audit-status ${x.failed?'bad':''}">${x.failed?'REVISAR':'OK'}</span></div>`).join(''):'<p class="audit-note">Todavía no se han ejecutado auditorías.</p>'}
- async function run(name,mode){q('auditMessage').textContent='Ejecutando '+name+' ('+mode+')...';const result=await request('/api/audit/run',{name,mode});show(result);await history();q('auditMessage').textContent='Ejecución '+result.id+': '+result.passed+' superadas, '+result.failed+' fallidas. '+(mode==='full'?'Transacciones confirmadas y verificadas.':'Simulaciones sin gasto de gas.');return result}
- async function safe(fn){for(const b of [q('auditNegative'),q('auditFull'),q('auditAll')])b.disabled=true;try{await fn()}catch(e){q('auditMessage').textContent='Error: '+e.message}finally{for(const b of [q('auditNegative'),q('auditFull'),q('auditAll')])b.disabled=false}}
- q('auditNegative').onclick=()=>safe(()=>run(q('auditContract').value,'negative'));
- q('auditFull').onclick=()=>safe(()=>run(q('auditContract').value,'full'));
- q('auditAll').onclick=()=>safe(async()=>{let pass=0,fail=0;for(const name of names){const r=await run(name,'full');pass+=r.passed;fail+=r.failed}q('auditMessage').textContent=names.length+' contratos auditados: '+pass+' PASS, '+fail+' FAIL.'});
- loadAuditVariants().catch(e=>q('auditMessage').textContent='No se pudo cargar el catálogo: '+e.message);
- history().catch(e=>q('auditMessage').textContent=e.message);
-})();
-</script>
-</body></html>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PharmaChain | Validation Studio</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          Segoe UI,
+          sans-serif;
+        background: #0a101d;
+        color: #e9effb;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+        border: 1px solid #37547b;
+        border-radius: 9px;
+        padding: 10px 14px;
+        background: #24436d;
+        color: #f2f6ff;
+        font-weight: 600;
+      }
+      button:hover {
+        background: #315b93;
+      }
+      button.primary {
+        background: #3375f0;
+        border-color: #3375f0;
+      }
+      button.ghost {
+        background: transparent;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: wait;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 238px minmax(0, 1fr);
+        min-height: 100vh;
+      }
+      .sidebar {
+        background: #101a2b;
+        border-right: 1px solid #24334d;
+        padding: 24px 16px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+      }
+      .brand {
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: -0.6px;
+        margin-bottom: 8px;
+      }
+      .brand span {
+        color: #69a7ff;
+      }
+      .eyebrow {
+        color: #8499b8;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.4px;
+      }
+      .nav {
+        margin-top: 32px;
+        display: grid;
+        gap: 6px;
+      }
+      .nav button {
+        text-align: left;
+        background: transparent;
+        border: 0;
+        color: #aebed5;
+        padding: 13px;
+      }
+      .nav button.active {
+        background: #213656;
+        color: white;
+      }
+      .nav button:hover {
+        background: #20324e;
+      }
+      .sidebar-foot {
+        margin-top: 28px;
+        color: #8094b2;
+        font-size: 12px;
+        line-height: 1.8;
+      }
+      .main {
+        padding: 30px;
+        max-width: 1660px;
+        width: 100%;
+        margin: auto;
+      }
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+      .top h1 {
+        font-size: 27px;
+        letter-spacing: -0.8px;
+        margin: 6px 0;
+      }
+      .subtitle {
+        color: #92a5c1;
+        font-size: 13px;
+        margin: 0;
+      }
+      .toolbar {
+        display: flex;
+        gap: 9px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .pill {
+        font-size: 12px;
+        border: 1px solid #304a69;
+        border-radius: 20px;
+        padding: 7px 11px;
+        color: #b8c9e0;
+      }
+      .dot {
+        display: inline-block;
+        background: #41d4a0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 7px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 15px;
+      }
+      .card {
+        background: #121e30;
+        border: 1px solid #273a55;
+        border-radius: 14px;
+        padding: 19px;
+        min-width: 0;
+      }
+      .metric .num {
+        font-size: 30px;
+        font-weight: 750;
+        letter-spacing: -1px;
+        margin-top: 12px;
+      }
+      .metric .label {
+        color: #8ea4c2;
+        font-size: 12px;
+      }
+      .metric .hint {
+        font-size: 11px;
+        color: #7e92b0;
+        margin-top: 8px;
+      }
+      .section {
+        margin-top: 20px;
+      }
+      .section h2 {
+        font-size: 17px;
+        margin: 0 0 14px;
+      }
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+      }
+      .section-head h2 {
+        margin: 0;
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .three {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 16px;
+      }
+      label {
+        font-size: 12px;
+        color: #a1b5d0;
+        display: block;
+        margin: 12px 0 6px;
+      }
+      select,
+      input {
+        width: 100%;
+        padding: 11px;
+        background: #0b1626;
+        border: 1px solid #354c6c;
+        border-radius: 8px;
+        color: #edf4ff;
+        min-width: 0;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 14px;
+      }
+      .actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 17px;
+      }
+      .muted {
+        color: #8fa4c1;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .table-wrap {
+        overflow: auto;
+        max-height: 520px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 12px;
+      }
+      th {
+        text-align: left;
+        color: #91a7c5;
+        font-weight: 650;
+        background: #16253b;
+        position: sticky;
+        top: 0;
+      }
+      th,
+      td {
+        padding: 12px;
+        border-bottom: 1px solid #263950;
+        white-space: nowrap;
+      }
+      td {
+        color: #d8e5f7;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      }
+      .ok {
+        color: #55d8ac;
+      }
+      .err {
+        color: #ff8797;
+      }
+      .tag {
+        display: inline-block;
+        border: 1px solid #3c5373;
+        border-radius: 6px;
+        padding: 4px 7px;
+        font-size: 11px;
+      }
+      .bar-row {
+        display: grid;
+        grid-template-columns: 145px minmax(0, 1fr) 75px;
+        gap: 12px;
+        align-items: center;
+        margin: 12px 0;
+        font-size: 12px;
+      }
+      .bar-bg {
+        height: 10px;
+        background: #223451;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #2e73f4, #67b3ff);
+        border-radius: 20px;
+      }
+      .notice {
+        padding: 13px;
+        border-radius: 9px;
+        background: #1b3555;
+        border: 1px solid #36577e;
+        white-space: pre-wrap;
+        font-size: 12px;
+        display: none;
+        margin-top: 15px;
+      }
+      .notice.error {
+        background: #482633;
+        border-color: #8b435a;
+      }
+      .view {
+        display: none;
+      }
+      .view.active {
+        display: block;
+      }
+      .timeline {
+        display: grid;
+        gap: 8px;
+      }
+      .event {
+        padding: 11px;
+        border-left: 3px solid #448cff;
+        background: #17263c;
+        border-radius: 6px;
+        font-size: 12px;
+        overflow-wrap: anywhere;
+      }
+      .event strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+      .small-buttons {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .small-buttons button {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+      .test-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        border-bottom: 1px solid #273a55;
+        padding: 12px 0;
+        font-size: 13px;
+      }
+      .test-row:last-child {
+        border: 0;
+      }
+      .progress {
+        height: 8px;
+        background: #243550;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 12px;
+      }
+      .progress > div {
+        height: 100%;
+        background: #4acaa1;
+      }
+      .empty {
+        padding: 26px;
+        color: #8fa4c1;
+        text-align: center;
+        font-size: 13px;
+      }
+      .inline {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        flex-wrap: wrap;
+      }
+      .inline select {
+        width: auto;
+        max-width: 390px;
+      }
+      .footer {
+        font-size: 11px;
+        color: #7890b0;
+        margin-top: 28px;
+      }
+      @media (max-width: 1050px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .two,
+        .three {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 760px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static;
+          height: auto;
+        }
+        .nav {
+          display: flex;
+          overflow: auto;
+          margin-top: 12px;
+        }
+        .nav button {
+          white-space: nowrap;
+        }
+        .main {
+          padding: 16px;
+        }
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 460px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">⬡ Pharma<span>Chain</span></div>
+        <div class="eyebrow">Validation Studio · v2</div>
+        <nav class="nav" id="nav">
+          <button class="active" data-view="overview">▦ &nbsp; Resumen</button
+          ><button data-view="operations">⇄ &nbsp; Operaciones</button
+          ><button data-view="testing">✓ &nbsp; Pruebas</button
+          ><button data-view="contracts">◈ &nbsp; Contratos</button
+          ><button data-view="trace">⤳ &nbsp; Trazabilidad</button
+          ><button data-view="analytics">▥ &nbsp; Gas y costes</button>
+        </nav>
+        <div style="padding: 12px">
+          <a href="/benchmark.html" style="color: #90c5ff">▥ Benchmark frameworks ↗</a>
+        </div>
+        <div class="sidebar-foot">
+          Entorno académico local<br />Hardhat · Truffle · Web3.js<br /><span id="chainMini"
+            >Conectando…</span
+          >
+        </div>
+      </aside>
+      <main class="main">
+        <header class="top">
+          <div>
+            <div class="eyebrow" id="breadcrumb">LABORATORIO / RESUMEN</div>
+            <h1 id="pageTitle">Visión general</h1>
+            <p class="subtitle">
+              Auditoría de contratos, pruebas reproducibles y mediciones on-chain.
+            </p>
+          </div>
+          <div class="toolbar">
+            <span class="pill"
+              ><span class="dot" id="onlineDot"></span
+              ><span id="networkText">Conectando</span></span
+            ><button class="ghost" id="refreshBtn">↻ Actualizar</button
+            ><a href="/api/export.csv"><button>↓ CSV gas</button></a>
+          </div>
+        </header>
+        <div class="notice" id="notice"></div>
+        <section class="view active" id="view-overview">
+          <div class="grid section" id="metrics"></div>
+          <div class="two section">
+            <div class="card">
+              <div class="section-head">
+                <h2>Inicio rápido</h2>
+                <span class="tag">Workflow</span>
+              </div>
+              <p class="muted">
+                Selecciona un contrato y prepara sus roles antes de ejecutar una cadena de custodia.
+                Las acciones generan transacciones reales en la red local.
+              </p>
+              <label>Contrato activo</label
+              ><select class="contract-select" id="quickContract"></select>
+              <div class="actions">
+                <button class="primary" id="quickSetup">1 · Configurar roles</button
+                ><button id="quickScenario">2 · Ejecutar custodia</button
+                ><button id="quickCompare">3 · Comparar cuatro</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="section-head">
+                <h2>Gas reciente</h2>
+                <span class="tag">gasUsed</span>
+              </div>
+              <div id="recentChart"></div>
+            </div>
+          </div>
+          <div class="card section">
+            <div class="section-head">
+              <h2>Últimas transacciones</h2>
+              <button class="ghost" data-jump="analytics">Ver análisis completo</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Contrato</th>
+                    <th>Operación</th>
+                    <th>Gas</th>
+                    <th>Bloque</th>
+                    <th>Hash</th>
+                  </tr>
+                </thead>
+                <tbody id="recentTx"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section class="view" id="view-operations">
+          <div class="two section">
+            <div class="card">
+              <h2>Ejecutar una transacción</h2>
+              <label>Contrato</label
+              ><select class="contract-select" id="operationContract"></select
+              ><label>Cuenta emisora</label
+              ><select id="from"></select
+              ><label>Operación</label
+              ><select id="action"></select>
+              <div class="form-grid" id="inputs"></div>
+              <div class="actions">
+                <button class="primary" id="executeBtn">Enviar transacción</button
+                ><button id="setupBtn">Configurar roles</button>
+              </div>
+              <p class="muted">
+                El servidor usa exclusivamente cuentas desbloqueadas de Hardhat. No conectes este
+                panel a una red con fondos reales.
+              </p>
+            </div>
+            <div class="card">
+              <h2>Resultado de ejecución</h2>
+              <div id="operationResult" class="empty">
+                Selecciona una operación y envíala para ver el recibo.
+              </div>
+              <h2 style="margin-top: 24px">Escenarios</h2>
+              <p class="muted">
+                El escenario completo registra un lote y realiza laboratorio → distribuidor →
+                farmacia.
+              </p>
+              <button id="scenarioBtn">Ejecutar escenario completo</button>
+            </div>
+          </div>
+        </section>
+        <section class="view" id="view-testing">
+          <div class="two section">
+            <div class="card">
+              <div class="section-head">
+                <h2>Pruebas negativas de seguridad</h2>
+                <span class="tag">eth_call · sin coste</span>
+              </div>
+              <label>Contrato bajo prueba</label
+              ><select class="contract-select" id="testContract"></select>
+              <div id="testCases"></div>
+              <div class="actions">
+                <button class="primary" id="runTests">Ejecutar batería</button
+                ><a href="/api/tests-export.csv"><button>↓ CSV pruebas</button></a>
+              </div>
+              <p class="muted">
+                Se comprueba que las operaciones inválidas revierten. No se envían transacciones ni
+                se inventa gas consumido.
+              </p>
+            </div>
+            <div class="card">
+              <h2>Último resultado</h2>
+              <div id="testSummary" class="empty">Ejecuta las pruebas para ver los resultados.</div>
+              <div id="testResults"></div>
+            </div>
+          </div>
+          <div class="card section">
+            <div class="section-head">
+              <h2>Pruebas automatizadas de proyecto</h2>
+              <span class="tag">CLI</span>
+            </div>
+            <div class="two">
+              <div>
+                <h3>Hardhat</h3>
+                <p class="muted">
+                  Pruebas unitarias, permisos, paridad entre versiones e historial de custodia.
+                </p>
+                <code class="mono">npm test</code>
+              </div>
+              <div>
+                <h3>Truffle</h3>
+                <p class="muted">Pruebas de integración sobre el nodo Ethereum local.</p>
+                <code class="mono">npm run truffle:test</code>
+              </div>
+            </div>
+            <p class="muted">
+              Estos comandos se ejecutan en la terminal, no desde el navegador. La interfaz no
+              presenta resultados ficticios de CLI.
+            </p>
+          </div>
+        </section>
+        <section class="view" id="view-contracts">
+          <div class="card section">
+            <div class="section-head">
+              <h2>Explorador de contratos</h2>
+              <span class="tag">Estado blockchain</span>
+            </div>
+            <label>Contrato</label
+            ><select class="contract-select" id="inspectContract"></select>
+            <div class="actions">
+              <button id="inspectBtn" class="primary">Inspeccionar contrato</button>
+            </div>
+            <div id="contractDetails" class="section"></div>
+          </div>
+        </section>
+        <section class="view" id="view-trace">
+          <div class="two section">
+            <div class="card">
+              <h2>Registro de lotes</h2>
+              <label>Contrato</label
+              ><select class="contract-select" id="traceContract"></select>
+              <div class="actions">
+                <button id="loadLots">Consultar lotes</button
+                ><button id="loadEvents">Ver eventos</button>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th>Custodio</th>
+                      <th>Estado</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="lotsTable"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <h2>Movimientos del lote</h2>
+              <div id="movements" class="empty">Selecciona un lote de la tabla.</div>
+              <h2 style="margin-top: 24px">Eventos recientes</h2>
+              <div id="events" class="timeline"></div>
+            </div>
+          </div>
+        </section>
+        <section class="view" id="view-analytics">
+          <div class="grid section" id="gasMetrics"></div>
+          <div class="two section">
+            <div class="card">
+              <div class="section-head">
+                <h2>Gas por operación</h2>
+                <span class="tag">Recibos confirmados</span>
+              </div>
+              <div id="gasChart"></div>
+            </div>
+            <div class="card">
+              <h2>Comparación acumulada</h2>
+              <p class="muted">
+                Los totales reflejan las transacciones ejecutadas desde el panel, no necesariamente
+                escenarios equivalentes. Para un benchmark justo usa el comparador y estados
+                iniciales comparables.
+              </p>
+              <div id="comparison"></div>
+              <button id="compareBtn">Ejecutar comparación</button>
+            </div>
+          </div>
+          <div class="card section">
+            <div class="section-head">
+              <h2>Historial de transacciones</h2>
+              <div class="inline">
+                <label style="margin: 0">Filtrar</label
+                ><select id="filterContract">
+                  <option value="">Todos</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Contrato</th>
+                    <th>Acción</th>
+                    <th>Gas usado</th>
+                    <th>Estimación</th>
+                    <th>Coste ETH</th>
+                    <th>Bloque</th>
+                    <th>Tx hash</th>
+                  </tr>
+                </thead>
+                <tbody id="ledger"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <footer class="footer">
+          PharmaChain Validation Studio · Demostración académica en blockchain local · Las pruebas
+          de simulación no consumen gas on-chain.
+        </footer>
+      </main>
+    </div>
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const escapeHTML = (x) =>
+        String(x ?? "").replace(
+          /[&<>"']/g,
+          (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+        );
+      let state = { status: null, ledger: [], summary: null };
+      const fmt = (n) => Number(n || 0).toLocaleString("es-ES");
+      const short = (x) => String(x || "").slice(0, 12) + "…";
+      const label = (x) => String(x).replace("PharmaChainRoles", "");
+      async function api(route, body) {
+        const r = await fetch("/api/" + route, {
+          method: body === undefined ? "GET" : "POST",
+          headers: { "Content-Type": "application/json" },
+          body: body === undefined ? undefined : JSON.stringify(body),
+        });
+        const text = await r.text();
+        let j;
+        try {
+          j = JSON.parse(text);
+        } catch {
+          throw Error(text.slice(0, 200));
+        }
+        if (!r.ok) throw Error(j.error || r.statusText);
+        return j;
+      }
+      function notify(msg, error = false) {
+        const e = $("notice");
+        e.style.display = "block";
+        e.className = "notice" + (error ? " error" : "");
+        e.textContent = msg;
+        clearTimeout(window._notifyTimeout);
+        window._notifyTimeout = setTimeout(() => (e.style.display = "none"), 9000);
+      }
+      async function busy(button, fn) {
+        const b = $(button);
+        if (b) b.disabled = true;
+        try {
+          await fn();
+        } catch (e) {
+          notify(e.message, true);
+        } finally {
+          if (b) b.disabled = false;
+        }
+      }
+      function navigate(view) {
+        document
+          .querySelectorAll(".view")
+          .forEach((x) => x.classList.toggle("active", x.id === "view-" + view));
+        document
+          .querySelectorAll("#nav button")
+          .forEach((x) => x.classList.toggle("active", x.dataset.view === view));
+        const titles = {
+          overview: "Visión general",
+          operations: "Centro de operaciones",
+          testing: "Suite de pruebas",
+          contracts: "Explorador de contratos",
+          trace: "Trazabilidad de custodia",
+          analytics: "Análisis de gas",
+        };
+        $("pageTitle").textContent = titles[view];
+        $("breadcrumb").textContent = "LABORATORIO / " + titles[view].toUpperCase();
+      }
+      document
+        .querySelectorAll("[data-view]")
+        .forEach((b) => (b.onclick = () => navigate(b.dataset.view)));
+      document
+        .querySelectorAll("[data-jump]")
+        .forEach((b) => (b.onclick = () => navigate(b.dataset.jump)));
+      const actionFields = {
+        registrarLote: [
+          ["nombre", "Nombre del medicamento", "Paracetamol"],
+          ["fabricante", "Fabricante", "Laboratorio Galicia"],
+        ],
+        proponerTransferencia: [
+          ["id", "ID del lote", "1"],
+          ["destino", "Dirección destino", ""],
+        ],
+        aceptarTransferencia: [["id", "ID del lote", "1"]],
+        cancelarTransferencia: [["id", "ID del lote", "1"]],
+        desactivarLote: [["id", "ID del lote", "1"]],
+        pausar: [],
+        reanudar: [],
+      };
+      function setFields() {
+        const a = $("action").value;
+        const fields = actionFields[a] || [];
+        $("inputs").innerHTML = fields
+          .map(
+            ([key, title, val]) =>
+              `<div><label>${escapeHTML(title)}</label><input id="field_${key}" value="${escapeHTML(key === "destino" ? state.status?.accounts?.[2] || "" : val)}"></div>`,
+          )
+          .join("");
+      }
+      function renderBar(items, target, limit = 10) {
+        const data = items.slice(0, limit);
+        const max = Math.max(1, ...data.map((x) => Number(x.value)));
+        $(target).innerHTML =
+          data
+            .map(
+              (x) =>
+                `<div class="bar-row"><span title="${escapeHTML(x.label)}">${escapeHTML(x.label.slice(0, 23))}</span><div class="bar-bg"><div class="bar-fill" style="width:${Math.max(1, (100 * x.value) / max)}%"></div></div><b>${fmt(x.value)}</b></div>`,
+            )
+            .join("") || '<div class="empty">Aún no hay transacciones medidas.</div>';
+      }
+      function render() {
+        const s = state.status,
+          l = state.ledger,
+          summary = state.summary;
+        if (!s) return;
+        $("networkText").textContent = "Chain " + s.chainId;
+        $("chainMini").textContent =
+          "Chain ID: " + s.chainId + " · " + s.accounts.length + " cuentas";
+        $("metrics").innerHTML = [
+          [
+            "Contratos activos",
+            Object.values(s.contracts).filter(Boolean).length +
+              "/" +
+              Object.keys(s.contracts).length,
+            "Truffle deployments",
+          ],
+          ["Transacciones", l.length, "Registradas en esta sesión"],
+          ["Gas acumulado", fmt(l.reduce((a, x) => a + Number(x.gasUsed), 0)), "Unidades de gas"],
+          ["Pruebas ejecutadas", summary.testRuns, "Baterías de seguridad"],
+        ]
+          .map(
+            (x) =>
+              `<div class="card metric"><div class="label">${x[0]}</div><div class="num">${x[1]}</div><div class="hint">${x[2]}</div></div>`,
+          )
+          .join("");
+        $("gasMetrics").innerHTML = [
+          ["Transacciones", l.length],
+          ["Gas total", fmt(l.reduce((a, x) => a + Number(x.gasUsed), 0))],
+          ["Coste ETH", l.reduce((a, x) => a + Number(x.costEth), 0).toFixed(8)],
+          [
+            "Gas medio",
+            fmt(l.length ? l.reduce((a, x) => a + Number(x.gasUsed), 0) / l.length : 0),
+          ],
+        ]
+          .map(
+            (x) =>
+              `<div class="card metric"><div class="label">${x[0]}</div><div class="num">${x[1]}</div></div>`,
+          )
+          .join("");
+        const txrows = l.map(
+          (x) =>
+            `<tr><td>${escapeHTML(x.time.slice(11, 19))}</td><td>${escapeHTML(label(x.contract))}</td><td>${escapeHTML(x.action)}</td><td>${fmt(x.gasUsed)}</td><td>${fmt(x.gasEstimate)}</td><td>${escapeHTML(x.costEth)}</td><td>${escapeHTML(x.block)}</td><td class="mono" title="${escapeHTML(x.txHash)}">${escapeHTML(short(x.txHash))}</td></tr>`,
+        );
+        $("ledger").innerHTML = txrows
+          .filter(
+            (_, i) => !$("filterContract").value || l[i].contract === $("filterContract").value,
+          )
+          .join("");
+        $("recentTx").innerHTML = l
+          .slice(0, 6)
+          .map(
+            (x) =>
+              `<tr><td>${escapeHTML(label(x.contract))}</td><td>${escapeHTML(x.action)}</td><td>${fmt(x.gasUsed)}</td><td>${escapeHTML(x.block)}</td><td class="mono" title="${escapeHTML(x.txHash)}">${escapeHTML(short(x.txHash))}</td></tr>`,
+          )
+          .join("");
+        const bars = l.map((x) => ({ label: x.action, value: Number(x.gasUsed) }));
+        renderBar(bars, "recentChart", 5);
+        renderBar(bars, "gasChart", 12);
+        renderBar(
+          summary.contracts.map((x) => ({ label: label(x.contract), value: x.gas })),
+          "comparison",
+          4,
+        );
+      }
+      async function refresh() {
+        const [status, ledger, summary] = await Promise.all([
+          api("status"),
+          api("ledger"),
+          api("summary"),
+        ]);
+        state = { status, ledger, summary };
+        const selectors = document.querySelectorAll(".contract-select");
+        for (const select of selectors) {
+          const old = select.value;
+          select.innerHTML = Object.entries(status.contracts)
+            .map(
+              ([name, addr]) =>
+                `<option value="${escapeHTML(name)}" ${addr ? "" : "disabled"}>${escapeHTML(label(name))}${addr ? "" : " · sin desplegar"}</option>`,
+            )
+            .join("");
+          if (status.contracts[old]) select.value = old;
+        }
+        const oldFrom = $("from").value;
+        $("from").innerHTML = status.accounts
+          .map(
+            (a, i) =>
+              `<option value="${escapeHTML(a)}">Cuenta ${i} · ${escapeHTML(short(a))}</option>`,
+          )
+          .join("");
+        if (status.accounts.includes(oldFrom)) $("from").value = oldFrom;
+        const oldFilter = $("filterContract").value;
+        $("filterContract").innerHTML =
+          '<option value="">Todos</option>' +
+          Object.keys(status.contracts)
+            .map((n) => `<option value="${escapeHTML(n)}">${escapeHTML(label(n))}</option>`)
+            .join("");
+        $("filterContract").value = oldFilter;
+        render();
+        setFields();
+      }
+      async function runAction() {
+        const body = {
+          name: $("operationContract").value,
+          from: $("from").value,
+          action: $("action").value,
+        };
+        for (const f of actionFields[body.action] || []) body[f[0]] = $("field_" + f[0]).value;
+        const result = await api("action", body);
+        $("operationResult").innerHTML =
+          `<div class="tag ok">Transacción confirmada</div><p><b>Gas:</b> ${fmt(result.gasUsed)} / <b>Estimado:</b> ${fmt(result.gasEstimate)}</p><p><b>Coste:</b> ${escapeHTML(result.costEth)} ETH</p><p><b>Bloque:</b> ${escapeHTML(result.block)}</p><p class="mono" style="overflow-wrap:anywhere">${escapeHTML(result.txHash)}</p>`;
+        notify("Transacción confirmada · " + fmt(result.gasUsed) + " gas");
+        await refresh();
+      }
+      async function setup(name) {
+        const r = await api("setup", { name });
+        notify("Roles configurados: " + r.transactions.length + " transacciones");
+        await refresh();
+      }
+      async function scenario(name) {
+        const r = await api("scenario", { name });
+        notify("Lote " + r.id + " · cadena completa · " + r.transactions.length + " transacciones");
+        await refresh();
+      }
+      async function compare() {
+        const r = await api("compare", {});
+        notify("Comparación ejecutada: " + r.results.length + " transacciones confirmadas");
+        await refresh();
+      }
+      async function inspect() {
+        const d = await api("inspect/" + encodeURIComponent($("inspectContract").value));
+        $("contractDetails").innerHTML =
+          `<div class="grid"><div class="metric"><div class="label">Lotes</div><div class="num">${d.totalLotes}</div></div><div class="metric"><div class="label">Pausado</div><div class="num">${d.paused === null ? "N/D" : d.paused ? "Sí" : "No"}</div></div></div><p class="muted mono" style="overflow-wrap:anywhere">Dirección: ${escapeHTML(d.address)}</p><h3>Roles y cuentas</h3><div class="table-wrap"><table><thead><tr><th>Cuenta</th><th>Rol</th></tr></thead><tbody>${d.roles.map((r, i) => `<tr><td title="${escapeHTML(r.account)}">${i} · ${escapeHTML(short(r.account))}</td><td>${escapeHTML(r.role)}</td></tr>`).join("")}</tbody></table></div>`;
+      }
+      async function lots() {
+        const d = await api("lotes/" + encodeURIComponent($("traceContract").value));
+        $("lotsTable").innerHTML = d.items
+          .map(
+            (l) =>
+              `<tr><td>${l.id}</td><td>${escapeHTML(l.nombre)}</td><td title="${escapeHTML(l.propietario)}">${escapeHTML(short(l.propietario))}</td><td><span class="tag ${l.activo ? "ok" : "err"}">${l.activo ? (l.pendiente ? "Pendiente" : "Activo") : "Inactivo"}</span></td><td><button class="ghost" data-lot="${l.id}">Ver</button></td></tr>`,
+          )
+          .join("");
+        document
+          .querySelectorAll("[data-lot]")
+          .forEach((b) => (b.onclick = () => movements(b.dataset.lot)));
+      }
+      async function movements(id) {
+        const d = await api("movements/" + encodeURIComponent($("traceContract").value) + "/" + id);
+        const types = ["Registro", "Propuesta", "Aceptación", "Cancelación"];
+        $("movements").innerHTML =
+          `<h3>Lote #${id} · ${d.total} movimientos</h3><div class="timeline">` +
+          d.items
+            .map(
+              (m) =>
+                `<div class="event"><strong>${escapeHTML(types[Number(m.type)] || m.type)} · #${m.index}</strong><div>Origen: ${escapeHTML(short(m.origin))}</div><div>Destino: ${escapeHTML(short(m.destination))}</div><small>${new Date(Number(m.timestamp) * 1000).toLocaleString("es-ES")}</small></div>`,
+            )
+            .join("") +
+          "</div>";
+      }
+      async function events() {
+        const e = await api("events/" + encodeURIComponent($("traceContract").value));
+        $("events").innerHTML =
+          e
+            .slice(0, 12)
+            .map(
+              (x) =>
+                `<div class="event"><strong>${escapeHTML(x.name)}</strong>Bloque ${escapeHTML(x.block)} · ${escapeHTML(short(x.hash))}</div>`,
+            )
+            .join("") || '<div class="empty">No se encontraron eventos recientes.</div>';
+      }
+      async function runTests() {
+        const r = await api("run-tests", { name: $("testContract").value });
+        $("testSummary").innerHTML =
+          `<div class="metric"><div class="label">Pruebas superadas</div><div class="num ${r.passed === r.total ? "ok" : "err"}">${r.passed} / ${r.total}</div><div class="progress"><div style="width:${(100 * r.passed) / r.total}%"></div></div></div>`;
+        $("testResults").innerHTML = r.results
+          .map(
+            (x) =>
+              `<div class="test-row"><span>${escapeHTML(x.label)}</span><b class="${x.passed ? "ok" : "err"}">${x.passed ? "PASS" : "FAIL"}</b></div>`,
+          )
+          .join("");
+        notify("Batería completada: " + r.passed + "/" + r.total);
+        await refresh();
+      }
+      $("action").innerHTML = Object.keys(actionFields)
+        .map((x) => `<option value="${x}">${x}</option>`)
+        .join("");
+      $("action").onchange = setFields;
+      $("refreshBtn").onclick = () => busy("refreshBtn", refresh);
+      $("executeBtn").onclick = () => busy("executeBtn", runAction);
+      $("quickSetup").onclick = () => busy("quickSetup", () => setup($("quickContract").value));
+      $("quickScenario").onclick = () =>
+        busy("quickScenario", () => scenario($("quickContract").value));
+      $("quickCompare").onclick = () => busy("quickCompare", compare);
+      $("setupBtn").onclick = () => busy("setupBtn", () => setup($("operationContract").value));
+      $("scenarioBtn").onclick = () =>
+        busy("scenarioBtn", () => scenario($("operationContract").value));
+      $("inspectBtn").onclick = () => busy("inspectBtn", inspect);
+      $("loadLots").onclick = () => busy("loadLots", lots);
+      $("loadEvents").onclick = () => busy("loadEvents", events);
+      $("runTests").onclick = () => busy("runTests", runTests);
+      $("compareBtn").onclick = () => busy("compareBtn", compare);
+      $("filterContract").onchange = render;
+      $("testCases").innerHTML = [
+        "Atacante no registra un lote",
+        "No aceptar lote inexistente",
+        "Rechazar destino cero",
+        "Rechazar nombre vacío",
+        "Bloquear laboratorio → farmacia",
+      ]
+        .map(
+          (x) =>
+            `<div class="test-row"><span>${escapeHTML(x)}</span><span class="tag">Revert esperado</span></div>`,
+        )
+        .join("");
+      refresh().catch((e) => notify("No se puede conectar al nodo: " + e.message, true));
+    </script>
+    <style>
+      .audit-panel {
+        margin-top: 22px;
+      }
+      .audit-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .audit-num {
+        font-size: 26px;
+        font-weight: 800;
+        margin-top: 8px;
+      }
+      .audit-list {
+        max-height: 520px;
+        overflow: auto;
+      }
+      .audit-item {
+        padding: 12px;
+        border-bottom: 1px solid #31445c;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: start;
+      }
+      .audit-item small {
+        display: block;
+        color: #8fa4c1;
+        margin-top: 5px;
+      }
+      .audit-actions {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .audit-actions select {
+        max-width: 330px;
+      }
+      .audit-chart {
+        display: flex;
+        align-items: end;
+        gap: 12px;
+        min-height: 245px;
+        padding: 25px 12px 38px;
+        border-bottom: 1px solid #3b5069;
+      }
+      .audit-column {
+        flex: 1;
+        min-width: 0;
+        position: relative;
+        text-align: center;
+      }
+      .audit-column .fill {
+        background: linear-gradient(180deg, #4ba5ff, #315dcb);
+        border-radius: 6px 6px 0 0;
+        min-height: 2px;
+      }
+      .audit-column label {
+        font-size: 10px;
+        position: absolute;
+        bottom: -32px;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .audit-column strong {
+        font-size: 11px;
+      }
+      .audit-note {
+        color: #94a8c5;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .audit-flow {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        overflow: auto;
+        padding: 15px 0;
+      }
+      .audit-node {
+        background: #1e3452;
+        border: 1px solid #436287;
+        border-radius: 10px;
+        padding: 13px;
+        min-width: 140px;
+        text-align: center;
+        font-size: 12px;
+      }
+      .audit-arrow {
+        color: #68a9ff;
+        font-size: 24px;
+      }
+      .audit-status {
+        color: #5dd5a6;
+      }
+      .audit-status.bad {
+        color: #ff8290;
+      }
+      @media (max-width: 900px) {
+        .audit-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <section class="card audit-panel" id="auditStudio">
+      <div class="section-head">
+        <h2>Auditoría avanzada · pruebas reproducibles</h2>
+        <span class="pill">v3 · Hardhat + Truffle + Web3.js</span>
+      </div>
+      <p class="audit-note">
+        Ejecuta pruebas negativas sin modificar el estado (eth_call) o una cadena completa con
+        transacciones reales, invariantes y medidas de gas. Los resultados se generan al pulsar
+        Ejecutar; no son pruebas precalculadas.
+      </p>
+      <div class="audit-actions">
+        <select id="auditContract" aria-label="Contrato para auditar"></select>
+        <button id="auditNegative">7 controles básicos (simulación)</button>
+        <button id="auditFull" class="primary">Ejecutar flujo e invariantes</button>
+        <button id="auditAll">Auditar cuatro contratos</button>
+        <a href="/api/audit/export" download style="color: #9bc9ff">Exportar informe JSON</a>
+      </div>
+      <p id="auditMessage" class="audit-note"></p>
+      <div class="audit-grid">
+        <div class="card">
+          <div class="metric label">Pruebas superadas</div>
+          <div class="audit-num" id="auditPassed">—</div>
+        </div>
+        <div class="card">
+          <div class="metric label">Fallos detectados</div>
+          <div class="audit-num" id="auditFailed">—</div>
+        </div>
+        <div class="card">
+          <div class="metric label">Gas real de la cadena</div>
+          <div class="audit-num" id="auditGas">—</div>
+        </div>
+      </div>
+      <div class="two section">
+        <div class="card">
+          <h3>Grafo de custodia</h3>
+          <div id="auditFlow" class="audit-flow">
+            <span class="audit-note">Ejecuta el flujo completo para mostrar la secuencia.</span>
+          </div>
+          <p class="audit-note">
+            Cada nodo representa una transición verificada mediante lectura del contrato.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Gas por operación</h3>
+          <div id="auditChart" class="audit-chart"></div>
+          <p class="audit-note">
+            Unidades reales gasUsed obtenidas de recibos. Las pruebas eth_call no se incluyen.
+          </p>
+        </div>
+      </div>
+      <div class="two section">
+        <div class="card">
+          <h3>Resultados y justificación</h3>
+          <div id="auditResults" class="audit-list"></div>
+        </div>
+        <div class="card">
+          <h3>Historial de ejecuciones</h3>
+          <div id="auditHistory" class="audit-list"></div>
+        </div>
+      </div>
+    </section>
+    <script>
+      (() => {
+        const q = (id) => document.getElementById(id),
+          esc = (x) =>
+            String(x ?? "").replace(
+              /[&<>"']/g,
+              (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
+            );
+        let names = [];
+        async function loadAuditVariants() {
+          const [variants, status] = await Promise.all([
+            request("/api/variants"),
+            request("/api/status"),
+          ]);
+          names = variants.filter((v) => Boolean(status.contracts[v.id])).map((v) => v.id);
+          q("auditContract").innerHTML = variants
+            .map(
+              (v) =>
+                `<option value="${esc(v.id)}" ${status.contracts[v.id] ? "" : "disabled"}>${esc(v.title)}${status.contracts[v.id] ? "" : " · sin desplegar"}</option>`,
+            )
+            .join("");
+          q("auditAll").disabled = names.length === 0;
+          q("auditMessage").textContent =
+            `${names.length}/${variants.length} contratos desplegados disponibles para auditoría`;
+        }
+        async function request(url, body) {
+          const r = await fetch(
+            url,
+            body
+              ? {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(body),
+                }
+              : {},
+          );
+          const data = await r.json();
+          if (!r.ok) throw Error(data.error || "Error del servidor");
+          return data;
+        }
+        function show(run) {
+          q("auditPassed").textContent = run.passed + " / " + run.total;
+          q("auditFailed").textContent = run.failed;
+          q("auditGas").textContent = run.gasTotal.toLocaleString("es-ES");
+          q("auditResults").innerHTML = run.results
+            .map(
+              (t) =>
+                `<div class="audit-item"><div><b>${esc(t.title)}</b><small>${esc(t.category)} · ${esc(t.kind)} · ${esc(t.detail)}</small></div><strong class="audit-status ${t.passed ? "" : "bad"}">${t.passed ? "PASS" : "FAIL"}</strong></div>`,
+            )
+            .join("");
+          const seq = ["Laboratorio", "Propuesta L→D", "Distribuidor", "Propuesta D→F", "Farmacia"];
+          q("auditFlow").innerHTML = run.steps.length
+            ? seq
+                .map(
+                  (x, i) =>
+                    `${i ? '<span class="audit-arrow">→</span>' : ""}<div class="audit-node">${esc(x)}<small style="display:block;color:#9fc5ef">${i === 0 ? "Registro" : i === 2 ? "Aceptación" : i === 4 ? "Aceptación" : "Pendiente"}</small></div>`,
+                )
+                .join("")
+            : '<span class="audit-note">Solo simulaciones; no se modificó la custodia.</span>';
+          const max = Math.max(1, ...run.steps.map((x) => Number(x.gasUsed)));
+          q("auditChart").innerHTML = run.steps.length
+            ? run.steps
+                .map(
+                  (x, i) =>
+                    `<div class="audit-column"><strong>${Number(x.gasUsed).toLocaleString("es-ES")}</strong><div class="fill" style="height:${Math.max(5, (160 * Number(x.gasUsed)) / max)}px"></div><label title="${esc(x.title)}">Paso ${i + 1}</label></div>`,
+                )
+                .join("")
+            : '<span class="audit-note">No hay recibos: la batería negativa utiliza eth_call.</span>';
+        }
+        async function history() {
+          const runs = await request("/api/audit/runs");
+          q("auditHistory").innerHTML = runs.length
+            ? runs
+                .map(
+                  (x) =>
+                    `<div class="audit-item"><div><b>${esc(x.name.replace("PharmaChainRoles", ""))}</b><small>${esc(x.date)} · ${esc(x.mode)} · ${x.passed}/${x.total} PASS · ${x.gasTotal.toLocaleString("es-ES")} gas</small></div><span class="audit-status ${x.failed ? "bad" : ""}">${x.failed ? "REVISAR" : "OK"}</span></div>`,
+                )
+                .join("")
+            : '<p class="audit-note">Todavía no se han ejecutado auditorías.</p>';
+        }
+        async function run(name, mode) {
+          q("auditMessage").textContent = "Ejecutando " + name + " (" + mode + ")...";
+          const result = await request("/api/audit/run", { name, mode });
+          show(result);
+          await history();
+          q("auditMessage").textContent =
+            "Ejecución " +
+            result.id +
+            ": " +
+            result.passed +
+            " superadas, " +
+            result.failed +
+            " fallidas. " +
+            (mode === "full"
+              ? "Transacciones confirmadas y verificadas."
+              : "Simulaciones sin gasto de gas.");
+          return result;
+        }
+        async function safe(fn) {
+          for (const b of [q("auditNegative"), q("auditFull"), q("auditAll")]) b.disabled = true;
+          try {
+            await fn();
+          } catch (e) {
+            q("auditMessage").textContent = "Error: " + e.message;
+          } finally {
+            for (const b of [q("auditNegative"), q("auditFull"), q("auditAll")]) b.disabled = false;
+          }
+        }
+        q("auditNegative").onclick = () => safe(() => run(q("auditContract").value, "negative"));
+        q("auditFull").onclick = () => safe(() => run(q("auditContract").value, "full"));
+        q("auditAll").onclick = () =>
+          safe(async () => {
+            let pass = 0,
+              fail = 0;
+            for (const name of names) {
+              const r = await run(name, "full");
+              pass += r.passed;
+              fail += r.failed;
+            }
+            q("auditMessage").textContent =
+              names.length + " contratos auditados: " + pass + " PASS, " + fail + " FAIL.";
+          });
+        loadAuditVariants().catch(
+          (e) => (q("auditMessage").textContent = "No se pudo cargar el catálogo: " + e.message),
+        );
+        history().catch((e) => (q("auditMessage").textContent = e.message));
+      })();
+    </script>
+  </body>
+</html>

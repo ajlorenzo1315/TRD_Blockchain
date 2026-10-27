@@ -1,0 +1,773 @@
+# PharmaChain-Ethereum
+
+### Sistema de trazabilidad farmacéutica con contratos inteligentes, control de acceso y optimización de gas
+
+**Asignatura:** Tecnologías de Registro Distribuido y Blockchain  
+**Práctica:** 1 — Ejercicio 5  
+**Universidad:** Universidade de Vigo  
+**Curso:** 2026–2027  
+**Lenguaje:** Solidity 0.8.x  
+**Fecha:** 27 de octubre de 2026
+
+---
+
+## 1. Introducción
+
+PharmaChain-Ethereum es un prototipo de aplicación descentralizada (_dApp_) diseñado para gestionar la trazabilidad y la cadena de custodia de productos farmacéuticos mediante contratos inteligentes de Ethereum.
+
+El proyecto nace como solución al Ejercicio 5 de la Práctica 1, cuyo objetivo es diseñar, implementar, probar y documentar un contrato inteligente para un escenario que pueda beneficiarse de las características de una blockchain pública.
+
+Además de la implementación básica, se ha desarrollado un entorno experimental para comparar diferentes estrategias de programación Solidity, gestión de permisos y optimización de gas.
+
+El proyecto integra:
+
+- Contratos inteligentes para registrar lotes farmacéuticos y transferir su custodia.
+- Dos estrategias de control de acceso: manual y OpenZeppelin.
+- Variantes de contratos destinadas a estudiar optimizaciones.
+- Pruebas automatizadas de funcionalidad, permisos y equivalencia.
+- Experimentos de consumo de gas.
+- Herramientas Hardhat y Truffle.
+- Una interfaz web para interactuar con los contratos.
+- Un laboratorio para comparar variantes y ejecutar experimentos.
+- Informes CSV y JSON con resultados de las pruebas y benchmarks.
+
+## 2. Motivación: ¿por qué utilizar blockchain?
+
+En una cadena de suministro farmacéutica participan diferentes organizaciones que necesitan compartir información sobre los medicamentos y las operaciones realizadas.
+
+Por ejemplo, un laboratorio fabrica un medicamento, un distribuidor lo transporta y una farmacia lo recibe.
+
+En un sistema centralizado, la información puede depender de una única organización que administra la base de datos.
+
+Ethereum permite crear un registro compartido en el que las operaciones aceptadas por la red se almacenan mediante transacciones verificables.
+
+### 2.1. Ventajas
+
+**Trazabilidad:** permite registrar las sucesivas transferencias de custodia.
+
+**Integridad:** las modificaciones del estado requieren ejecutar las reglas del contrato.
+
+**Auditoría:** los eventos y transacciones permiten reconstruir parte del historial de operaciones.
+
+**Descentralización:** diferentes organizaciones pueden utilizar una misma infraestructura sin depender exclusivamente de una base de datos administrada por una de ellas.
+
+**Automatización:** las condiciones de transferencia se ejecutan mediante código.
+
+### 2.2. Limitaciones
+
+La blockchain no verifica por sí misma que un medicamento exista físicamente, que su composición sea correcta o que una entrega se haya realizado realmente.
+
+También debe tenerse en cuenta que la información almacenada en una blockchain pública puede ser accesible a terceros.
+
+Por ello, el sistema desarrollado se considera un prototipo académico y no una solución farmacéutica lista para producción.
+
+Para una implementación real sería necesario integrar mecanismos adicionales de identificación, protección de información, verificación logística y cumplimiento normativo.
+
+## 3. Objetivos del proyecto
+
+### 3.1. Objetivo general
+
+Diseñar e implementar un sistema de gestión de lotes farmacéuticos sobre Ethereum que permita estudiar las propiedades de los contratos inteligentes y evaluar diferentes alternativas de implementación.
+
+### 3.2. Objetivos específicos
+
+1. Definir los participantes de la cadena de suministro.
+2. Implementar un contrato inteligente de registro de lotes.
+3. Restringir las operaciones según los roles.
+4. Gestionar propuestas y aceptaciones de transferencia.
+5. Impedir operaciones no autorizadas.
+6. Comparar permisos manuales y OpenZeppelin.
+7. Estudiar técnicas de optimización de gas.
+8. Comprobar la equivalencia funcional de las variantes.
+9. Automatizar pruebas mediante Hardhat y Truffle.
+10. Facilitar la interacción mediante una interfaz web.
+11. Documentar los resultados experimentales.
+
+## 4. Análisis del escenario
+
+### 4.1. Participantes
+
+| Actor                 | Función                                    |
+| --------------------- | ------------------------------------------ |
+| Administrador         | Gestiona los permisos de los participantes |
+| Laboratorio           | Registra los lotes farmacéuticos           |
+| Distribuidor          | Recibe lotes y puede transferirlos         |
+| Farmacia              | Recibe lotes procedentes de distribuidores |
+| Usuario no autorizado | No puede realizar operaciones restringidas |
+
+### 4.2. Flujo de custodia
+
+El flujo de referencia es:
+
+```text
+LABORATORIO
+    |
+    | Registro del lote
+    v
+LOTE REGISTRADO
+    |
+    | Propuesta de transferencia
+    v
+DISTRIBUIDOR
+    |
+    | Aceptación
+    v
+CUSTODIA DEL DISTRIBUIDOR
+    |
+    | Nueva propuesta
+    v
+FARMACIA
+    |
+    | Aceptación
+    v
+CUSTODIA DE LA FARMACIA
+```
+
+Una característica importante del diseño es separar la propuesta de transferencia de su aceptación.
+
+El propietario actual inicia la operación, pero la custodia no cambia hasta que el destinatario acepta.
+
+Esta decisión representa mejor el funcionamiento de una cadena logística que una transferencia unilateral inmediata.
+
+### 4.3. Reglas de negocio
+
+El diseño contempla las siguientes reglas:
+
+- Solo los actores autorizados pueden realizar determinadas operaciones.
+- Un lote debe disponer de información identificativa válida.
+- El propietario actual es el responsable de iniciar una transferencia.
+- El destinatario debe aceptar la transferencia pendiente.
+- No se debe permitir aceptar transferencias ajenas.
+- La cadena de custodia debe respetar las transiciones de roles establecidas.
+- Los lotes inexistentes o desactivados deben tratarse conforme a las reglas del contrato.
+- Las operaciones relevantes deben emitir eventos para facilitar su auditoría.
+
+## 5. Diseño de los contratos inteligentes
+
+### 5.1. Estructura de los datos
+
+La implementación de referencia utiliza estructuras para representar los lotes y las transferencias.
+
+```solidity
+struct Lote {
+    string nombre;
+    string fabricante;
+    address propietario;
+    uint256 fechaRegistro;
+    bool activo;
+}
+
+struct Transferencia {
+    address origen;
+    address destino;
+    bool pendiente;
+}
+```
+
+Los lotes contienen información del producto, su propietario y su estado.
+
+Las transferencias representan una operación pendiente entre dos direcciones Ethereum.
+
+### 5.2. ¿Por qué utilizar mappings?
+
+Los mappings permiten asociar identificadores con estructuras almacenadas en el contrato.
+
+```solidity
+mapping(uint256 => Lote) public lotes;
+
+mapping(uint256 => Transferencia) public transferencias;
+```
+
+Se seleccionan porque permiten acceder directamente a un lote a partir de su identificador sin recorrer una colección completa.
+
+Su principal limitación es que no proporcionan una enumeración automática de todas las claves.
+
+Para resolver esta limitación se pueden utilizar contadores, eventos o índices auxiliares.
+
+### 5.3. Eventos
+
+Se utilizan eventos para registrar operaciones importantes:
+
+```solidity
+event LoteRegistrado(uint256 indexed id, string nombre, address indexed propietario);
+
+event TransferenciaPropuesta(uint256 indexed id, address indexed origen, address indexed destino);
+
+event TransferenciaAceptada(uint256 indexed id, address indexed origen, address indexed destino);
+```
+
+Los eventos permiten que las aplicaciones externas detecten operaciones y actualicen sus interfaces.
+
+Los parámetros `indexed` facilitan el filtrado de logs.
+
+Los eventos no sustituyen al almacenamiento necesario para que el contrato pueda validar su propio estado.
+
+## 6. Comparación de modelos de permisos
+
+Una parte fundamental del proyecto consiste en comparar dos mecanismos de autorización.
+
+### 6.1. Roles manuales
+
+Archivo:
+
+`contracts/PharmaChainRolesManuales.sol`
+
+Esta implementación utiliza lógica propia para asignar y comprobar los roles.
+
+**Motivos para seleccionarla:**
+
+- Comprender el funcionamiento interno del control de acceso.
+- Reducir la dependencia de bibliotecas externas.
+- Disponer de una referencia sencilla para los experimentos.
+- Estudiar el coste de almacenamiento y verificación de permisos.
+
+En las pruebas realizadas durante el desarrollo se ha utilizado un modelo manual en el que cada usuario tiene un rol principal.
+
+### 6.2. OpenZeppelin AccessControl
+
+Archivo:
+
+`contracts/PharmaChainRolesOpenZeppelin.sol`
+
+Esta alternativa utiliza la biblioteca OpenZeppelin para administrar los permisos.
+
+AccessControl permite representar los roles mediante identificadores y comprobar si una cuenta dispone de un permiso determinado.
+
+**Motivos para seleccionarla:**
+
+- Utilizar una biblioteca conocida y mantenida.
+- Facilitar la gestión de permisos.
+- Permitir que una cuenta disponga de varios roles.
+- Estudiar las diferencias frente a una implementación manual.
+- Evitar desarrollar desde cero toda la infraestructura de autorización.
+
+### 6.3. Diferencias principales
+
+| Característica         | Manual                                    | OpenZeppelin               |
+| ---------------------- | ----------------------------------------- | -------------------------- |
+| Implementación         | Propia                                    | Biblioteca externa         |
+| Complejidad            | Menor en casos simples                    | Mayor abstracción          |
+| Roles múltiples        | Depende del diseño; referencia con un rol | Soportados                 |
+| Concesión y revocación | Implementación específica                 | Funciones de AccessControl |
+| Dependencias           | Reducidas                                 | OpenZeppelin Contracts     |
+| Gas                    | Debe medirse                              | Debe medirse               |
+| Extensibilidad         | Requiere modificar código propio          | Facilita ampliar el modelo |
+
+No se considera automáticamente superior ninguna de las dos implementaciones.
+
+La elección depende de las necesidades funcionales, los riesgos de seguridad y el coste de ejecución.
+
+## 7. Variantes de optimización
+
+El repositorio contiene las siguientes implementaciones principales:
+
+| Familia                       | Contrato                                        |
+| ----------------------------- | ----------------------------------------------- |
+| Manual                        | `PharmaChainRolesManuales.sol`                  |
+| OpenZeppelin                  | `PharmaChainRolesOpenZeppelin.sol`              |
+| Manual optimizado             | `PharmaChainRolesManualesOptimized.sol`         |
+| OpenZeppelin optimizado       | `PharmaChainRolesOpenZeppelinOptimized.sol`     |
+| Manual optimizado 1           | `PharmaChainRolesManualesOptimized1.sol`        |
+| OpenZeppelin optimizado 1     | `PharmaChainRolesOpenZeppelinOptimized1.sol`    |
+| Manual sin ID explícito       | `PharmaChainRolesManualesOptimizednoID.sol`     |
+| OpenZeppelin sin ID explícito | `PharmaChainRolesOpenZeppelinOptimizednoID.sol` |
+
+También existen las carpetas `contracts/core`, `contracts/access` y `contracts/gas-lab`.
+
+Estas implementaciones permiten estudiar cómo distintas decisiones de diseño afectan al coste de ejecución.
+
+### 7.1. ¿Qué significa optimizar gas?
+
+Ethereum utiliza gas para contabilizar los recursos necesarios para ejecutar una transacción.
+
+Las operaciones que modifican almacenamiento persistente suelen ser más costosas que muchas operaciones de cálculo o lectura de memoria.
+
+Por ello, una optimización puede intentar reducir:
+
+- Escrituras en almacenamiento.
+- Lecturas repetidas.
+- Cantidad de datos almacenados.
+- Tamaño del bytecode.
+- Operaciones innecesarias.
+- Coste de codificación de datos.
+- Complejidad de las verificaciones.
+
+### 7.2. Optimización del almacenamiento
+
+Una posible estrategia es reorganizar las estructuras para aprovechar el empaquetado de variables.
+
+Por ejemplo, cuando los rangos de valores lo permiten, algunos campos `uint256` pueden sustituirse por tipos enteros más pequeños.
+
+Sin embargo, utilizar tipos más pequeños no siempre reduce el coste: el orden de los campos, el empaquetado y las operaciones realizadas también influyen.
+
+### 7.3. Identificadores
+
+Las variantes `OptimizednoID` permiten estudiar el tratamiento de los identificadores y sus posibles costes.
+
+La comparación debe determinar si la representación alternativa reduce almacenamiento o ejecución y si conserva las propiedades funcionales exigidas.
+
+### 7.4. Criterio de evaluación
+
+Una optimización no se considera válida únicamente por consumir menos gas.
+
+También debe:
+
+1. Mantener la lógica de negocio prevista.
+2. Respetar los permisos.
+3. Preservar la consistencia de las transferencias.
+4. Superar las pruebas funcionales.
+5. No introducir vulnerabilidades.
+6. Ser reproducible.
+
+## 8. Herramientas utilizadas
+
+| Herramienta   | Finalidad                 | Motivo de elección                       |
+| ------------- | ------------------------- | ---------------------------------------- |
+| Solidity      | Programación de contratos | Lenguaje principal de Ethereum           |
+| Hardhat       | Compilación y pruebas     | Automatización y red local               |
+| Truffle       | Despliegue y pruebas      | Comparación con otro framework           |
+| OpenZeppelin  | Control de acceso         | Reutilización de componentes             |
+| Ethers.js     | Interacción con Ethereum  | Comunicación desde JavaScript            |
+| Node.js y npm | Ejecución y dependencias  | Ecosistema de desarrollo                 |
+| Vite          | Frontend                  | Servidor de desarrollo y compilación web |
+| Git           | Control de versiones      | Trazabilidad de cambios                  |
+| Remix IDE     | Pruebas manuales          | Requisito del ejercicio                  |
+| CSV y JSON    | Informes                  | Exportación y análisis reproducible      |
+
+Hardhat y Truffle se utilizan como herramientas complementarias de desarrollo.
+
+El proyecto conserva ambos entornos para facilitar la comparación y la reproducción de las pruebas.
+
+## 9. Arquitectura del proyecto
+
+La estructura principal es:
+
+```text
+PharmaChain-Ethereum/
+├── contracts/
+│   ├── PharmaChainRolesManuales.sol
+│   ├── PharmaChainRolesOpenZeppelin.sol
+│   ├── PharmaChainRolesManualesOptimized.sol
+│   ├── PharmaChainRolesOpenZeppelinOptimized.sol
+│   ├── PharmaChainRolesManualesOptimized1.sol
+│   ├── PharmaChainRolesOpenZeppelinOptimized1.sol
+│   ├── PharmaChainRolesManualesOptimizednoID.sol
+│   ├── PharmaChainRolesOpenZeppelinOptimizednoID.sol
+│   ├── access/
+│   ├── core/
+│   └── gas-lab/
+├── test/
+├── truffle-tests/
+├── benchmark/
+│   └── run.cjs
+├── frontend/
+├── lab/
+│   ├── server.cjs
+│   └── variants.json
+├── gas-reports/
+├── reports/
+├── scripts/
+├── migrations/
+├── hardhat.config.ts
+├── truffle-config.cjs
+└── package.json
+```
+
+La organización separa los contratos de las herramientas de desarrollo, las pruebas y las interfaces de usuario.
+
+Esta separación facilita mantener distintas implementaciones sin mezclar el código de producción con los experimentos.
+
+## 10. Pruebas automatizadas
+
+El repositorio contiene pruebas específicas para diferentes aspectos del sistema.
+
+| Archivo                           | Objetivo de prueba                            |
+| --------------------------------- | --------------------------------------------- |
+| `ComparacionPermisos.test.js`     | Diferencias entre los modelos de autorización |
+| `FuncionalidadCompartida.test.js` | Comportamiento funcional común                |
+| `FourVariantsParity.test.js`      | Equivalencia entre variantes                  |
+| `OptimizedParity.test.js`         | Equivalencia de las optimizaciones            |
+| `HistorialCustodia.test.js`       | Historial y transferencias                    |
+| `LoteSinId.test.js`               | Comportamiento de variantes sin ID            |
+| `GasComparison.test.js`           | Comparación de gas                            |
+| `GasExperiments.test.js`          | Experimentos de optimización                  |
+| `GasLabExtended.test.js`          | Experimentos ampliados                        |
+| `GasLabInvariants.test.js`        | Invariantes del laboratorio                   |
+| `PharmaGasLab.test.js`            | Pruebas del laboratorio de gas                |
+| `VariantCatalog.test.cjs`         | Catálogo de variantes                         |
+
+### 10.1. Pruebas funcionales
+
+Entre los escenarios contemplados durante el desarrollo están:
+
+- Registro de un lote válido.
+- Rechazo de nombres y fabricantes vacíos.
+- Consulta de los datos de un lote.
+- Generación de identificadores consecutivos.
+- Rechazo de operaciones sobre lotes inexistentes.
+- Emisión de eventos.
+- Comprobación de la fecha del bloque.
+- Propuesta de transferencia sin cambiar todavía al custodio.
+- Transferencia laboratorio → distribuidor → farmacia.
+- Rechazo de transferencias directas no permitidas.
+- Rechazo de operaciones realizadas por atacantes.
+- Comprobación de la concesión y revocación de roles.
+
+### 10.2. Pruebas de equivalencia
+
+La equivalencia funcional es importante porque las optimizaciones no deben modificar el comportamiento esperado.
+
+Se comparan las respuestas de las variantes ante escenarios equivalentes.
+
+No todas las variantes tienen necesariamente la misma representación interna; por ello, la equivalencia debe comprobarse sobre las propiedades funcionales compartidas.
+
+### 10.3. Ejecución
+
+Instalar las dependencias:
+
+```bash
+npm ci
+```
+
+Compilar:
+
+```bash
+npx hardhat compile
+```
+
+Ejecutar pruebas:
+
+```bash
+npx hardhat test
+```
+
+Para ejecutar una prueba específica:
+
+```bash
+npx hardhat test test/ComparacionPermisos.test.js
+```
+
+Para ejecutar Truffle, consultar los comandos y la configuración descritos en `README_TRUFFLE.md`.
+
+Los resultados de las pruebas pueden consultarse en `reports/test-results_PharmaChain.txt`, siempre que dicho archivo corresponda a la ejecución actual.
+
+## 11. Benchmark de consumo de gas
+
+El proyecto incluye un sistema de experimentación para comparar el coste de las operaciones entre contratos.
+
+Los principales archivos de resultados son:
+
+```text
+gas-reports/
+├── comparison-extended.csv
+├── gas-experiments.csv
+├── pharmachain-default.csv
+├── pharmachain-default.json
+├── pharmachain-extended.csv
+├── pharmachain-extended.json
+└── pharmachain-gas.csv
+
+reports/
+├── framework-benchmark.json
+├── gas-comparison.csv
+└── test-results_PharmaChain.txt
+```
+
+### 11.1. Metodología
+
+Para realizar una comparación válida deben mantenerse constantes las condiciones experimentales:
+
+- Versión del compilador Solidity.
+- Configuración del optimizador.
+- Versión objetivo de EVM.
+- Estado inicial de la blockchain.
+- Datos utilizados.
+- Operación ejecutada.
+- Número de repeticiones.
+
+### 11.2. Operaciones a comparar
+
+Se recomienda medir:
+
+| Operación        | Métrica                             |
+| ---------------- | ----------------------------------- |
+| Despliegue       | Gas de creación del contrato        |
+| Registro         | Gas para registrar un lote          |
+| Propuesta        | Gas para proponer una transferencia |
+| Aceptación       | Gas para aceptar la transferencia   |
+| Cancelación      | Gas para cancelar la operación      |
+| Desactivación    | Gas para desactivar un lote         |
+| Gestión de roles | Gas de concesión o revocación       |
+
+### 11.3. Cálculo del ahorro
+
+Para comparar una variante original con otra optimizada:
+
+\[
+Ahorro(\%) =
+\frac{Gas_{original}-Gas_{optimizado}}
+{Gas_{original}}\times100
+\]
+
+Si el resultado es positivo, la variante optimizada consume menos gas en la operación analizada.
+
+Si es negativo, consume más.
+
+No deben extrapolarse los resultados de una operación a todas las demás.
+
+### 11.4. Interpretación
+
+El contrato más barato de desplegar no tiene por qué ser el más barato de utilizar.
+
+Una implementación puede aumentar el coste inicial y reducir el coste de las operaciones habituales.
+
+Por ello, también conviene analizar el coste acumulado según el número de operaciones previstas.
+
+La documentación experimental complementaria se encuentra en:
+
+- `README-BENCHMARK.md`
+- `BENCHMARK_GUIA.md`
+- `BENCHMARK_METODOLOGIA.md`
+- `AUDITORIA_V3.md`
+
+## 12. Frontend de PharmaChain
+
+Se ha incorporado un frontend dentro de `frontend/`, utilizando un entorno de desarrollo basado en Vite.
+
+El objetivo es permitir que las operaciones de blockchain puedan ejecutarse mediante una interfaz visual.
+
+### 12.1. Motivación
+
+Interactuar directamente con un contrato desde Remix o mediante scripts es útil para desarrollar, pero resulta poco intuitivo para usuarios sin conocimientos de Solidity.
+
+La interfaz permite representar los participantes y los lotes de una manera más cercana a una aplicación empresarial.
+
+### 12.2. Operaciones de interés
+
+El frontend está orientado a facilitar:
+
+- Selección de cuentas Ethereum.
+- Identificación del rol activo.
+- Registro de lotes.
+- Consulta de información.
+- Propuesta de transferencias.
+- Aceptación de transferencias.
+- Consulta del estado de custodia.
+- Visualización de resultados y errores.
+
+La disponibilidad exacta de cada operación depende de la versión del frontend y del contrato seleccionado.
+
+### 12.3. Ejecución
+
+Desde la carpeta `frontend`:
+
+```bash
+npm ci
+npm run dev
+```
+
+La interfaz necesita disponer de una red Ethereum accesible y de contratos desplegados con las direcciones y ABI correctas.
+
+La guía específica está en `README_FRONTEND_V6.md` y `frontend/README.md`.
+
+## 13. Laboratorio de experimentación
+
+Además del frontend principal, el repositorio incluye un laboratorio en `lab/`.
+
+Sus componentes identificados son:
+
+- `server.cjs`: servidor del laboratorio.
+- `variants.json`: catálogo de variantes.
+- `public/`: recursos de la interfaz.
+- `README.md`: documentación específica.
+
+Este laboratorio permite organizar los experimentos alrededor de diferentes implementaciones.
+
+Su finalidad es facilitar la comparación reproducible de contratos, evitando tener que modificar manualmente los scripts para cada variante.
+
+## 14. Despliegue local
+
+### 14.1. Instalación
+
+```bash
+npm ci
+```
+
+### 14.2. Compilación
+
+```bash
+npx hardhat compile
+```
+
+### 14.3. Inicio de la red local
+
+En una terminal:
+
+```bash
+npx hardhat node
+```
+
+### 14.4. Despliegue
+
+El repositorio incluye un sistema de migraciones Truffle en:
+
+`migrations/1_deploy_pharmachain.js`
+
+Para desplegar los contratos debe utilizarse la configuración correspondiente a la red seleccionada.
+
+Las instrucciones detalladas están en `README_HARDHAT.md`, `README_TRUFFLE.md` y `LABORATORIO_TRUFFLE.md`.
+
+### 14.5. Consideraciones
+
+Al reiniciar una red local no persistente, las direcciones de los contratos pueden dejar de corresponder a despliegues válidos.
+
+En ese caso, es necesario volver a desplegar y actualizar las direcciones utilizadas por el frontend.
+
+## 15. Seguridad
+
+### 15.1. Control de acceso
+
+Las funciones sensibles deben verificar que el usuario dispone de los permisos necesarios.
+
+La autorización debe ejecutarse dentro del contrato, no únicamente en el frontend.
+
+### 15.2. Validación de entradas
+
+Es necesario comprobar la existencia de los lotes y la validez de los parámetros utilizados.
+
+### 15.3. Consistencia de la custodia
+
+La transferencia debe impedir que una cuenta no autorizada cambie el propietario de un lote.
+
+También debe evitar aceptar una propuesta inexistente o destinada a otro usuario.
+
+### 15.4. Riesgos
+
+Entre los aspectos que deben considerarse antes de utilizar el sistema fuera de un entorno académico se encuentran:
+
+- Administración y revocación de permisos.
+- Compromiso de claves privadas.
+- Pérdida de acceso administrativo.
+- Información sensible almacenada públicamente.
+- Errores en las reglas de negocio.
+- Cambios en los requisitos de trazabilidad.
+- Dependencias de software.
+- Coste de almacenamiento y ejecución.
+- Coherencia entre los registros digitales y los productos físicos.
+
+## 16. Resultados y aportaciones
+
+El proyecto ha permitido desarrollar un entorno de experimentación que va más allá de un único contrato Solidity.
+
+Las principales aportaciones son:
+
+**Implementación funcional:** diseño de un sistema de registro y transferencia de custodia farmacéutica.
+
+**Comparación de permisos:** implementación de roles propios y alternativa basada en OpenZeppelin.
+
+**Optimización:** creación de variantes para estudiar decisiones de almacenamiento y ejecución.
+
+**Pruebas:** desarrollo de una batería de pruebas de funcionalidad, seguridad y equivalencia.
+
+**Benchmark:** generación de informes para analizar el consumo de gas.
+
+**Frontend:** incorporación de una interfaz web para facilitar la interacción.
+
+**Laboratorio:** organización de experimentos y variantes en un entorno específico.
+
+Los resultados cuantitativos y las conclusiones definitivas sobre qué variante consume menos gas deben obtenerse de los CSV y JSON generados por los experimentos.
+
+## 17. Mejoras futuras
+
+### 17.1. Seguridad y robustez
+
+- Incorporar análisis estático con Slither.
+- Añadir pruebas basadas en propiedades e invariantes.
+- Evaluar situaciones de compromiso de cuentas.
+- Analizar mecanismos de recuperación administrativa.
+- Revisar la gestión de permisos y los eventos emitidos.
+- Incorporar pruebas de fuzzing.
+
+### 17.2. Optimización
+
+- Analizar el tamaño del bytecode.
+- Comparar estructuras empaquetadas.
+- Medir el coste de diferentes tipos de identificadores.
+- Evaluar errores personalizados frente a mensajes `require`.
+- Comparar el uso de `storage`, `memory` y `calldata`.
+- Analizar el coste de eventos y almacenamiento.
+- Estudiar el punto de equilibrio entre coste de despliegue y operaciones.
+
+### 17.3. Funcionalidades farmacéuticas
+
+- Añadir fechas de caducidad.
+- Incorporar números de serie y códigos de lote.
+- Registrar retiradas de medicamentos.
+- Permitir consultas de trazabilidad.
+- Incorporar información de temperatura mediante fuentes externas verificables.
+- Asociar identificadores QR a los lotes.
+- Registrar pruebas de entrega.
+
+### 17.4. Frontend
+
+- Mostrar gráficamente la cadena de custodia.
+- Incorporar un historial cronológico.
+- Añadir filtros y búsqueda de lotes.
+- Visualizar el gas de cada transacción.
+- Comparar variantes desde una misma pantalla.
+- Mejorar los mensajes de error.
+- Añadir indicadores de red y conexión.
+- Exportar resultados experimentales.
+
+### 17.5. Despliegue y mantenimiento
+
+- Incorporar integración continua con GitHub Actions.
+- Ejecutar automáticamente las pruebas en cada cambio.
+- Generar informes de cobertura.
+- Fijar las versiones de dependencias.
+- Mantener un registro de despliegues.
+- Probar el contrato en Sepolia.
+- Realizar una auditoría antes de considerar un despliegue real.
+
+## 18. Referencias y documentación
+
+### Ethereum y Solidity
+
+- [Ethereum Developer Documentation](https://ethereum.org/en/developers/docs/)
+- [Solidity Documentation](https://docs.soliditylang.org/)
+- [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf)
+- [Ethereum Improvement Proposals](https://eips.ethereum.org/)
+
+### Bibliotecas y frameworks
+
+- [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/)
+- [OpenZeppelin AccessControl](https://docs.openzeppelin.com/contracts/5.x/access-control)
+- [Hardhat Documentation](https://hardhat.org/docs)
+- [Truffle Documentation](https://archive.trufflesuite.com/docs/)
+- [Ethers.js Documentation](https://docs.ethers.org/)
+- [Vite Documentation](https://vite.dev/)
+
+### Seguridad
+
+- [OWASP Smart Contract Security](https://scs.owasp.org/)
+- [Slither — Static Analyzer](https://github.com/crytic/slither)
+- [Foundry Book](https://getfoundry.sh/)
+- [Solidity Security Considerations](https://docs.soliditylang.org/en/latest/security-considerations.html)
+
+### Trazabilidad farmacéutica
+
+- [GS1 Standards](https://www.gs1.org/standards)
+- [European Medicines Verification Organisation](https://emvo-medicines.eu/)
+- [Reglamento Delegado (UE) 2016/161](https://eur-lex.europa.eu/eli/reg_del/2016/161/oj)
+
+## 19. Conclusiones
+
+PharmaChain-Ethereum demuestra cómo los contratos inteligentes pueden utilizarse para representar procesos de registro y transferencia de custodia entre diferentes organizaciones.
+
+El desarrollo ha permitido comparar dos modelos de control de acceso y estudiar la influencia de distintas decisiones de implementación en el consumo de gas.
+
+Las pruebas automatizadas son esenciales para comprobar que las optimizaciones no alteran las propiedades funcionales del sistema.
+
+La combinación de Hardhat, Truffle, OpenZeppelin, frontend y herramientas de benchmark permite abordar el ejercicio desde una perspectiva más próxima al desarrollo profesional de aplicaciones blockchain.
+
+Como conclusión, la selección de una implementación no debe depender exclusivamente de su coste de gas, sino también de su seguridad, claridad, mantenibilidad y adecuación a los requisitos del sistema.

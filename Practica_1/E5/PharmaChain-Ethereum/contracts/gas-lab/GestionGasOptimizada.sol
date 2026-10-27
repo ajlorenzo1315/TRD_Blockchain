@@ -78,7 +78,9 @@ abstract contract GestionGasOptimizada {
         if (bytes(fabricante).length == 0) revert FabricanteVacio();
 
         uint256 nuevoId;
-        unchecked { nuevoId = totalLotes + 1; }
+        unchecked {
+            nuevoId = totalLotes + 1;
+        }
         totalLotes = nuevoId;
         lotes[nuevoId] = Lote({
             id: nuevoId,

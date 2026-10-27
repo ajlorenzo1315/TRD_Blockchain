@@ -69,8 +69,9 @@ contract GasLabCacheErrors is GestionLotesYTransferencias {
     ) internal view override returns (bool) {
         Rol rolOrigen = roles[origen];
         Rol rolDestino = roles[destino];
-        return (rolOrigen == Rol.Laboratorio && rolDestino == Rol.Distribuidor) ||
-               (rolOrigen == Rol.Distribuidor && rolDestino == Rol.Farmacia);
+        return
+            (rolOrigen == Rol.Laboratorio && rolDestino == Rol.Distribuidor) ||
+            (rolOrigen == Rol.Distribuidor && rolDestino == Rol.Farmacia);
     }
 
     function _comprobarActivo() internal view override {

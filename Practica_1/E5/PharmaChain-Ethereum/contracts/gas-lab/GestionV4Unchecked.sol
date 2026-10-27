@@ -61,7 +61,9 @@ abstract contract GestionV4Unchecked {
         require(bytes(nombre).length > 0, "El nombre no puede estar vacio");
         require(bytes(fabricante).length > 0, "El fabricante no puede estar vacio");
 
-        unchecked { ++totalLotes; }
+        unchecked {
+            ++totalLotes;
+        }
         lotes[totalLotes] = Lote({
             id: totalLotes,
             nombre: nombre,

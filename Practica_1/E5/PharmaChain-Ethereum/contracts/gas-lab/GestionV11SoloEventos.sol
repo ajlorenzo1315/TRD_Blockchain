@@ -76,7 +76,9 @@ abstract contract GestionV11SoloEventos {
         if (!(bytes(nombre).length > 0)) revert NombreVacio();
         if (!(bytes(fabricante).length > 0)) revert FabricanteVacio();
 
-        unchecked { ++totalLotes; }
+        unchecked {
+            ++totalLotes;
+        }
         lotes[totalLotes] = Lote({
             nombre: nombre,
             fabricante: fabricante,
@@ -172,7 +174,13 @@ abstract contract GestionV11SoloEventos {
 
     // Historial completo de movimientos de cada lote.
     // Variante experimental: historial únicamente en logs, no accesible desde EVM.
-    event MovimientoRegistrado(uint256 indexed id, TipoMovimiento tipo, address indexed origen, address indexed destino, uint256 fecha);
+    event MovimientoRegistrado(
+        uint256 indexed id,
+        TipoMovimiento tipo,
+        address indexed origen,
+        address indexed destino,
+        uint256 fecha
+    );
 
     // Guarda un movimiento en el historial de un lote.
     function _registrarMovimiento(
