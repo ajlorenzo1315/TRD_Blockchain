@@ -1,0 +1,30 @@
+[
+  {
+    "id": "PharmaChainRolesManuales",
+    "title": "V0 · Roles manuales (referencia)",
+    "kind": "manual",
+    "optimization": "Sin optimización específica",
+    "description": "Una cuenta tiene un único rol. Permisos implementados en Solidity."
+  },
+  {
+    "id": "PharmaChainRolesOpenZeppelin",
+    "title": "V1 · AccessControl (referencia)",
+    "kind": "openzeppelin",
+    "optimization": "Biblioteca de permisos estándar",
+    "description": "Una cuenta puede disponer de varios roles. No es funcionalmente idéntico al modelo manual."
+  },
+  {
+    "id": "PharmaChainRolesManualesOptimized",
+    "title": "V2 · Roles manuales + gas optimizado",
+    "kind": "manual",
+    "optimization": "Core optimizado y controles de gas",
+    "description": "Comparar con V0 para aislar el efecto de las optimizaciones."
+  },
+  {
+    "id": "PharmaChainRolesOpenZeppelinOptimized",
+    "title": "V3 · AccessControl + gas optimizado",
+    "kind": "openzeppelin",
+    "optimization": "Core optimizado con AccessControl",
+    "description": "Comparar con V1 para aislar el efecto de las optimizaciones."
+  }
+]

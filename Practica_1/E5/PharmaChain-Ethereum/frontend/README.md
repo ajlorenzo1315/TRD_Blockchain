@@ -1,16 +1,33 @@
-# React + Vite
+# Frontend React — PharmaChain Enterprise Console
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Consulta [la guía integral](../README-BENCHMARK.md).
 
-Currently, two official plugins are available:
+## Lanzar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Desde la raíz, con `npm run chain`, `npm run truffle:migrate` y `npm run lab` activos:
 
-## React Compiler
+```bash
+npm --prefix frontend install
+npm --prefix frontend run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Abre **http://localhost:5173/**. Vite hace proxy de `/api` al backend `http://127.0.0.1:3100`.
 
-## Expanding the Oxlint configuration
+## Secciones
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **Vista general:** resumen de lotes y actividad.
+- **Inventario / Registrar fármaco:** alta y selección de lotes.
+- **Cadena de custodia:** proponer, aceptar, cancelar y ver historial.
+- **Cuentas y roles:** emular cuentas Hardhat, asignar permisos.
+- **Laboratorio de pruebas:** ejecutar flujo completo y simular llamadas sin transacción.
+- **Actividad blockchain:** ver recibos.
+- **Comparar versiones:** elegir variantes desplegadas, rondas, ejecutar benchmark funcional, comprobar paridad, exportar JSON/CSV, consultar histórico y abrir comparativa Hardhat/Truffle.
+
+## Validación
+
+```bash
+npm --prefix frontend run lint
+npm --prefix frontend run build
+```
+
+El benchmark modifica la red local. No utilizar con fondos ni contratos reales.

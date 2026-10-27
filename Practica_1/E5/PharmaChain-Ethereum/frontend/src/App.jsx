@@ -1,639 +1,151 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { ethers } from "ethers";
-import { conectarContrato } from "./blockchain/contrato";
-import "./App.css";
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import './App.css';
 
-const shorten = (v = "") => (v ? `${v.slice(0, 7)}…${v.slice(-5)}` : "—");
-const date = (s) => new Date(Number(s) * 1000).toLocaleString("es-ES");
-const types = ["Registro", "Propuesta", "Aceptación", "Cancelación"];
-const knownRoles = ["Administrador", "Laboratorio", "Distribuidor", "Farmacia"];
-function errorText(e) {
-    return e?.shortMessage || e?.reason || e?.message || "Operación fallida";
-}
+const CONTRACTS=['PharmaChainRolesManuales','PharmaChainRolesOpenZeppelin','PharmaChainRolesManualesOptimized','PharmaChainRolesOpenZeppelinOptimized'];
+const TITLES={PharmaChainRolesManuales:'V0 · Manual base',PharmaChainRolesOpenZeppelin:'V1 · OpenZeppelin base',PharmaChainRolesManualesOptimized:'V2 · Manual optimizado',PharmaChainRolesOpenZeppelinOptimized:'V3 · OpenZeppelin optimizado'};
+const ROLE_NAMES=['Administrador','Laboratorio','Distribuidor','Farmacia','Actor adicional'];
+const PRESETS=[['Paracetamol 500 mg','Laboratorios Galicia'],['Ibuprofeno 600 mg','Farmacéutica Atlántica'],['Amoxicilina 875 mg','BioMed España'],['Omeprazol 20 mg','Pharma Norte'],['Insulina glargina','BioMed España']];
+const TYPES=['Registro','Propuesta','Aceptación','Cancelación'];
+const trim=(a='')=>a?`${a.slice(0,7)}…${a.slice(-5)}`:'—';
+const date=(s)=>s?new Date(Number(s)*1000).toLocaleString('es-ES'):'—';
+const explain=(s)=>{const x=String(s||'Error desconocido'); const map=[['No eres laboratorio','La cuenta elegida no tiene rol de laboratorio. Configura los roles o cambia de cuenta.'],['No eres el custodio','Selecciona la cuenta que posee actualmente este lote.'],['No eres el destinatario','Para aceptar, selecciona la cuenta de destino indicada en la propuesta.'],['Transicion de roles invalida','La custodia solo permite Laboratorio → Distribuidor → Farmacia.'],['No hay transferencia pendiente','Primero debes proponer una transferencia.'],['Transferencia pendiente','Resuelve la transferencia pendiente antes de crear otra.'],['No autorizado','Esta operación requiere el custodio de origen o el administrador.'],['No desplegado','No se encontró el contrato. Ejecuta la migración de Truffle.'],['No hay bytecode','El nodo se reinició. Vuelve a desplegar con npm run truffle:migrate.'],['No eres el administrador','Selecciona la cuenta administradora (normalmente la primera).']];return map.find(([k])=>x.includes(k))?.[1]||x.slice(0,420)};
+async function api(url,body){let res;try{res=await fetch(url,{...(body!==undefined?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{})});}catch{throw Error('No responde el servidor del laboratorio en :3100. Ejecuta npm run lab.')}const data=await res.json().catch(()=>({}));if(!res.ok)throw Error(data.error||`HTTP ${res.status}`);return data}
+function download(name,obj){const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
+export default function App(){
+ const [page,setPage]=useState('dashboard'),[status,setStatus]=useState(null),[contract,setContract]=useState(CONTRACTS[0]),[account,setAccount]=useState(''),[lots,setLots]=useState([]),[selected,setSelected]=useState(null),[evidence,setEvidence]=useState(null),[ledger,setLedger]=useState([]),[busy,setBusy]=useState(false),[toast,setToast]=useState(null),[query,setQuery]=useState(''),[filter,setFilter]=useState('todos'),[medicine,setMedicine]=useState(''),[maker,setMaker]=useState(''),[recipient,setRecipient]=useState(''),[preview,setPreview]=useState(null),[roleAddress,setRoleAddress]=useState(''),[role,setRole]=useState('1'),[alias,setAlias]=useState({}),[benchmark,setBenchmark]=useState(null),[variants,setVariants]=useState([]);
+ const accounts = useMemo(() => status?.accounts ?? [], [status?.accounts]);
+ const label = useCallback((a) => {
+  const i = accounts.findIndex(x => x.toLowerCase() === String(a).toLowerCase());
+  return alias[a?.toLowerCase()] || (i >= 0 ? `${ROLE_NAMES[i] || `Cuenta ${i + 1}`} · ${trim(a)}` : trim(a));
+ }, [accounts, alias]);
 
-export default function App() {
-    const [contract, setContract] = useState(null);
-    const [account, setAccount] = useState("");
-    const [roles, setRoles] = useState([]);
-    const [section, setSection] = useState("inventario");
-    const [loading, setLoading] = useState(false);
-    const [notice, setNotice] = useState(null);
-    const [medicine, setMedicine] = useState("");
-    const [maker, setMaker] = useState("");
-    const [query, setQuery] = useState("");
-    const [filter, setFilter] = useState("todos");
-    const [items, setItems] = useState([]);
-    const [selected, setSelected] = useState(null);
-    const [movements, setMovements] = useState([]);
-    const [pending, setPending] = useState(null);
-    const [recipient, setRecipient] = useState("");
-    const [directory, setDirectory] = useState({});
-    const [newAddress, setNewAddress] = useState("");
-    const [newLabel, setNewLabel] = useState("");
+ // Evita que respuestas antiguas sustituyan los datos del contrato seleccionado.
+ const requestId = useRef(0);
+ const activeContract = useRef(contract);
 
-    const nameFor = useCallback(
-        (addr) => {
-            if (!addr || addr === ethers.ZeroAddress) return "Origen del registro";
-            if (account && addr.toLowerCase() === account.toLowerCase()) return "Mi cuenta";
-            return directory[addr.toLowerCase()] || shorten(addr);
-        },
-        [account, directory],
-    );
-
-    async function refresh(c = contract) {
-        if (!c) return;
-        const count = Number(await c.totalLotes());
-        const result = await Promise.all(
-            Array.from({ length: count }, (_, i) => c.consultarLote(i + 1)),
-        );
-        setItems(
-            result.map((l) => ({
-                id: Number(l.id),
-                nombre: l.nombre,
-                fabricante: l.fabricante,
-                propietario: l.propietario,
-                fecha: date(l.fechaRegistro),
-                activo: l.activo,
-            })),
-        );
-    }
-
-    async function loadDetail(id, c = contract) {
-        if (!c) return;
-        const [l, t, n] = await Promise.all([
-            c.consultarLote(id),
-            c.transferencias(id),
-            c.totalMovimientos(id),
-        ]);
-        const history = await Promise.all(
-            Array.from({ length: Number(n) }, (_, i) => c.consultarMovimiento(id, i)),
-        );
-        setSelected({
-            id: Number(l.id),
-            nombre: l.nombre,
-            fabricante: l.fabricante,
-            propietario: l.propietario,
-            fecha: date(l.fechaRegistro),
-            activo: l.activo,
-        });
-        setPending({ origen: t.origen, destino: t.destino, pendiente: t.pendiente });
-        setMovements(
-            history.map((m, i) => ({
-                key: i,
-                tipo: types[Number(m.tipoMovimiento)] || "Movimiento",
-                origen: m.origen,
-                destino: m.destino,
-                fecha: date(m.fecha),
-            })),
-        );
-    }
-
-    async function perform(task, success = "Operación completada") {
-        setLoading(true);
-        setNotice(null);
-        try {
-            await task();
-            setNotice({ good: true, text: success });
-        } catch (e) {
-            setNotice({ good: false, text: errorText(e) });
-        } finally {
-            setLoading(false);
-        }
-    }
-    async function connect() {
-        await perform(async () => {
-            const { contrato, cuenta } = await conectarContrato();
-            const roleIds = await Promise.all([
-                contrato.DEFAULT_ADMIN_ROLE(),
-                contrato.LABORATORIO_ROLE(),
-                contrato.DISTRIBUIDOR_ROLE(),
-                contrato.FARMACIA_ROLE(),
-            ]);
-            const found = await Promise.all(roleIds.map((id) => contrato.hasRole(id, cuenta)));
-            setRoles(knownRoles.filter((_, i) => found[i]));
-            setContract(contrato);
-            setAccount(cuenta);
-            await refresh(contrato);
-        }, "Cartera conectada y lotes actualizados");
-    }
-    async function transaction(make, success, after) {
-        await perform(async () => {
-            if (!contract) throw new Error("Conecta MetaMask primero");
-            const tx = await make();
-            setNotice({ good: true, text: "Esperando confirmación de Ethereum…" });
-            await tx.wait();
-            await refresh();
-            if (after) await after();
-        }, success);
-    }
-    async function register(e) {
-        e.preventDefault();
-        if (!medicine.trim() || !maker.trim())
-            return setNotice({ good: false, text: "Completa el medicamento y el fabricante" });
-        await transaction(
-            () => contract.registrarLote(medicine.trim(), maker.trim()),
-            "Medicamento registrado correctamente",
-            async () => {
-                setMedicine("");
-                setMaker("");
-                setSection("inventario");
-            },
-        );
-    }
-    async function choose(id) {
-        await perform(() => loadDetail(id), `Lote #${id} cargado`);
-    }
-    async function act(action) {
-        if (!selected) return;
-        const id = selected.id;
-        if (action === "proponer" && !ethers.isAddress(recipient))
-            return setNotice({ good: false, text: "La dirección Ethereum no es válida" });
-        const calls = {
-            proponer: () => contract.proponerTransferencia(id, recipient),
-            aceptar: () => contract.aceptarTransferencia(id),
-            cancelar: () => contract.cancelarTransferencia(id),
-            desactivar: () => contract.desactivarLote(id),
-        };
-        await transaction(calls[action], `Operación ${action} confirmada`, async () => {
-            await loadDetail(id);
-            if (action === "proponer") setRecipient("");
-        });
-    }
-    function saveContact(e) {
-        e.preventDefault();
-        if (!ethers.isAddress(newAddress) || !newLabel.trim())
-            return setNotice({ good: false, text: "Introduce una dirección y un nombre válidos" });
-        setDirectory((old) => ({ ...old, [newAddress.toLowerCase()]: newLabel.trim() }));
-        setNewAddress("");
-        setNewLabel("");
-        setNotice({
-            good: true,
-            text: "Alias añadido para esta sesión. No modifica la blockchain.",
-        });
-    }
     useEffect(() => {
-        if (!window.ethereum) return;
-        const onChange = () => {
-            setContract(null);
-            setAccount("");
-            setRoles([]);
-            setItems([]);
-            setSelected(null);
-            setNotice({ good: false, text: "La cuenta o red cambió. Vuelve a conectar." });
-        };
-        window.ethereum.on?.("accountsChanged", onChange);
-        window.ethereum.on?.("chainChanged", onChange);
-        return () => {
-            window.ethereum.removeListener?.("accountsChanged", onChange);
-            window.ethereum.removeListener?.("chainChanged", onChange);
-        };
-    }, []);
-    const visible = useMemo(
-        () =>
-            items.filter(
-                (l) =>
-                    (filter === "todos" || (filter === "activos" ? l.activo : !l.activo)) &&
-                    `${l.id} ${l.nombre} ${l.fabricante} ${l.propietario}`
-                        .toLowerCase()
-                        .includes(query.toLowerCase()),
-            ),
-        [items, query, filter],
-    );
-    const active = items.filter((l) => l.activo).length;
-    const mine = items.filter(
-        (l) => account && l.propietario.toLowerCase() === account.toLowerCase(),
-    ).length;
-    return (
-        <div className="shell">
-            <aside className="sidebar">
-                <div className="brand">
-                    <span className="brandmark">✚</span>
-                    <span>
-                        Pharma<span className="accent">Chain</span>
-                        <small>ETHEREUM TRACEABILITY</small>
-                    </span>
-                </div>
-                <div className="navtitle">ESPACIO DE TRABAJO</div>
-                {[
-                    ["inventario", "▦", "Inventario"],
-                    ["registrar", "＋", "Registrar medicamento"],
-                    ["directorio", "♧", "Identidades"],
-                ].map(([key, icon, label]) => (
-                    <button
-                        key={key}
-                        className={`navitem ${section === key ? "active" : ""}`}
-                        onClick={() => setSection(key)}
-                    >
-                        <span>{icon}</span>
-                        {label}
-                    </button>
-                ))}
-                <div className="sidefoot">
-                    <div className="dot" /> Red local · Hardhat <small>Chain ID 31337</small>
-                </div>
-            </aside>
-            <main className="content">
-                <div className="topbar">
-                    <span>
-                        Panel de trazabilidad <span className="crumb">/ {section}</span>
-                    </span>
-                    <button className="wallet" disabled={loading} onClick={connect}>
-                        {account ? `● ${shorten(account)}` : "◈ Conectar MetaMask"}
-                    </button>
-                </div>
-                {notice && (
-                    <div role="status" className={`toast ${notice.good ? "ok" : "bad"}`}>
-                        <span>{notice.good ? "✓" : "!"}</span>
-                        <span>{notice.text}</span>
-                        <button aria-label="Cerrar aviso" onClick={() => setNotice(null)}>
-                            ×
-                        </button>
-                    </div>
-                )}
-                {section === "inventario" && (
-                    <>
-                        <div className="heading">
-                            <div>
-                                <div className="eyebrow">CONTROL Y SEGUIMIENTO</div>
-                                <h1>Inventario farmacéutico</h1>
-                                <p>
-                                    Consulta la cadena de custodia de cada lote registrado en
-                                    Ethereum.
-                                </p>
-                            </div>
-                            <button className="primary" onClick={() => setSection("registrar")}>
-                                ＋ Nuevo medicamento
-                            </button>
-                        </div>
-                        <div className="stats">
-                            <div className="stat">
-                                <span>Total de lotes</span>
-                                <strong>{items.length}</strong>
-                                <small>Registrados en blockchain</small>
-                            </div>
-                            <div className="stat">
-                                <span>Lotes activos</span>
-                                <strong>{active}</strong>
-                                <small>Disponibles para transferir</small>
-                            </div>
-                            <div className="stat">
-                                <span>Bajo mi custodia</span>
-                                <strong>{mine}</strong>
-                                <small>Asociados a tu dirección</small>
-                            </div>
-                        </div>
-                        <div className="panel">
-                            <div className="panelhead">
-                                <div>
-                                    <h2>Medicamentos registrados</h2>
-                                    <p>Selecciona un lote para ver su identidad e historial.</p>
-                                </div>
-                                <button
-                                    className="outline"
-                                    disabled={!contract || loading}
-                                    onClick={() =>
-                                        perform(() => refresh(), "Inventario actualizado")
-                                    }
-                                >
-                                    ↻ Actualizar
-                                </button>
-                            </div>
-                            <div className="toolbar">
-                                <input
-                                    aria-label="Buscar lotes"
-                                    placeholder="⌕  Buscar medicamento, fabricante, dirección o ID..."
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                />
-                                <select
-                                    aria-label="Filtrar lotes"
-                                    value={filter}
-                                    onChange={(e) => setFilter(e.target.value)}
-                                >
-                                    <option value="todos">Todos los estados</option>
-                                    <option value="activos">Activos</option>
-                                    <option value="inactivos">Inactivos</option>
-                                </select>
-                            </div>
-                            <div className="tablewrap">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>LOTE</th>
-                                            <th>MEDICAMENTO</th>
-                                            <th>FABRICANTE</th>
-                                            <th>CUSTODIO ACTUAL</th>
-                                            <th>ESTADO</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {visible.map((l) => (
-                                            <tr key={l.id}>
-                                                <td className="mono">
-                                                    #{String(l.id).padStart(4, "0")}
-                                                </td>
-                                                <td>
-                                                    <strong>{l.nombre}</strong>
-                                                    <small>{l.fecha}</small>
-                                                </td>
-                                                <td>{l.fabricante}</td>
-                                                <td>
-                                                    <span title={l.propietario}>
-                                                        {nameFor(l.propietario)}
-                                                    </span>
-                                                    <small className="mono">
-                                                        {shorten(l.propietario)}
-                                                    </small>
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        className={`status ${l.activo ? "green" : "gray"}`}
-                                                    >
-                                                        ● {l.activo ? "Activo" : "Inactivo"}
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <button
-                                                        className="linkbutton"
-                                                        disabled={loading}
-                                                        onClick={() => choose(l.id)}
-                                                    >
-                                                        Ver detalles →
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                                {visible.length === 0 && (
-                                    <div className="empty">
-                                        {contract
-                                            ? "No hay lotes que coincidan con la búsqueda."
-                                            : "Conecta MetaMask para consultar el inventario."}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        {selected && (
-                            <div className="panel detail">
-                                <div className="panelhead">
-                                    <div>
-                                        <div className="eyebrow">
-                                            FICHA DE TRAZABILIDAD · LOTE #{selected.id}
-                                        </div>
-                                        <h2>{selected.nombre}</h2>
-                                    </div>
-                                    <button className="outline" onClick={() => setSelected(null)}>
-                                        Cerrar ×
-                                    </button>
-                                </div>
-                                <div className="detailgrid">
-                                    <div>
-                                        <span className="fieldlabel">Fabricante declarado</span>
-                                        <strong>{selected.fabricante}</strong>
-                                    </div>
-                                    <div>
-                                        <span className="fieldlabel">Custodio actual</span>
-                                        <strong>{nameFor(selected.propietario)}</strong>
-                                        <code>{selected.propietario}</code>
-                                    </div>
-                                    <div>
-                                        <span className="fieldlabel">Fecha de registro</span>
-                                        <strong>{selected.fecha}</strong>
-                                    </div>
-                                    <div>
-                                        <span className="fieldlabel">Estado</span>
-                                        <strong>{selected.activo ? "Activo" : "Inactivo"}</strong>
-                                    </div>
-                                </div>
-                                {pending?.pendiente && (
-                                    <div className="pending">
-                                        <strong>↗ Transferencia pendiente</strong>
-                                        <p>
-                                            De {nameFor(pending.origen)} a{" "}
-                                            {nameFor(pending.destino)}
-                                        </p>
-                                        <code>{pending.destino}</code>
-                                    </div>
-                                )}
-                                <div className="subhead">Gestionar transferencia</div>
-                                <div className="actionrow">
-                                    <input
-                                        aria-label="Dirección del destinatario"
-                                        placeholder="0x… Dirección Ethereum de destino"
-                                        value={recipient}
-                                        onChange={(e) => setRecipient(e.target.value)}
-                                    />
-                                    <button
-                                        className="primary"
-                                        disabled={
-                                            loading ||
-                                            !contract ||
-                                            !selected.activo ||
-                                            !!pending?.pendiente
-                                        }
-                                        onClick={() => act("proponer")}
-                                    >
-                                        Proponer
-                                    </button>
-                                    <button
-                                        className="outline"
-                                        disabled={loading || !pending?.pendiente}
-                                        onClick={() => act("aceptar")}
-                                    >
-                                        Aceptar
-                                    </button>
-                                    <button
-                                        className="outline"
-                                        disabled={loading || !pending?.pendiente}
-                                        onClick={() => act("cancelar")}
-                                    >
-                                        Cancelar
-                                    </button>
-                                    {roles.includes("Administrador") && (
-                                        <button
-                                            className="danger"
-                                            disabled={loading || !selected.activo}
-                                            onClick={() => {
-                                                if (window.confirm("¿Desactivar este lote?"))
-                                                    act("desactivar");
-                                            }}
-                                        >
-                                            Desactivar
-                                        </button>
-                                    )}
-                                </div>
-                                <div className="subhead">
-                                    Historial de custodia{" "}
-                                    <span className="muted">({movements.length})</span>
-                                </div>
-                                <div className="timeline">
-                                    {movements.map((m) => (
-                                        <div className="event" key={m.key}>
-                                            <div className="eventdot" />
-                                            <div>
-                                                <strong>{m.tipo}</strong>
-                                                <span className="eventdate">{m.fecha}</span>
-                                                <p>
-                                                    {nameFor(m.origen)} → {nameFor(m.destino)}
-                                                </p>
-                                                <small title={`${m.origen} → ${m.destino}`}>
-                                                    {shorten(m.origen)} → {shorten(m.destino)}
-                                                </small>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </>
-                )}
-                {section === "registrar" && (
-                    <>
-                        <div className="heading">
-                            <div>
-                                <div className="eyebrow">NUEVO REGISTRO</div>
-                                <h1>Registrar medicamento</h1>
-                                <p>Da de alta un lote de forma segura en la blockchain.</p>
-                            </div>
-                        </div>
-                        <div className="formlayout">
-                            <form className="panel formpanel" onSubmit={register}>
-                                <h2>Información del lote</h2>
-                                <p>
-                                    Los datos introducidos se almacenarán públicamente en Ethereum.
-                                </p>
-                                <label htmlFor="medicine">
-                                    Nombre del medicamento <b>*</b>
-                                </label>
-                                <input
-                                    id="medicine"
-                                    required
-                                    maxLength={150}
-                                    placeholder="Ej. Paracetamol 500 mg"
-                                    value={medicine}
-                                    onChange={(e) => setMedicine(e.target.value)}
-                                />
-                                <label htmlFor="maker">
-                                    Nombre del fabricante <b>*</b>
-                                </label>
-                                <input
-                                    id="maker"
-                                    required
-                                    maxLength={150}
-                                    placeholder="Ej. Laboratorios Galicia"
-                                    value={maker}
-                                    onChange={(e) => setMaker(e.target.value)}
-                                />
-                                <div className="info">
-                                    ⓘ El ID se genera automáticamente en el contrato. La dirección
-                                    conectada será el custodio inicial.
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="primary full"
-                                    disabled={
-                                        loading || !contract || !medicine.trim() || !maker.trim()
-                                    }
-                                >
-                                    {loading
-                                        ? "Confirmando transacción…"
-                                        : "＋ Registrar lote en Ethereum"}
-                                </button>
-                            </form>
-                            <div className="panel preview">
-                                <div className="eyebrow">VISTA PREVIA</div>
-                                <div className="medicineicon">✚</div>
-                                <h2>{medicine || "Nombre del medicamento"}</h2>
-                                <p>{maker || "Fabricante"}</p>
-                                <div className="previewline">
-                                    <span>Custodio inicial</span>
-                                    <strong>{account ? shorten(account) : "Sin conectar"}</strong>
-                                </div>
-                                <div className="previewline">
-                                    <span>Identificador</span>
-                                    <strong>Automático</strong>
-                                </div>
-                                <div className="previewline">
-                                    <span>Estado inicial</span>
-                                    <span className="status green">● Activo</span>
-                                </div>
-                                <div className="previewfoot">
-                                    El registro debe firmarlo una cuenta con rol Laboratorio.
-                                </div>
-                            </div>
-                        </div>
-                    </>
-                )}
-                {section === "directorio" && (
-                    <>
-                        <div className="heading">
-                            <div>
-                                <div className="eyebrow">IDENTIDADES</div>
-                                <h1>Directorio de custodios</h1>
-                                <p>
-                                    Asigna nombres legibles a las direcciones para identificar quién
-                                    custodia cada medicamento.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="panel formpanel">
-                            <h2>Identificar una dirección</h2>
-                            <p>
-                                Los alias solo se guardan durante esta sesión del navegador. No
-                                modifican roles ni identidad verificada en Ethereum.
-                            </p>
-                            <form onSubmit={saveContact}>
-                                <label>Nombre o entidad</label>
-                                <input
-                                    placeholder="Ej. Distribuidor Norte"
-                                    value={newLabel}
-                                    onChange={(e) => setNewLabel(e.target.value)}
-                                />
-                                <label>Dirección Ethereum</label>
-                                <input
-                                    placeholder="0x…"
-                                    value={newAddress}
-                                    onChange={(e) => setNewAddress(e.target.value)}
-                                />
-                                <button className="primary" type="submit">
-                                    Guardar alias
-                                </button>
-                            </form>
-                            <div className="subhead">Direcciones identificadas</div>
-                            {Object.entries(directory).length ? (
-                                Object.entries(directory).map(([address, label]) => (
-                                    <div className="contact" key={address}>
-                                        <strong>{label}</strong>
-                                        <code>{address}</code>
-                                        <button
-                                            className="linkbutton"
-                                            onClick={() =>
-                                                setDirectory((d) => {
-                                                    const next = { ...d };
-                                                    delete next[address];
-                                                    return next;
-                                                })
-                                            }
-                                        >
-                                            Quitar
-                                        </button>
-                                    </div>
-                                ))
-                            ) : (
-                                <div className="empty">
-                                    Todavía no hay direcciones identificadas.
-                                </div>
-                            )}
-                        </div>
-                    </>
-                )}
-                <footer>
-                    PharmaChain · Demostración académica · Ethereum local · Los datos on-chain son
-                    públicos
-                </footer>
-            </main>
-        </div>
-    );
+    activeContract.current = contract;
+    }, [contract]);
+
+ const reload = useCallback(async (c, keep = null) => {
+  const request = ++requestId.current;
+  const s = await api('/api/status');
+  const list = s.contracts?.[c] ? await api(`/api/lotes/${c}`) : { items: [] };
+  const log = await api('/api/ledger');
+  const items = list.items ?? [];
+  const found = keep == null ? null : items.find(x => String(x.id) === String(keep));
+  const details = found && s.contracts?.[c]
+   ? await api(`/api/workbench/evidence/${c}/${keep}`)
+   : null;
+
+  if (request !== requestId.current || c !== activeContract.current) return;
+  setStatus(s);
+  setLots(items);
+  setLedger(log);
+  setEvidence(details);
+  setSelected(found ?? null);
+  setAccount(prev => (s.accounts ?? []).includes(prev) ? prev : (s.accounts?.[0] ?? ''));
+ }, []);
+
+ useEffect(() => {
+  let active = true;
+  // La carga es asíncrona; no se actualiza estado de forma síncrona en el efecto.
+  Promise.resolve()
+   .then(() => {
+    if (active) return reload(contract, null);
+   })
+   .catch(error => {
+    if (active) setToast({ error: true, text: explain(error.message) });
+   });
+  return () => {
+   active = false;
+   requestId.current += 1;
+  };
+ }, [contract, reload]);
+
+ useEffect(() => {
+  let active = true;
+  api('/api/variants')
+   .then(data => { if (active) setVariants(data); })
+   .catch(() => {});
+  return () => { active = false; };
+ }, []);
+ const notify=(text,error=false)=>setToast({text,error});
+ async function run(fn,success){setBusy(true);setPreview(null);try{const result=await fn();notify(success||'Operación completada');return result}catch(e){notify(explain(e.message),true);return null}finally{setBusy(false)}}
+ async function action(method,params={},from=account){return run(async()=>{const r=await api('/api/action',{name:contract,action:method,from,...params});await reload(contract,selected?.id);return r},`Transacción confirmada · ${method}`)}
+ async function setup(){await run(async()=>{await api('/api/setup',{name:contract});await reload(contract,null)},'Roles de laboratorio, distribución y farmacia configurados')}
+ async function register(e){e.preventDefault();if(!medicine.trim()||!maker.trim())return notify('Indica medicamento y fabricante.',true);const result=await run(async()=>{const r=await api('/api/action',{name:contract,action:'registrarLote',from:account,nombre:medicine.trim(),fabricante:maker.trim()});await reload(contract,null);setMedicine('');setMaker('');setPage('inventory');return r},'Lote registrado correctamente');return result}
+ async function selectLot(id){await run(async()=>{const e=await api(`/api/workbench/evidence/${contract}/${id}`);setEvidence(e);setSelected(lots.find(l=>l.id===id));setRecipient(e.transfer?.destino&&e.transfer?.pendiente?e.transfer.destino:'');setPage('detail')},`Lote #${id} seleccionado`)}
+ async function previewAction(method,args){await run(async()=>{const r=await api('/api/workbench/preview',{name:contract,from:account,method,args});setPreview(r);if(!r.accepted)notify(explain(r.reason),true);return r},'Simulación ejecutada (sin transacción)')}
+ async function scenario(){await run(async()=>{const r=await api('/api/scenario',{name:contract});await reload(contract,null);setPage('inventory');return r},'Escenario completo ejecutado: laboratorio → distribuidor → farmacia')}
+ const current=lots.find(l=>l.id===selected?.id)||selected;
+ const pending=evidence?.transfer;
+ const mine=lots.filter(l=>l.propietario?.toLowerCase()===account?.toLowerCase()).length;
+ const visible=useMemo(()=>lots.filter(l=>(filter==='todos'||(filter==='activos'?l.activo:!l.activo))&&`${l.id} ${l.nombre} ${l.fabricante} ${l.propietario}`.toLowerCase().includes(query.toLowerCase())),[lots,filter,query]);
+ const lastTx=ledger.filter(x=>x.contract===contract).slice(0,12);
+ const deployed=Boolean(status?.contracts?.[contract]);
+ const canManage=Boolean(account&&deployed);
+ const navigate=(p)=>{setPage(p);setPreview(null)};
+ return <div className="app">
+ <aside className="sidebar">
+  <div className="brand"><div className="brand-icon">✚</div><div>Pharma<span>Chain</span><small>ENTERPRISE CONSOLE</small></div></div>
+  <div className="workspace"><div className="workspace-icon">P</div><div><b>PharmaChain Local</b><small>Entorno de simulación</small></div><span>⌄</span></div>
+  <div className="nav-label">OPERACIONES</div>
+  {[['dashboard','▦','Vista general'],['inventory','▤','Inventario de lotes'],['register','✚','Registrar fármaco'],['detail','⇄','Cadena de custodia'],['identities','♙','Cuentas y roles'],['laboratory','⚗','Laboratorio de pruebas'],['activity','◷','Actividad blockchain'],['benchmark','▥','Comparar versiones']].map(([key,icon,title])=><button key={key} className={`nav ${page===key?'active':''}`} onClick={()=>navigate(key)}><span className="nav-icon">{icon}</span>{title}{key==='inventory'&&<em>{lots.length}</em>}</button>)}
+  <div className="sidebar-bottom"><div className="sidebar-help">¿Necesitas ayuda?<small>Consulta la guía de ejecución y los escenarios incluidos.</small><a href="http://localhost:3100/operations.html" target="_blank" rel="noreferrer">Abrir laboratorio clásico ↗</a></div><div className="network-dot"><i/> {status?'Nodo RPC conectado':'Nodo RPC sin conexión'}</div><small>Hardhat · Red local 31337</small></div>
+ </aside>
+ <div className="main-shell">
+ <header className="topbar"><div className="breadcrumb">PharmaChain <span>/</span> {({dashboard:'Vista general',inventory:'Inventario',register:'Nuevo medicamento',detail:'Trazabilidad',identities:'Identidades',laboratory:'Laboratorio',activity:'Actividad',benchmark:'Benchmark'})[page]}</div><div className="top-actions"><span className={`pill ${deployed?'positive':'negative'}`}>● {deployed?'Contrato desplegado':'Sin despliegue'}</span><button className="icon-button" title="Actualizar datos" onClick={()=>run(()=>reload(contract,selected?.id),'Datos actualizados')} disabled={busy}>↻</button><div className="avatar">PC</div></div></header>
+ <main className="main">
+ {toast&&<div className={`alert ${toast.error?'alert-error':'alert-success'}`} role="status"><span>{toast.error?'⚠':'✓'}</span><div>{toast.text}</div><button onClick={()=>setToast(null)}>×</button></div>}
+ <div className="page-head"><div><div className="eyebrow">PLATAFORMA DE TRAZABILIDAD FARMACÉUTICA</div><h1>{({dashboard:'Centro de operaciones',inventory:'Inventario farmacéutico',register:'Registrar nuevo medicamento',detail:'Trazabilidad y custodia',identities:'Identidades y permisos',laboratory:'Laboratorio de escenarios',activity:'Registro de actividad'})[page]}</h1><p>{({dashboard:'Supervisa la cadena de suministro y las operaciones de Ethereum en tiempo real.',inventory:'Busca, selecciona y gestiona lotes sin introducir identificadores manualmente.',register:'Registra un nuevo lote en la blockchain con una cuenta de laboratorio.',detail:'Consulta el estado, las transferencias y las evidencias del lote seleccionado.',identities:'Emula organizaciones con cuentas locales y configura sus roles.',laboratory:'Ejecuta escenarios completos y prueba las restricciones del contrato.',activity:'Consulta las transacciones enviadas desde el laboratorio local.'})[page]}</p></div><div className="head-actions"><button className="btn btn-light" onClick={()=>run(()=>reload(contract,selected?.id),'Datos actualizados')} disabled={busy}>↻ Actualizar</button><button className="btn btn-primary" onClick={()=>navigate('register')}>＋ Nuevo lote</button></div></div>
+ <section className="context-bar"><div className="context-field"><label>CONTRATO ACTIVO</label><select value={contract} onChange={e=>setContract(e.target.value)}>{CONTRACTS.map(c=><option key={c} value={c}>{TITLES[c]}</option>)}</select></div><div className="context-field"><label>CUENTA QUE EJECUTA LAS OPERACIONES</label><select value={account} onChange={e=>{setAccount(e.target.value);setPreview(null)}}>{accounts.map((a,i)=><option value={a} key={a}>{ROLE_NAMES[i]||`Cuenta ${i+1}`} — {trim(a)}</option>)}</select></div><div className="context-field compact"><label>RED</label><strong>Hardhat · {status?.chainId||'—'}</strong></div><button className="btn btn-outline" onClick={()=>navigate('identities')}>Gestionar roles ↗</button></section>
+ {!deployed&&<div className="warning"><b>Contrato no disponible.</b> Inicia <code>npm run chain</code>, ejecuta <code>npm run truffle:migrate</code> y actualiza la página. La red local se reinicia sin conservar los despliegues anteriores.</div>}
+ {page==='dashboard'&&<><div className="kpi-grid"><Kpi label="Lotes registrados" value={lots.length} detail="En este contrato" icon="▤"/><Kpi label="Lotes activos" value={lots.filter(l=>l.activo).length} detail="Disponibles para operaciones" icon="✓"/><Kpi label="Bajo mi custodia" value={mine} detail="Cuenta actualmente seleccionada" icon="♙"/><Kpi label="Transferencias pendientes" value={lots.filter(l=>l.pendiente).length} detail="Pendientes de aceptación" icon="⇄"/></div><div className="two-columns"><section className="card"><div className="card-head"><div><h2>Flujo de distribución</h2><p>Cadena de custodia autorizada por el contrato</p></div><span className="tag">Proceso estándar</span></div><div className="supply-flow">{[['01','Laboratorio','Registro y propuesta','flask'],['02','Distribuidor','Recepción y envío','truck'],['03','Farmacia','Recepción final','pharmacy']].map(([n,t,s,icon],i)=><div className="flow-step" key={n}><div className="flow-number">{n}</div><div className="flow-icon">{icon==='flask'?'⚗':icon==='truck'?'▣':'✚'}</div><b>{t}</b><small>{s}</small>{i<2&&<span className="flow-arrow">→</span>}</div>)}</div><div className="card-actions"><button className="btn btn-primary" onClick={()=>navigate('laboratory')}>Abrir simulador →</button><button className="btn btn-light" onClick={()=>navigate('inventory')}>Ver lotes</button></div></section><section className="card"><div className="card-head"><div><h2>Última actividad</h2><p>Transacciones ejecutadas desde el servidor</p></div><button className="text-link" onClick={()=>navigate('activity')}>Ver todas →</button></div><Activity rows={lastTx.slice(0,5)} label={label}/></section></div><section className="card"><div className="card-head"><div><h2>Lotes recientes</h2><p>Accede directamente a los detalles de un medicamento</p></div><button className="text-link" onClick={()=>navigate('inventory')}>Ver inventario →</button></div><LotTable lots={lots.slice(-6).reverse()} label={label} select={selectLot}/></section></>}
+ {page==='inventory'&&<section className="card"><div className="card-head"><div><h2>Catálogo de medicamentos</h2><p>{visible.length} de {lots.length} lotes registrados</p></div><button className="btn btn-light" onClick={()=>download('inventario-pharmachain.json',lots)}>↓ Exportar JSON</button></div><div className="filters"><input placeholder="⌕  Buscar por nombre, fabricante, ID o dirección..." value={query} onChange={e=>setQuery(e.target.value)}/><select value={filter} onChange={e=>setFilter(e.target.value)}><option value="todos">Todos los estados</option><option value="activos">Activos</option><option value="inactivos">Inactivos</option></select></div><LotTable lots={visible} label={label} select={selectLot}/></section>}
+ {page==='register'&&<div className="form-columns"><form className="card register-card" onSubmit={register}><div className="card-head"><div><h2>Datos del medicamento</h2><p>Los datos serán públicos e inmutables en la red local.</p></div><span className="tag">Paso 1 de 1</span></div><label>Plantilla rápida</label><div className="preset-grid">{PRESETS.map(([m,f])=><button type="button" key={m} onClick={()=>{setMedicine(m);setMaker(f)}}>{m} ↗</button>)}</div><label htmlFor="med">Nombre del medicamento <span className="required">*</span></label><input id="med" value={medicine} onChange={e=>setMedicine(e.target.value)} required maxLength={150} placeholder="Ej. Paracetamol 500 mg"/><label htmlFor="maker">Fabricante <span className="required">*</span></label><input id="maker" value={maker} onChange={e=>setMaker(e.target.value)} required maxLength={150} placeholder="Ej. Laboratorios Galicia"/><div className="form-hint">El ID lo genera automáticamente el contrato. No necesitas introducirlo.</div><div className="form-footer"><button type="button" className="btn btn-light" onClick={()=>navigate('inventory')}>Cancelar</button><button className="btn btn-primary" disabled={busy||!canManage||!medicine.trim()||!maker.trim()}>Registrar en blockchain →</button></div></form><section className="card guide"><h2>Antes de registrar</h2><div className="guide-step"><span>1</span><div><b>Selecciona el laboratorio</b><p>Utiliza la cuenta 2 (índice 1) si configuraste los roles de demostración.</p></div></div><div className="guide-step"><span>2</span><div><b>Comprueba sus permisos</b><p>Si aparece “No eres laboratorio”, entra en Cuentas y roles y pulsa Configurar roles.</p></div></div><div className="guide-step"><span>3</span><div><b>Confirma la operación</b><p>El contrato emitirá el evento LoteRegistrado y creará el ID consecutivo.</p></div></div><div className="info-box">Cuenta seleccionada: <b>{label(account)}</b><button className="text-link" onClick={()=>setAccount(accounts[1]||account)}>Usar laboratorio</button></div></section></div>}
+ {page==='detail'&&(current?<><div className="detail-title"><div><span className="tag">LOTE #{current.id}</span><h2>{current.nombre}</h2><p>{current.fabricante} · Registrado {date(current.fechaRegistro)}</p></div><span className={`status ${current.activo?'active':'inactive'}`}>{current.activo?'● Activo':'○ Inactivo'}</span></div><div className="kpi-grid detail-kpis"><Kpi label="Identificador" value={'#'+current.id} detail="ID generado on-chain" icon="#"/><Kpi label="Custodio actual" value={label(current.propietario).split(' · ')[0]} detail={trim(current.propietario)} icon="♙"/><Kpi label="Movimientos" value={evidence?.movements?.length||0} detail="Historial del contrato" icon="⇄"/><Kpi label="Transferencia" value={pending?.pendiente?'Pendiente':'Sin pendiente'} detail={pending?.pendiente?trim(pending.destino):'Sin operaciones abiertas'} icon="◷"/></div><div className="two-columns"><section className="card"><div className="card-head"><div><h2>Gestionar cadena de custodia</h2><p>Elige las cuentas por nombre, no por dirección hexadecimal</p></div></div><div className="account-switch"><label>Ejecutar como</label><select value={account} onChange={e=>setAccount(e.target.value)}>{accounts.map((a,i)=><option value={a} key={a}>{ROLE_NAMES[i]||`Cuenta ${i+1}`} — {trim(a)}</option>)}</select><button className="text-link" onClick={()=>setAccount(current.propietario)}>Usar custodio actual</button></div>{pending?.pendiente?<div className="pending-box"><b>⇄ Transferencia pendiente</b><p>{label(pending.origen)} → {label(pending.destino)}</p><button className="text-link" onClick={()=>setAccount(pending.destino)}>Seleccionar destinatario para aceptar</button></div>:<div className="form-group"><label>Organización destinataria</label><select value={recipient} onChange={e=>setRecipient(e.target.value)}><option value="">Selecciona el destinatario...</option>{accounts.filter(a=>a.toLowerCase()!==current.propietario?.toLowerCase()).map(a=><option key={a} value={a}>{label(a)}</option>)}</select></div>}<div className="button-group">{pending?.pendiente?<><button className="btn btn-primary" disabled={busy||!canManage} onClick={()=>action('aceptarTransferencia',{id:current.id})}>✓ Aceptar transferencia</button><button className="btn btn-light" disabled={busy||!canManage} onClick={()=>action('cancelarTransferencia',{id:current.id})}>Cancelar propuesta</button><button className="btn btn-outline" onClick={()=>previewAction('aceptarTransferencia',[current.id])}>Simular aceptación</button></>:<><button className="btn btn-primary" disabled={busy||!recipient||!canManage||!current.activo} onClick={()=>action('proponerTransferencia',{id:current.id,destino:recipient})}>Proponer transferencia →</button><button className="btn btn-outline" disabled={!recipient||busy} onClick={()=>previewAction('proponerTransferencia',[current.id,recipient])}>Simular primero</button></>}</div>{preview&&<div className={`preview ${preview.accepted?'good':'bad'}`}><b>{preview.accepted?'✓ Simulación válida':'⚠ Operación rechazada'}</b><p>{preview.accepted?`Gas estimado: ${preview.estimatedGas}. No se ha modificado la blockchain.`:explain(preview.reason)}</p></div>}<details className="danger-zone"><summary>Opciones de administración</summary><p>Desactivar un lote es irreversible en este contrato.</p><button className="btn btn-danger" disabled={busy||!current.activo} onClick={()=>{if(confirm('¿Desactivar definitivamente este lote?'))action('desactivarLote',{id:current.id})}}>Desactivar lote</button></details></section><section className="card"><div className="card-head"><div><h2>Historial verificable</h2><p>Movimientos almacenados en el contrato</p></div><button className="btn btn-light" onClick={()=>download(`lote-${current.id}-evidencias.json`,evidence)}>↓ Evidencias</button></div><div className="timeline">{(evidence?.movements||[]).map((m,i)=><div className="timeline-item" key={i}><span className="timeline-dot"/><div><div className="timeline-title"><b>{TYPES[m.type]||'Movimiento'}</b><small>{date(m.timestamp)}</small></div><p>{label(m.from)} → {label(m.to)}</p><code>{trim(m.from)} → {trim(m.to)}</code></div></div>)}</div></section></div></>:<section className="card empty-state"><div className="empty-icon">▤</div><h2>Selecciona un lote para empezar</h2><p>Abre el inventario y selecciona un medicamento. El ID se asignará automáticamente.</p><button className="btn btn-primary" onClick={()=>navigate('inventory')}>Ir al inventario →</button></section>)}
+ {page==='identities'&&<><div className="two-columns"><section className="card"><div className="card-head"><div><h2>Cuentas locales disponibles</h2><p>Identidades desbloqueadas del nodo Hardhat; solo para pruebas</p></div><span className="tag">{accounts.length} cuentas</span></div><div className="account-list">{accounts.map((a,i)=><button key={a} className={`account-card ${account===a?'selected':''}`} onClick={()=>setAccount(a)}><span className="account-avatar">{i===0?'A':i===1?'L':i===2?'D':i===3?'F':i+1}</span><span><b>{alias[a.toLowerCase()]||ROLE_NAMES[i]||`Cuenta ${i+1}`}</b><small>{a}</small></span>{account===a&&<span className="check">✓</span>}</button>)}</div></section><section className="card"><div className="card-head"><div><h2>Configuración de permisos</h2><p>Asigna los roles necesarios para realizar el recorrido completo</p></div></div><div className="info-box">La cuenta administradora del despliegue suele ser la primera cuenta de Hardhat. Los roles se guardan en cada contrato por separado.</div><button className="btn btn-primary full" disabled={busy||!deployed} onClick={setup}>⚙ Configurar roles de demostración</button><hr/><h3>Asignación manual avanzada</h3><p className="muted">Disponible para contratos de roles manuales.</p><label>Cuenta destinataria</label><select value={roleAddress} onChange={e=>setRoleAddress(e.target.value)}><option value="">Seleccionar cuenta...</option>{accounts.slice(1).map(a=><option value={a} key={a}>{label(a)}</option>)}</select><label>Rol</label><select value={role} onChange={e=>setRole(e.target.value)}><option value="1">Laboratorio</option><option value="2">Distribuidor</option><option value="3">Farmacia</option><option value="0">Sin rol</option></select><button className="btn btn-light full" disabled={busy||!roleAddress||!contract.includes('Manuales')} onClick={()=>action('asignarRol',{usuario:roleAddress,rol:Number(role)},accounts[0])}>Asignar rol</button><p className="muted">Para OpenZeppelin, utiliza la configuración guiada de roles.</p></section></div><section className="card"><div className="card-head"><div><h2>Alias de organizaciones</h2><p>Personaliza los nombres mostrados sin alterar la blockchain</p></div></div><div className="alias-grid">{accounts.slice(0,8).map((a,i)=><label key={a}>{ROLE_NAMES[i]||`Cuenta ${i+1}`}<input value={alias[a.toLowerCase()]??''} placeholder="Nombre personalizado" onChange={e=>setAlias(old=>({...old,[a.toLowerCase()]:e.target.value}))}/></label>)}</div></section></>}
+ {page==='laboratory'&&<div className="two-columns"><section className="card"><div className="card-head"><div><h2>Escenario de distribución completo</h2><p>Ejecuta cinco transacciones reales en la red local</p></div><span className="tag">Caso positivo</span></div><div className="scenario-list">{['Laboratorio registra un lote','Laboratorio propone transferencia al distribuidor','Distribuidor acepta el lote','Distribuidor propone transferencia a farmacia','Farmacia acepta el lote'].map((s,i)=><div key={i}><span>{i+1}</span>{s}</div>)}</div><div className="warning small">Configura primero los roles. Esta acción modifica el estado real de la blockchain local.</div><button className="btn btn-primary full" disabled={busy||!deployed} onClick={scenario}>▶ Ejecutar escenario completo</button><button className="btn btn-light full" disabled={busy||!deployed} onClick={setup}>Configurar roles primero</button></section><section className="card"><div className="card-head"><div><h2>Pruebas de seguridad</h2><p>Valida que el contrato rechaza operaciones indebidas</p></div><span className="tag">Sin gastar gas</span></div><p>Selecciona una cuenta y un lote. El simulador ejecuta <code>eth_call</code> y una estimación de gas, sin emitir una transacción.</p><label>Lote a comprobar</label><select value={selected?.id||''} onChange={e=>{const id=Number(e.target.value);setSelected(lots.find(x=>x.id===id)||null)}}><option value="">Seleccionar lote...</option>{lots.map(l=><option value={l.id} key={l.id}>#{l.id} · {l.nombre}</option>)}</select><label>Cuenta que intenta la operación</label><select value={account} onChange={e=>setAccount(e.target.value)}>{accounts.map(a=><option value={a} key={a}>{label(a)}</option>)}</select><div className="button-group"><button className="btn btn-light" disabled={!selected||busy} onClick={()=>previewAction('aceptarTransferencia',[selected.id])}>Probar aceptación</button><button className="btn btn-light" disabled={!selected||busy} onClick={()=>previewAction('cancelarTransferencia',[selected.id])}>Probar cancelación</button></div>{preview&&<div className={`preview ${preview.accepted?'good':'bad'}`}><b>{preview.accepted?'Aceptada':'Rechazada correctamente si se esperaba un fallo'}</b><p>{preview.accepted?`Gas estimado: ${preview.estimatedGas}`:explain(preview.reason)}</p></div>}<button className="btn btn-outline full" onClick={()=>window.open('http://localhost:3100/benchmark.html','_blank')}>Abrir benchmark Hardhat / Truffle ↗</button></section></div>}
+ {page==='benchmark'&&<BenchmarkWorkspace variants={variants} status={status} api={api} download={download} run={run} setContract={setContract} navigate={navigate} reload={reload} contract={contract}/>}
+ {page==='activity'&&<section className="card"><div className="card-head"><div><h2>Transacciones recientes</h2><p>Registro del servidor actual; el historial on-chain permanece en la blockchain</p></div><button className="btn btn-light" onClick={()=>download('transacciones-pharmachain.json',ledger)}>↓ Exportar</button></div><Activity rows={lastTx} label={label}/></section>}
+ <footer className="footer"><span>PharmaChain Enterprise Console · Entorno académico de simulación</span><span>Ethereum local · Datos de prueba, no producción</span></footer>
+ </main></div>{busy&&<div className="busy-overlay"><div className="spinner"/>Procesando operación en Ethereum…</div>}</div>
+}
+function Kpi({label,value,detail,icon}){return <div className="kpi"><div className="kpi-top"><span>{label}</span><div className="kpi-icon">{icon}</div></div><strong>{value}</strong><small>{detail}</small></div>}
+function LotTable({lots,label,select}){return <div className="table-scroll"><table><thead><tr><th>ID LOTE</th><th>MEDICAMENTO</th><th>FABRICANTE</th><th>CUSTODIO ACTUAL</th><th>ESTADO</th><th></th></tr></thead><tbody>{lots.map(l=><tr key={l.id}><td><span className="lot-id">#{String(l.id).padStart(4,'0')}</span></td><td><b>{l.nombre}</b><small>{date(l.fechaRegistro)}</small></td><td>{l.fabricante}</td><td><b>{label(l.propietario).split(' · ')[0]}</b><small>{trim(l.propietario)}</small></td><td><span className={`status ${l.activo?'active':'inactive'}`}>{l.activo?'● Activo':'○ Inactivo'}</span>{l.pendiente&&<small className="pending-mini">Transferencia pendiente</small>}</td><td><button className="text-link" onClick={()=>select(l.id)}>Gestionar →</button></td></tr>)}</tbody></table>{lots.length===0&&<div className="empty-table">No hay lotes disponibles. Registra el primero desde “Nuevo lote”.</div>}</div>}
+function Activity({rows,label}){return <div className="activity-list">{rows.length?rows.map((x,i)=><div className="activity-item" key={x.txHash||i}><div className="activity-icon">✓</div><div><b>{x.action}</b><small>{label(x.from)} · Bloque #{x.block}</small></div><span className="gas">{Number(x.gasUsed||0).toLocaleString('es-ES')} gas</span></div>):<div className="empty-table">Todavía no hay transacciones en esta sesión.</div>}</div>}
+
+function BenchmarkWorkspace({variants,status,api,download,run,setContract,navigate,reload,contract}){
+ const [rounds,setRounds]=useState(1);
+ const [chosen,setChosen]=useState(null);
+ const [suite,setSuite]=useState(null);
+ const [framework,setFramework]=useState(null);
+ const [working,setWorking]=useState(false);
+ const selected=chosen??variants.filter(v=>status?.contracts?.[v.id]).map(v=>v.id);
+ const update=async()=>{
+  const [a,b]=await Promise.all([api('/api/benchmark/suite'),api('/api/benchmark/summary')]);
+  setSuite(a);setFramework(b);
+ };
+ const launch=async()=>{
+  setWorking(true);
+  try{await run(async()=>{
+   const result=await api('/api/benchmark/suite',{rounds,variants:selected});
+   setSuite(result);
+   setFramework(await api('/api/benchmark/summary'));
+   await reload(contract,null);
+   return result;
+  },'Benchmark funcional finalizado');}finally{setWorking(false)}
+ };
+ const ops=['registrarLote','proponerTransferencia','aceptarTransferencia','cancelarTransferencia','desactivarLote','pausar','reanudar'];
+ const labels={registrarLote:'Registrar',proponerTransferencia:'Proponer',aceptarTransferencia:'Aceptar',cancelarTransferencia:'Cancelar',desactivarLote:'Desactivar',pausar:'Pausar',reanudar:'Reanudar'};
+ return <section className="card"><div className="card-head"><div><h2>Benchmark integral de PharmaChain</h2><p>Gas real, operaciones completas y comprobación del estado final por contrato.</p></div><button className="btn btn-light" disabled={working} onClick={()=>run(update,'Informes actualizados')}>↻ Actualizar</button></div>
+ <div className="warning small">Las pruebas modifican la blockchain local. Se configuran los roles antes de medir. Solo se pueden ejecutar variantes realmente desplegadas.</div>
+ <h3>1. Selecciona contratos y rondas</h3><div className="variant-grid">{variants.map(v=><label className="variant-card" key={v.id}><input type="checkbox" checked={selected.includes(v.id)} disabled={!status?.contracts?.[v.id]||working} onChange={e=>setChosen(prev=>{const base=prev??variants.filter(x=>status?.contracts?.[x.id]).map(x=>x.id);return e.target.checked?[...base,v.id]:base.filter(x=>x!==v.id)})}/><h3>{v.title}</h3><p>{v.optimization}</p><small>{status?.contracts?.[v.id]?'Desplegado':'No desplegado'}</small><div><button type="button" className="btn btn-light" onClick={e=>{e.preventDefault();setContract(v.id);navigate('laboratory')}} disabled={!status?.contracts?.[v.id]}>Emular →</button></div></label>)}</div>
+ <div className="button-group"><label>Rondas <select value={rounds} onChange={e=>setRounds(Number(e.target.value))}>{[1,2,3,5].map(n=><option key={n} value={n}>{n}</option>)}</select></label><button className="btn btn-primary" disabled={working||!selected.length} onClick={launch}>{working?'Ejecutando…':'▶ Ejecutar benchmark funcional'}</button><button className="btn btn-outline" disabled={!suite?.runs?.length} onClick={()=>download('benchmark-funcional.json',suite)}>Exportar JSON</button><a className="btn btn-light" href="/api/benchmark/suite.csv">Exportar CSV</a></div>
+ <h3>2. Paridad y consumo de gas</h3><p className="muted">La tabla presenta el gas medio de transacciones reales; un guion indica que no hay muestras. El estado final se comprueba para cada ronda.</p><div className="table-scroll"><table><thead><tr><th>Contrato</th><th>Paridad</th>{ops.map(op=><th key={op}>{labels[op]}</th>)}</tr></thead><tbody>{(suite?.summary||[]).map(v=><tr key={v.id}><td><b>{v.title}</b></td><td><span className={`status ${v.passed===v.total?'active':'inactive'}`}>{v.passed}/{v.total}</span></td>{ops.map(op=><td key={op}>{v.operations[op]?.mean?.toLocaleString('es-ES')??'—'}<small>{v.operations[op]?.count??0} muestras</small></td>)}</tr>)}</tbody></table></div>
+ {(suite?.runs||[]).some(x=>!x.pass)&&<div className="warning"><b>Fallos detectados:</b>{suite.runs.filter(x=>!x.pass).map((x,i)=><p key={i}>{x.variant}, ronda {x.round}: {x.error}</p>)}</div>}
+ <h3>3. Historial de transacciones y comparativa</h3><div className="button-group"><button className="btn btn-light" onClick={()=>run(async()=>setFramework(await api('/api/benchmark/summary')),'Gas histórico actualizado')}>Ver histórico del servidor</button><a className="btn btn-light" href="/api/export.csv">Recibos del laboratorio CSV</a><a className="btn btn-light" href="http://localhost:3100/benchmark.html" target="_blank" rel="noreferrer">Hardhat vs Truffle ↗</a></div>
+ <div className="table-scroll"><table><thead><tr><th>Versión</th><th>Registros</th><th>Propuestas</th><th>Aceptaciones</th><th>Cancelaciones</th><th>Desactivaciones</th></tr></thead><tbody>{(framework?.rows||[]).map(v=><tr key={v.id}><td>{v.title}</td>{['registrarLote','proponerTransferencia','aceptarTransferencia','cancelarTransferencia','desactivarLote'].map(op=><td key={op}>{v.operations[op]?.average?.toLocaleString('es-ES')??'—'}</td>)}</tr>)}</tbody></table></div>
+ <p className="muted">El histórico mezcla operaciones de distintas sesiones; para una comparación más controlada usa las rondas del benchmark funcional. Los resultados se conservan en memoria hasta reiniciar el servidor.</p></section>;
 }

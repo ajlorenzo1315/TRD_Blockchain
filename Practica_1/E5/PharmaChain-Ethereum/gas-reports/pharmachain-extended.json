@@ -1,0 +1,8920 @@
+[
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255742"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154062"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113202"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "154322"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98871"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "154322"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "113450"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33948"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255574"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "238834"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261086"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283641"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284051"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "329982"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "421855"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255742"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154055"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113195"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "154127"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98871"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "154127"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "113255"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33948"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255574"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "238834"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261086"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283641"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284051"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "329982"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "421855"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255742"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154062"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113202"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "154322"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98871"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "154322"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "113450"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33948"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255574"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "238834"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261086"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283641"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284051"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "329982"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "421855"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255742"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "153832"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113085"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "154092"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98871"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "154092"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "113333"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33902"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255574"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "238834"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261086"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283641"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284051"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "329982"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "421855"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255582"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154062"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113202"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "154322"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98871"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "154322"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "113450"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33948"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255414"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "238674"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "260926"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283481"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "283891"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "329822"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "421695"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255582"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "153825"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113078"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "153897"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98871"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "153897"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "113138"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33902"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255414"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "238674"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "260926"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283481"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "283891"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "329822"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "421695"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "233428"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "153825"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113063"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "153897"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98871"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "153897"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "113123"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33902"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "233260"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "216520"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "238772"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "261327"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "261737"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "307668"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "399540"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1448469"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6459"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "189274"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1448469"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6459"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "151842"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "111080"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "151914"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98871"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "151914"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "111140"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1448469"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6459"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33928"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1448469"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6459"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "98899"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1448469"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6459"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "189106"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "172366"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "194618"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "217173"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "217583"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "263514"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "355386"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1448469"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6459"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1441596"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6427"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "231155"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1441596"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6427"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "131652"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "90890"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "131724"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "76698"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "131724"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "90950"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1441596"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6427"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "76726"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33902"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1441596"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6427"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "76726"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1441596"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6427"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "230987"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "214247"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "236499"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "259054"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "259464"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "305395"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "397267"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1441596"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6427"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1411501"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6288"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "233428"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1411501"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6288"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "131648"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "112457"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "131720"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "100761"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "131720"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "112517"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1411501"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6288"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "100789"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "31607"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1411501"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6288"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "100789"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1411501"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6288"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "233260"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "216520"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "238772"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "261327"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "261737"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "307668"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "399540"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1411501"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6288"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1440096"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6420"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "187121"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1440096"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6420"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "107516"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "88325"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "107588"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "78612"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "107588"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "88385"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1440096"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6420"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "78640"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "32740"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1440096"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6420"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44733"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "78640"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22845"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1440096"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6420"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "186953"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "170213"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "192465"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "215020"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "215430"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "261361"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "353233"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1440096"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6420"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1282803"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5693"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "166748"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1282803"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5693"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "84317"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "43577"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "84389"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "31171"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "84389"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "43637"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1282803"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5693"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "31193"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33902"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1282803"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5693"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44667"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "31193"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22823"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1282803"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5693"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "166580"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "149840"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "172092"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "194647"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "195057"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "240988"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "332860"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1282803"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5693"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1284334"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5700"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "122594"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1284334"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5700"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "60157"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "40988"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "60229"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "31253"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "60229"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "41048"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1284334"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5700"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "31281"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "32740"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1284334"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5700"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "44667"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "31281"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "22823"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1284334"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5700"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "122426"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "105686"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "127938"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "150493"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "150903"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "196834"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "288706"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1284334"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5700"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "45869"
+  },
+  {
+    "family": "Manual",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "45881"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1736264"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7657"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255908"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1736264"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7657"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154260"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113443"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "156596"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98959"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "156596"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "115767"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1736264"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7657"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35764"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1736264"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7657"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1736264"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7657"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255740"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "239000"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261252"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283807"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284217"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "330148"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "422021"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1736264"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7657"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V0Base",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1737344"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7662"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255908"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1737344"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7662"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154253"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113436"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "156585"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98959"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "156585"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "115756"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1737344"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7662"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35764"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1737344"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7662"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1737344"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7662"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255740"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "239000"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261252"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283807"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284217"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "330148"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "422021"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1737344"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7662"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V1Roles",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1570343"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6888"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255908"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1570343"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6888"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154253"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113436"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "156585"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98959"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "156585"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "115756"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1570343"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6888"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35764"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1570343"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6888"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1570343"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6888"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255740"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "239000"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261252"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283807"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284217"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "330148"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "422021"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1570343"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6888"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V2Errores",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1718743"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7576"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255908"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1718743"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7576"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154023"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113319"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "156355"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98959"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "156355"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "115639"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1718743"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7576"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35718"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1718743"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7576"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1718743"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7576"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255740"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "239000"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261252"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283807"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284217"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "330148"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "422021"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1718743"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7576"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V3Storage",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1726324"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7611"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255748"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1726324"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7611"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154253"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113436"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "156585"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98959"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "156585"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "115756"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1726324"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7611"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35764"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1726324"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7611"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1726324"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7611"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255580"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "238840"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261092"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283647"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284057"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "329988"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "421861"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1726324"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7611"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V4Unchecked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1540696"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6751"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "255748"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1540696"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6751"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154023"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113319"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "156355"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98959"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "156355"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "115639"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1540696"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6751"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35718"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1540696"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6751"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1540696"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6751"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "255580"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "238840"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "261092"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "283647"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "284057"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "329988"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "421861"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1540696"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6751"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V5Combinada",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1527071"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6688"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "233594"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1527071"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6688"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "154023"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "113304"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "156355"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98959"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "156355"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "115624"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1527071"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6688"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35718"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1527071"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6688"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1527071"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6688"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "233426"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "216686"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "238938"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "261493"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "261903"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "307834"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "399706"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1527071"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6688"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V6SinId",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1546309"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6777"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "189440"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1546309"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6777"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "152040"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "111321"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "154372"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "98959"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "154372"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "113641"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1546309"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6777"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35744"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1546309"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6777"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "101301"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1546309"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6777"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "189272"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "172532"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "194784"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "217339"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "217749"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "263680"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "355552"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1546309"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6777"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V7LotePacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1539448"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6745"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "231321"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1539448"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6745"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "131850"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "91131"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "134182"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "76786"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "134182"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "93451"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1539448"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6745"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "79128"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35718"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1539448"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6745"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "79128"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1539448"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6745"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "231153"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "214413"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "236665"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "259220"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "259630"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "305561"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "397433"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1539448"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6745"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V8HistorialPacked",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1509351"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6606"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "233594"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1509351"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6606"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "131846"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "112698"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "134178"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "100849"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "134178"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "115018"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1509351"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6606"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "103191"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "33423"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1509351"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6606"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "103191"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1509351"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6606"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "233426"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "216686"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "238938"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "261493"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "261903"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "307834"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "399706"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1509351"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6606"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V9TransferenciaCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1537922"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6738"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "187287"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1537922"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6738"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "107714"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "88566"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "110046"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "78700"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "110046"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "90886"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1537922"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6738"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "81042"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35010"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1537922"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6738"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47003"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "81042"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25178"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1537922"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6738"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "187119"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "170379"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "192631"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "215186"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "215596"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "261527"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "353399"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1537922"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6738"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V10PackingCombinado",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1373158"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5976"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "166885"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1373158"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5976"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "84463"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "43657"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "86795"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "31129"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "86795"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "45977"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1373158"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5976"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "33003"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35736"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1373158"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5976"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47025"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "33003"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25200"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1373158"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5976"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "166717"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "149977"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "172229"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "194784"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "195194"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "241125"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "332997"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1373158"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5976"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V11SoloEventos",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1374670"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5983"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "register_first",
+    "kind": "tx",
+    "gas": "122731"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1374670"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5983"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "propose_lab_dist",
+    "kind": "tx",
+    "gas": "60303"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "accept_lab_dist",
+    "kind": "tx",
+    "gas": "41068"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "propose_dist_pharm",
+    "kind": "tx",
+    "gas": "62635"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "cancel_dist_pharm",
+    "kind": "tx",
+    "gas": "31201"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "repropose_dist_pharm",
+    "kind": "tx",
+    "gas": "62635"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "accept_dist_pharm",
+    "kind": "tx",
+    "gas": "43388"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1374670"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5983"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "cancel_admin",
+    "kind": "tx",
+    "gas": "33543"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "deactivate_pending",
+    "kind": "tx",
+    "gas": "35032"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1374670"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5983"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "pause",
+    "kind": "tx",
+    "gas": "47025"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "cancel_while_paused",
+    "kind": "tx",
+    "gas": "33543"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "resume",
+    "kind": "tx",
+    "gas": "25200"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1374670"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5983"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_1",
+    "kind": "tx",
+    "gas": "122563"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_31",
+    "kind": "tx",
+    "gas": "105823"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_32",
+    "kind": "tx",
+    "gas": "128075"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_33",
+    "kind": "tx",
+    "gas": "150630"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_64",
+    "kind": "tx",
+    "gas": "151040"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_128",
+    "kind": "tx",
+    "gas": "196971"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "register_len_256",
+    "kind": "tx",
+    "gas": "288843"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "deploy",
+    "kind": "deployment",
+    "gas": "1374670"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "5983"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_1",
+    "kind": "tx",
+    "gas": "51489"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_2",
+    "kind": "tx",
+    "gas": "51501"
+  },
+  {
+    "family": "OZ",
+    "version": "V12EventosCompacta",
+    "operation": "role_3",
+    "kind": "tx",
+    "gas": "51513"
+  }
+]

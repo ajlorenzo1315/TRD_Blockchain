@@ -12,9 +12,12 @@
     "truffle:migrate": "truffle migrate --reset --network development --config truffle-config.cjs",
     "truffle:test": "truffle test --network development --config truffle-config.cjs",
     "lab": "node lab/server.cjs",
-    "gas:csv": "hardhat test mocha test/GasComparison.test.js",
+    "gas:csv": "hardhat test mocha test/GasLabExtended.test.js",
+    "gaspharma:csv": "hardhat test mocha test/FourVariantsParity.test.js",
     "benchmark:frameworks": "node benchmark/run.cjs 3",
-    "frontend": "node lab/server.cjs"
+    "frontend": "npm --prefix frontend run dev",
+    "frontend:build": "npm --prefix frontend run build",
+    "test:catalog": "node --test test/VariantCatalog.test.cjs"
   },
   "keywords": [],
   "author": "",

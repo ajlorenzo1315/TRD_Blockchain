@@ -7,7 +7,8 @@ const app=express();app.use(cors());app.use(express.json());
 const root=path.resolve(__dirname,'..');
 const rpc=process.env.RPC_URL||'http://127.0.0.1:8545';
 const web3=new Web3(rpc);
-const names=['PharmaChainRolesManuales','PharmaChainRolesManualesOptimized','PharmaChainRolesOpenZeppelin','PharmaChainRolesOpenZeppelinOptimized'];
+const variants=require('./variants.json');
+const names=variants.map(v=>v.id);
 const ledger=[];const pending=new Map();
 const asString=x=>typeof x==='bigint'?x.toString():x;
 const serialize=x=>JSON.parse(JSON.stringify(x,(_,v)=>typeof v==='bigint'?v.toString():v));
@@ -22,7 +23,14 @@ const load=async(name)=>{
  if(code==='0x')throw Error('No hay bytecode en '+addr+'. Reinicia la migración tras reiniciar Hardhat.');
  return {contract:new web3.eth.Contract(art.abi,addr),address:addr};
 };
-const fail=(res,e)=>res.status(400).json({error:e.message||String(e)});
+const fail=(res,e)=>{
+ const raw=String(e?.cause?.message||e?.message||e);
+ console.error('[PharmaChain API]',raw);
+ const reason=/Error happened while trying to execute a function inside a smart contract/i.test(raw)
+   ?'El contrato rechazó la operación. Comprueba que la cuenta tiene el rol correcto, que el lote existe y que no está pausado. Detalle: '+raw
+   :raw;
+ res.status(400).json({error:reason});
+};
 async function accounts(){return (await web3.eth.getAccounts()).map(a=>a.toLowerCase());}
 async function send(name,from,method,args=[],label=method){
  const {contract,address}=await load(name);const known=await accounts();
@@ -44,6 +52,7 @@ app.get('/api/status',async(req,res)=>{try{
  for(const n of names){try{contracts[n]=(await load(n)).address;}catch(e){contracts[n]=null;}}
  res.json({chainId,rpc,accounts:acc,contracts,transactions:ledger.length});
 }catch(e){fail(res,e)}});
+app.get('/api/variants',(req,res)=>res.json(variants));
 app.get('/api/ledger',(req,res)=>res.json(ledger));
 app.get('/api/lotes/:name',async(req,res)=>{try{
  const {contract}=await load(req.params.name);const total=Number(await contract.methods.totalLotes().call());
@@ -56,6 +65,8 @@ app.post('/api/action',async(req,res)=>{try{
  const {name,action,from,id,destino,nombre,fabricante,usuario,rol}=req.body;
  const allow={registrarLote:[nombre,fabricante],proponerTransferencia:[id,destino],aceptarTransferencia:[id],cancelarTransferencia:[id],desactivarLote:[id],asignarRol:[usuario,rol],pausar:[],reanudar:[]};
  if(!Object.hasOwn(allow,action))throw Error('Acción no permitida');
+ if(action==='registrarLote'&&(!String(nombre||'').trim()||!String(fabricante||'').trim()))throw Error('Para registrar un medicamento debes indicar nombre y fabricante');
+ if(['proponerTransferencia','aceptarTransferencia','cancelarTransferencia','desactivarLote'].includes(action)&&(!Number.isSafeInteger(Number(id))||Number(id)<1))throw Error('Selecciona un ID de lote válido');
  if(action==='asignarRol'&&!name.includes('Manuales'))throw Error('Usa grantRole para OpenZeppelin');
  res.json(await send(name,from,action,allow[action]));
 }catch(e){fail(res,e)}});
@@ -89,10 +100,106 @@ app.post('/api/compare',async(req,res)=>{try{
  for(const [label,method,args,from] of operations)results.push(await send(name,from,method,args,label));
  }res.json({results});
 }catch(e){fail(res,e)}});
+// Gas realmente consumido: agrupado por método, con muestras comparables del mismo escenario.
+app.get('/api/benchmark/summary',(req,res)=>{
+ const operations=['registrarLote','proponerTransferencia','aceptarTransferencia','cancelarTransferencia','desactivarLote'];
+ const rows=variants.map(v=>({ ...v,operations:Object.fromEntries(operations.map(op=>{
+  const samples=ledger.filter(x=>x.contract===v.id&&x.method===op&&x.status).map(x=>Number(x.gasUsed));
+  return [op,{count:samples.length,last:samples[0]??null,average:samples.length?Math.round(samples.reduce((a,b)=>a+b,0)/samples.length):null}];
+ }))}));
+ res.json({rows,methodology:'GasUsed de recibos reales, agrupado por método. No compara escenarios distintos de forma controlada; para comparar usar /api/compare con roles configurados.',transactions:ledger.length});
+});
 app.get('/api/export.csv',(req,res)=>{
  const keys=['time','contract','action','from','txHash','block','gasUsed','gasEstimate','gasPriceGwei','costEth','status'];
  const esc=v=>'"'+String(v??'').replaceAll('"','""')+'"';
  res.type('text/csv').attachment('pharmachain-gas.csv').send([keys.join(','),...ledger.map(r=>keys.map(k=>esc(r[k])).join(','))].join('\n'));
+});
+
+
+// Benchmark funcional on-chain. Cada ejecución modifica los contratos desplegados.
+let suiteRunning=false;
+let latestSuite=null;
+const benchmarkOps=['registrarLote','proponerTransferencia','aceptarTransferencia','cancelarTransferencia','desactivarLote','pausar','reanudar'];
+async function contractState(name,id){
+ const {contract}=await load(name);
+ const lot=await contract.methods.consultarLote(id).call();
+ const transfer=await contract.methods.transferencias(id).call();
+ return {nombre:lot.nombre,fabricante:lot.fabricante,propietario:String(lot.propietario).toLowerCase(),activo:Boolean(lot.activo),pendiente:Boolean(transfer.pendiente)};
+}
+async function suiteForVariant(name,round,acc){
+ const [admin,lab,dist,farm]=acc;
+ const {contract}=await load(name);
+ const variant=variants.find(v=>v.id===name);
+ const samples=[];
+ const execute=async(operation,from,args,stage)=>{
+  const tx=await send(name,from,operation,args,`Benchmark ${round}: ${stage}`);
+  samples.push({operation,stage,gas:Number(tx.gasUsed),txHash:tx.txHash,block:tx.block});
+ };
+ // El benchmark configura roles antes de medir y evita que ese coste sesgue el flujo.
+ if(variant.kind==='manual'){
+  for(const [who,role] of [[lab,1],[dist,2],[farm,3]]){
+   const current=await contract.methods.roles(who).call();
+   if(Number(current)!==role)await send(name,admin,'asignarRol',[who,role],'Benchmark: preparación de rol');
+  }
+ }else{
+  for(const [who,roleName] of [[lab,'LABORATORIO_ROLE'],[dist,'DISTRIBUIDOR_ROLE'],[farm,'FARMACIA_ROLE']]){
+   const role=await contract.methods[roleName]().call();
+   if(!await contract.methods.hasRole(role,who).call())await send(name,admin,'grantRole',[role,who],'Benchmark: preparación de rol');
+  }
+ }
+ const total=Number(await contract.methods.totalLotes().call());
+ const first=total+1,second=total+2;
+ const medicine=`Benchmark ${round} - muestra ${first}`;
+ await execute('registrarLote',lab,[medicine,'Laboratorio de prueba'],'registro 1');
+ await execute('registrarLote',lab,[`Benchmark ${round} - cancelación`,'Laboratorio de prueba'],'registro 2');
+ await execute('proponerTransferencia',lab,[first,dist],'propuesta inicial');
+ await execute('cancelarTransferencia',lab,[first],'cancelación');
+ await execute('proponerTransferencia',lab,[first,dist],'propuesta laboratorio-distribuidor');
+ await execute('aceptarTransferencia',dist,[first],'aceptación distribuidor');
+ await execute('proponerTransferencia',dist,[first,farm],'propuesta distribuidor-farmacia');
+ await execute('aceptarTransferencia',farm,[first],'aceptación farmacia');
+ await execute('pausar',admin,[],'pausa');
+ await execute('reanudar',admin,[],'reanudación');
+ await execute('desactivarLote',admin,[second],'desactivación');
+ const stateA=await contractState(name,first);
+ const stateB=await contractState(name,second);
+ const expectedA={nombre:medicine,fabricante:'Laboratorio de prueba',propietario:farm.toLowerCase(),activo:true,pendiente:false};
+ const expectedB={nombre:`Benchmark ${round} - cancelación`,fabricante:'Laboratorio de prueba',propietario:lab.toLowerCase(),activo:false,pendiente:false};
+ const pass=JSON.stringify(stateA)===JSON.stringify(expectedA)&&JSON.stringify(stateB)===JSON.stringify(expectedB);
+ return {variant:name,round,pass,states:{first:stateA,second:stateB},samples,error:pass?null:'Estado final distinto del esperado'};
+}
+app.get('/api/benchmark/suite',(req,res)=>res.json(latestSuite||{runs:[],summary:[],message:'Todavía no se ha ejecutado el benchmark funcional'}));
+app.get('/api/benchmark/suite.csv',(req,res)=>{
+ const rows=(latestSuite?.runs||[]).flatMap(r=>r.samples.map(s=>({variant:r.variant,round:r.round,pass:r.pass,...s})));
+ const keys=['variant','round','pass','operation','stage','gas','txHash','block'];
+ const esc=x=>'"'+String(x??'').replaceAll('"','""')+'"';
+ res.type('text/csv').attachment('pharmachain-benchmark-funcional.csv').send([keys.join(','),...rows.map(r=>keys.map(k=>esc(r[k])).join(','))].join('\n'));
+});
+app.post('/api/benchmark/suite',async(req,res)=>{
+ if(suiteRunning)return res.status(409).json({error:'Ya hay un benchmark funcional ejecutándose'});
+ const rounds=Number(req.body?.rounds??1);
+ if(![1,2,3,5].includes(rounds))return res.status(400).json({error:'Rondas permitidas: 1, 2, 3 o 5'});
+ const selected=req.body?.variants??names;
+ if(!Array.isArray(selected)||!selected.length||selected.some(n=>!names.includes(n))||new Set(selected).size!==selected.length)return res.status(400).json({error:'Selecciona variantes válidas sin duplicados'});
+ suiteRunning=true;
+ const runs=[];
+ try{
+  const acc=await accounts();if(acc.length<4)throw Error('Se necesitan al menos cuatro cuentas Hardhat');
+  for(let round=1;round<=rounds;round++)for(const name of selected){
+   try{runs.push(await suiteForVariant(name,round,acc));}
+   catch(e){runs.push({variant:name,round,pass:false,error:String(e.message||e),samples:[]});}
+  }
+  const summary=selected.map(name=>{
+   const samples=runs.filter(r=>r.variant===name).flatMap(r=>r.samples);
+   const operations=Object.fromEntries(benchmarkOps.map(op=>{
+    const a=samples.filter(s=>s.operation===op).map(s=>s.gas);
+    return [op,{count:a.length,mean:a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):null,min:a.length?Math.min(...a):null,max:a.length?Math.max(...a):null}];
+   }));
+   return {id:name,title:variants.find(v=>v.id===name).title,passed:runs.filter(r=>r.variant===name&&r.pass).length,total:rounds,operations};
+  });
+  latestSuite={createdAt:new Date().toISOString(),rounds,variants:selected,runs,summary,methodology:'Transacciones reales sobre contratos desplegados; setup de roles excluido de las medias. Estado final comprobado. Las rondas alteran almacenamiento y no son un benchmark de gas aislado.'};
+  res.json(latestSuite);
+ }catch(e){fail(res,e)}finally{suiteRunning=false}
 });
 
 // Explorador de contrato: lectura de funciones view y estado de roles.

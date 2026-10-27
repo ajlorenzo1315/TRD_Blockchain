@@ -1,0 +1,1724 @@
+[
+  {
+    "version": "V0Base",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V0Base",
+    "operation": "registro_corto",
+    "kind": "transaction",
+    "gas": "255742"
+  },
+  {
+    "version": "V0Base",
+    "operation": "propuesta_lab_dist",
+    "kind": "transaction",
+    "gas": "154062"
+  },
+  {
+    "version": "V0Base",
+    "operation": "aceptacion_lab_dist",
+    "kind": "transaction",
+    "gas": "113202"
+  },
+  {
+    "version": "V0Base",
+    "operation": "propuesta_dist_farm",
+    "kind": "transaction",
+    "gas": "154322"
+  },
+  {
+    "version": "V0Base",
+    "operation": "cancelacion",
+    "kind": "transaction",
+    "gas": "98871"
+  },
+  {
+    "version": "V0Base",
+    "operation": "desactivar_sin_pendiente",
+    "kind": "transaction",
+    "gas": "27536"
+  },
+  {
+    "version": "V0Base",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V0Base",
+    "operation": "desactivar_con_pendiente",
+    "kind": "transaction",
+    "gas": "33948"
+  },
+  {
+    "version": "V0Base",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V0Base",
+    "operation": "pausar",
+    "kind": "transaction",
+    "gas": "44733"
+  },
+  {
+    "version": "V0Base",
+    "operation": "reanudar",
+    "kind": "transaction",
+    "gas": "22845"
+  },
+  {
+    "version": "V0Base",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1705592"
+  },
+  {
+    "version": "V0Base",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7650"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V0Base",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V0Base",
+    "operation": "registro_serie_1",
+    "kind": "transaction",
+    "gas": "255778"
+  },
+  {
+    "version": "V0Base",
+    "operation": "registro_serie_2",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V0Base",
+    "operation": "registro_serie_3",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V0Base",
+    "operation": "registro_serie_4",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V0Base",
+    "operation": "registro_serie_5",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V0Base",
+    "operation": "registro_serie_6",
+    "kind": "transaction",
+    "gas": "330090"
+  },
+  {
+    "version": "V0Base",
+    "operation": "propuesta_para_cancelar_admin",
+    "kind": "transaction",
+    "gas": "154062"
+  },
+  {
+    "version": "V0Base",
+    "operation": "cancelacion_admin",
+    "kind": "transaction",
+    "gas": "98899"
+  },
+  {
+    "version": "V0Base",
+    "operation": "propuesta_2_lab_dist",
+    "kind": "transaction",
+    "gas": "154062"
+  },
+  {
+    "version": "V0Base",
+    "operation": "aceptacion_2_lab_dist",
+    "kind": "transaction",
+    "gas": "113202"
+  },
+  {
+    "version": "V0Base",
+    "operation": "propuesta_2_dist_farm",
+    "kind": "transaction",
+    "gas": "154322"
+  },
+  {
+    "version": "V0Base",
+    "operation": "aceptacion_2_dist_farm",
+    "kind": "transaction",
+    "gas": "113450"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "registro_corto",
+    "kind": "transaction",
+    "gas": "255742"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "propuesta_lab_dist",
+    "kind": "transaction",
+    "gas": "154055"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "aceptacion_lab_dist",
+    "kind": "transaction",
+    "gas": "113195"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "propuesta_dist_farm",
+    "kind": "transaction",
+    "gas": "154127"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "cancelacion",
+    "kind": "transaction",
+    "gas": "98871"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "desactivar_sin_pendiente",
+    "kind": "transaction",
+    "gas": "27536"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "desactivar_con_pendiente",
+    "kind": "transaction",
+    "gas": "33948"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "pausar",
+    "kind": "transaction",
+    "gas": "44733"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "reanudar",
+    "kind": "transaction",
+    "gas": "22845"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1692614"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7590"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "registro_serie_1",
+    "kind": "transaction",
+    "gas": "255778"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "registro_serie_2",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "registro_serie_3",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "registro_serie_4",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "registro_serie_5",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "registro_serie_6",
+    "kind": "transaction",
+    "gas": "330090"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "propuesta_para_cancelar_admin",
+    "kind": "transaction",
+    "gas": "154055"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "cancelacion_admin",
+    "kind": "transaction",
+    "gas": "98899"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "propuesta_2_lab_dist",
+    "kind": "transaction",
+    "gas": "154055"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "aceptacion_2_lab_dist",
+    "kind": "transaction",
+    "gas": "113195"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "propuesta_2_dist_farm",
+    "kind": "transaction",
+    "gas": "154127"
+  },
+  {
+    "version": "V1Roles",
+    "operation": "aceptacion_2_dist_farm",
+    "kind": "transaction",
+    "gas": "113255"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "registro_corto",
+    "kind": "transaction",
+    "gas": "255742"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "propuesta_lab_dist",
+    "kind": "transaction",
+    "gas": "154062"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "aceptacion_lab_dist",
+    "kind": "transaction",
+    "gas": "113202"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "propuesta_dist_farm",
+    "kind": "transaction",
+    "gas": "154322"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "cancelacion",
+    "kind": "transaction",
+    "gas": "98871"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "desactivar_sin_pendiente",
+    "kind": "transaction",
+    "gas": "27536"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "desactivar_con_pendiente",
+    "kind": "transaction",
+    "gas": "33948"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "pausar",
+    "kind": "transaction",
+    "gas": "44733"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "reanudar",
+    "kind": "transaction",
+    "gas": "22845"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1485444"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6630"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "registro_serie_1",
+    "kind": "transaction",
+    "gas": "255778"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "registro_serie_2",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "registro_serie_3",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "registro_serie_4",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "registro_serie_5",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "registro_serie_6",
+    "kind": "transaction",
+    "gas": "330090"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "propuesta_para_cancelar_admin",
+    "kind": "transaction",
+    "gas": "154062"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "cancelacion_admin",
+    "kind": "transaction",
+    "gas": "98899"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "propuesta_2_lab_dist",
+    "kind": "transaction",
+    "gas": "154062"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "aceptacion_2_lab_dist",
+    "kind": "transaction",
+    "gas": "113202"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "propuesta_2_dist_farm",
+    "kind": "transaction",
+    "gas": "154322"
+  },
+  {
+    "version": "V2Errores",
+    "operation": "aceptacion_2_dist_farm",
+    "kind": "transaction",
+    "gas": "113450"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "registro_corto",
+    "kind": "transaction",
+    "gas": "255742"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "propuesta_lab_dist",
+    "kind": "transaction",
+    "gas": "153832"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "aceptacion_lab_dist",
+    "kind": "transaction",
+    "gas": "113085"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "propuesta_dist_farm",
+    "kind": "transaction",
+    "gas": "154092"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "cancelacion",
+    "kind": "transaction",
+    "gas": "98871"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "desactivar_sin_pendiente",
+    "kind": "transaction",
+    "gas": "27478"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "desactivar_con_pendiente",
+    "kind": "transaction",
+    "gas": "33902"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "pausar",
+    "kind": "transaction",
+    "gas": "44733"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "reanudar",
+    "kind": "transaction",
+    "gas": "22845"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1686979"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7564"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "registro_serie_1",
+    "kind": "transaction",
+    "gas": "255778"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "registro_serie_2",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "registro_serie_3",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "registro_serie_4",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "registro_serie_5",
+    "kind": "transaction",
+    "gas": "238678"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "registro_serie_6",
+    "kind": "transaction",
+    "gas": "330090"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "propuesta_para_cancelar_admin",
+    "kind": "transaction",
+    "gas": "153832"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "cancelacion_admin",
+    "kind": "transaction",
+    "gas": "98899"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "propuesta_2_lab_dist",
+    "kind": "transaction",
+    "gas": "153832"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "aceptacion_2_lab_dist",
+    "kind": "transaction",
+    "gas": "113085"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "propuesta_2_dist_farm",
+    "kind": "transaction",
+    "gas": "154092"
+  },
+  {
+    "version": "V3Storage",
+    "operation": "aceptacion_2_dist_farm",
+    "kind": "transaction",
+    "gas": "113333"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "registro_corto",
+    "kind": "transaction",
+    "gas": "255582"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "propuesta_lab_dist",
+    "kind": "transaction",
+    "gas": "154062"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "aceptacion_lab_dist",
+    "kind": "transaction",
+    "gas": "113202"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "propuesta_dist_farm",
+    "kind": "transaction",
+    "gas": "154322"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "cancelacion",
+    "kind": "transaction",
+    "gas": "98871"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "desactivar_sin_pendiente",
+    "kind": "transaction",
+    "gas": "27536"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "desactivar_con_pendiente",
+    "kind": "transaction",
+    "gas": "33948"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "pausar",
+    "kind": "transaction",
+    "gas": "44733"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "reanudar",
+    "kind": "transaction",
+    "gas": "22845"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1694536"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "7599"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "registro_serie_1",
+    "kind": "transaction",
+    "gas": "255618"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "registro_serie_2",
+    "kind": "transaction",
+    "gas": "238518"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "registro_serie_3",
+    "kind": "transaction",
+    "gas": "238518"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "registro_serie_4",
+    "kind": "transaction",
+    "gas": "238518"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "registro_serie_5",
+    "kind": "transaction",
+    "gas": "238518"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "registro_serie_6",
+    "kind": "transaction",
+    "gas": "329930"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "propuesta_para_cancelar_admin",
+    "kind": "transaction",
+    "gas": "154062"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "cancelacion_admin",
+    "kind": "transaction",
+    "gas": "98899"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "propuesta_2_lab_dist",
+    "kind": "transaction",
+    "gas": "154062"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "aceptacion_2_lab_dist",
+    "kind": "transaction",
+    "gas": "113202"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "propuesta_2_dist_farm",
+    "kind": "transaction",
+    "gas": "154322"
+  },
+  {
+    "version": "V4Unchecked",
+    "operation": "aceptacion_2_dist_farm",
+    "kind": "transaction",
+    "gas": "113450"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "registro_corto",
+    "kind": "transaction",
+    "gas": "255582"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "propuesta_lab_dist",
+    "kind": "transaction",
+    "gas": "153825"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "aceptacion_lab_dist",
+    "kind": "transaction",
+    "gas": "113078"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "propuesta_dist_farm",
+    "kind": "transaction",
+    "gas": "153897"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "cancelacion",
+    "kind": "transaction",
+    "gas": "98871"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "desactivar_sin_pendiente",
+    "kind": "transaction",
+    "gas": "27478"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "desactivar_con_pendiente",
+    "kind": "transaction",
+    "gas": "33902"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "pausar",
+    "kind": "transaction",
+    "gas": "44733"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "reanudar",
+    "kind": "transaction",
+    "gas": "22845"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1442863"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6433"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "registro_serie_1",
+    "kind": "transaction",
+    "gas": "255618"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "registro_serie_2",
+    "kind": "transaction",
+    "gas": "238518"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "registro_serie_3",
+    "kind": "transaction",
+    "gas": "238518"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "registro_serie_4",
+    "kind": "transaction",
+    "gas": "238518"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "registro_serie_5",
+    "kind": "transaction",
+    "gas": "238518"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "registro_serie_6",
+    "kind": "transaction",
+    "gas": "329930"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "propuesta_para_cancelar_admin",
+    "kind": "transaction",
+    "gas": "153825"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "cancelacion_admin",
+    "kind": "transaction",
+    "gas": "98899"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "propuesta_2_lab_dist",
+    "kind": "transaction",
+    "gas": "153825"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "aceptacion_2_lab_dist",
+    "kind": "transaction",
+    "gas": "113078"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "propuesta_2_dist_farm",
+    "kind": "transaction",
+    "gas": "153897"
+  },
+  {
+    "version": "V5Combinada",
+    "operation": "aceptacion_2_dist_farm",
+    "kind": "transaction",
+    "gas": "113138"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "registro_corto",
+    "kind": "transaction",
+    "gas": "233428"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "propuesta_lab_dist",
+    "kind": "transaction",
+    "gas": "153825"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "aceptacion_lab_dist",
+    "kind": "transaction",
+    "gas": "113063"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "propuesta_dist_farm",
+    "kind": "transaction",
+    "gas": "153897"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "cancelacion",
+    "kind": "transaction",
+    "gas": "98871"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "desactivar_sin_pendiente",
+    "kind": "transaction",
+    "gas": "27478"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "desactivar_con_pendiente",
+    "kind": "transaction",
+    "gas": "33902"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "pausar",
+    "kind": "transaction",
+    "gas": "44733"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "reanudar",
+    "kind": "transaction",
+    "gas": "22845"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "despliegue",
+    "kind": "deployment",
+    "gas": "1429226"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "runtime_bytes",
+    "kind": "bytes",
+    "gas": "6370"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_1",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_2",
+    "kind": "transaction",
+    "gas": "45869"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "asignar_rol_3",
+    "kind": "transaction",
+    "gas": "45881"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "registro_serie_1",
+    "kind": "transaction",
+    "gas": "233464"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "registro_serie_2",
+    "kind": "transaction",
+    "gas": "216364"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "registro_serie_3",
+    "kind": "transaction",
+    "gas": "216364"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "registro_serie_4",
+    "kind": "transaction",
+    "gas": "216364"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "registro_serie_5",
+    "kind": "transaction",
+    "gas": "216364"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "registro_serie_6",
+    "kind": "transaction",
+    "gas": "307776"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "propuesta_para_cancelar_admin",
+    "kind": "transaction",
+    "gas": "153825"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "cancelacion_admin",
+    "kind": "transaction",
+    "gas": "98899"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "propuesta_2_lab_dist",
+    "kind": "transaction",
+    "gas": "153825"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "aceptacion_2_lab_dist",
+    "kind": "transaction",
+    "gas": "113063"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "propuesta_2_dist_farm",
+    "kind": "transaction",
+    "gas": "153897"
+  },
+  {
+    "version": "V6SinId",
+    "operation": "aceptacion_2_dist_farm",
+    "kind": "transaction",
+    "gas": "113123"
+  }
+]
