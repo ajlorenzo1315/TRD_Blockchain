@@ -32,13 +32,13 @@ describe('Gas Lab: equivalencia funcional y mediciones', function () {
   for (const variant of VARIANTS) {
     it(`variante ${variant}`, async function () {
       const { c, admin, lab, distributor, pharmacy, attacker } = await fixture(variant);
-      await expect(c.connect(attacker).registrarLote('Falso', 'Falso')).to.revert(ethers);
+      await expect(c.connect(attacker).registrarLote('Falso', 'Falso')).to.be.reverted;
       await measured(variant, 'register_1', c.connect(lab).registrarLote('Paracetamol', 'Lab A'));
       expect((await c.consultarLote(1)).propietario).to.equal(lab.address);
       await measured(variant, 'register_2', c.connect(lab).registrarLote('Ibuprofeno', 'Lab B'));
-      await expect(c.connect(lab).proponerTransferencia(1, pharmacy.address)).to.revert(ethers);
+      await expect(c.connect(lab).proponerTransferencia(1, pharmacy.address)).to.be.reverted;
       await measured(variant, 'propose_lab_to_dist', c.connect(lab).proponerTransferencia(1, distributor.address));
-      await expect(c.connect(attacker).aceptarTransferencia(1)).to.revert(ethers);
+      await expect(c.connect(attacker).aceptarTransferencia(1)).to.be.reverted;
       await measured(variant, 'accept_lab_to_dist', c.connect(distributor).aceptarTransferencia(1));
       expect((await c.consultarLote(1)).propietario).to.equal(distributor.address);
       await measured(variant, 'propose_dist_to_pharm', c.connect(distributor).proponerTransferencia(1, pharmacy.address));
@@ -46,7 +46,7 @@ describe('Gas Lab: equivalencia funcional y mediciones', function () {
       expect((await c.consultarLote(1)).propietario).to.equal(pharmacy.address);
       expect(await c.totalMovimientos(1)).to.equal(5n);
       await measured(variant, 'pause', c.connect(admin).pausar());
-      await expect(c.connect(lab).registrarLote('Bloqueado', 'Lab')).to.revert(ethers);
+      await expect(c.connect(lab).registrarLote('Bloqueado', 'Lab')).to.be.reverted;
       await measured(variant, 'resume', c.connect(admin).reanudar());
       await measured(variant, 'deactivate', c.connect(admin).desactivarLote(1));
       expect((await c.consultarLote(1)).activo).to.equal(false);

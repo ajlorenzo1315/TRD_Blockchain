@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 
-const CONTRACTS=['PharmaChainRolesManuales','PharmaChainRolesOpenZeppelin','PharmaChainRolesManualesOptimized','PharmaChainRolesOpenZeppelinOptimized'];
-const TITLES={PharmaChainRolesManuales:'V0 · Manual base',PharmaChainRolesOpenZeppelin:'V1 · OpenZeppelin base',PharmaChainRolesManualesOptimized:'V2 · Manual optimizado',PharmaChainRolesOpenZeppelinOptimized:'V3 · OpenZeppelin optimizado'};
+const CONTRACTS=["PharmaChainRolesManuales", "PharmaChainRolesOpenZeppelin", "PharmaChainRolesManualesOptimized", "PharmaChainRolesOpenZeppelinOptimized", "PharmaChainRolesManualesOptimized1", "PharmaChainRolesOpenZeppelinOptimized1", "PharmaChainRolesManualesOptimizednoID", "PharmaChainRolesOpenZeppelinOptimizednoID"];
+const TITLES={"PharmaChainRolesManuales": "V0 · Roles manuales (referencia)", "PharmaChainRolesOpenZeppelin": "V1 · AccessControl (referencia)", "PharmaChainRolesManualesOptimized": "V2 · Roles manuales + gas optimizado", "PharmaChainRolesOpenZeppelinOptimized": "V3 · AccessControl + gas optimizado", "PharmaChainRolesManualesOptimized1": "V4 · Manual optimizado 1", "PharmaChainRolesOpenZeppelinOptimized1": "V5 · OpenZeppelin optimizado 1", "PharmaChainRolesManualesOptimizednoID": "V6 · Manual sin ID en eventos", "PharmaChainRolesOpenZeppelinOptimizednoID": "V7 · OpenZeppelin sin ID en eventos"};
 const ROLE_NAMES=['Administrador','Laboratorio','Distribuidor','Farmacia','Actor adicional'];
 const PRESETS=[['Paracetamol 500 mg','Laboratorios Galicia'],['Ibuprofeno 600 mg','Farmacéutica Atlántica'],['Amoxicilina 875 mg','BioMed España'],['Omeprazol 20 mg','Pharma Norte'],['Insulina glargina','BioMed España']];
 const TYPES=['Registro','Propuesta','Aceptación','Cancelación'];

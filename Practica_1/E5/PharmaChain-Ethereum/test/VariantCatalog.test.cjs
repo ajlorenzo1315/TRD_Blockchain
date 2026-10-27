@@ -10,7 +10,7 @@ test('identificadores únicos y contratos fuente disponibles',()=>{
   assert.ok(fs.existsSync(path.join(__dirname,'..','contracts',v.id+'.sol')));
  }
 });
-test('dos pares comparables por modelo de permisos',()=>{
- assert.equal(variants.filter(v=>v.kind==='manual').length,2);
- assert.equal(variants.filter(v=>v.kind==='openzeppelin').length,2);
+test('cuatro variantes por modelo de permisos',()=>{
+ assert.equal(variants.filter(v=>v.kind==='manual').length,4);
+ assert.equal(variants.filter(v=>v.kind==='openzeppelin').length,4);
 });

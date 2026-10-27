@@ -17092,12 +17092,12 @@
     "31337": {
       "events": {},
       "links": {},
-      "address": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
-      "transactionHash": "0x47e4af7323c718af48707da1c79919c81976fc6792356ab0918f5b0e240eb9d2"
+      "address": "0xa82fF9aFd8f496c3d6ac40E2a0F282E47488CFc9",
+      "transactionHash": "0x11d07d44fad42a687677aecc590dbc0be6ed0fedef1b5772fba6b2ccde849715"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2026-10-27T18:41:18.804Z",
+  "updatedAt": "2026-10-27T19:07:36.107Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

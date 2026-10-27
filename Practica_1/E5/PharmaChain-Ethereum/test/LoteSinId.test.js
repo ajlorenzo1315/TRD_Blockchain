@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import hre from "hardhat";
 
-
 describe("PharmaChain - Lote sin ID redundante", function () {
   let ethers;
   let contrato;
@@ -14,7 +13,7 @@ describe("PharmaChain - Lote sin ID redundante", function () {
       await ethers.getSigners();
 
     const Factory = await ethers.getContractFactory(
-    "contracts/PharmaChainRolesManualesOptimizednoID.sol:PharmaChainRolesManualesOptimizednoID"
+      "PharmaChainRolesManualesOptimized"
     );
 
     contrato = await Factory.connect(admin).deploy();
@@ -110,7 +109,7 @@ describe("PharmaChain - Lote sin ID redundante", function () {
     await expect(
       contrato.connect(distribuidor)
         .registrarLote("Medicamento", "Fabricante")
-    ).to.revert(ethers);
+    ).to.be.reverted;
   });
 
   it("mide el gas de varios registros", async function () {

@@ -26,5 +26,33 @@
     "kind": "openzeppelin",
     "optimization": "Core optimizado con AccessControl",
     "description": "Comparar con V1 para aislar el efecto de las optimizaciones."
+  },
+  {
+    "id": "PharmaChainRolesManualesOptimized1",
+    "title": "V4 · Manual optimizado 1",
+    "kind": "manual",
+    "optimization": "Variante experimental 1 de permisos manuales",
+    "description": "Variante experimental 1 de permisos manuales"
+  },
+  {
+    "id": "PharmaChainRolesOpenZeppelinOptimized1",
+    "title": "V5 · OpenZeppelin optimizado 1",
+    "kind": "openzeppelin",
+    "optimization": "Variante experimental 1 con AccessControl",
+    "description": "Variante experimental 1 con AccessControl"
+  },
+  {
+    "id": "PharmaChainRolesManualesOptimizednoID",
+    "title": "V6 · Manual sin ID en eventos",
+    "kind": "manual",
+    "optimization": "Variante experimental sin ID explícito",
+    "description": "Variante experimental sin ID explícito"
+  },
+  {
+    "id": "PharmaChainRolesOpenZeppelinOptimizednoID",
+    "title": "V7 · OpenZeppelin sin ID en eventos",
+    "kind": "openzeppelin",
+    "optimization": "Variante experimental sin ID explícito con AccessControl",
+    "description": "Variante experimental sin ID explícito con AccessControl"
   }
 ]

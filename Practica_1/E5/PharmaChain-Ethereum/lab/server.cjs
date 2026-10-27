@@ -93,7 +93,7 @@ app.post('/api/scenario',async(req,res)=>{try{
  res.json({id,transactions:result});
 }catch(e){fail(res,e)}});
 app.post('/api/compare',async(req,res)=>{try{
- // Runs the SAME scenario on all four contracts; requires roles configured on all.
+ // Runs the SAME scenario on all deployed variants; requires roles configured on all.
  const results=[];for(const name of names){const acc=await accounts();const [admin,lab,dist,farm]=acc;
  const {contract}=await load(name);const id=Number(await contract.methods.totalLotes().call())+1;
  const operations=[['Registrar lote','registrarLote',['Comparacion '+id,'Lab Galicia'],lab],['Proponer L-D','proponerTransferencia',[id,dist],lab],['Aceptar D','aceptarTransferencia',[id],dist],['Proponer D-F','proponerTransferencia',[id,farm],dist],['Aceptar F','aceptarTransferencia',[id],farm]];
