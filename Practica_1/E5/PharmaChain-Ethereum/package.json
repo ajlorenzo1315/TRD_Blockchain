@@ -7,7 +7,14 @@
     "test": "hardhat test mocha",
     "compile": "hardhat compile",
     "clean": "hardhat clean",
-    "chain": "hardhat node"
+    "chain": "hardhat node",
+    "truffle:compile": "truffle compile --all --config truffle-config.cjs",
+    "truffle:migrate": "truffle migrate --reset --network development --config truffle-config.cjs",
+    "truffle:test": "truffle test --network development --config truffle-config.cjs",
+    "lab": "node lab/server.cjs",
+    "gas:csv": "hardhat test mocha test/GasComparison.test.js",
+    "benchmark:frameworks": "node benchmark/run.cjs 3",
+    "frontend": "node lab/server.cjs"
   },
   "keywords": [],
   "author": "",
@@ -20,9 +27,13 @@
     "forge-std": "github:foundry-rs/forge-std#v1.16.2",
     "hardhat": "^3.21.0",
     "typescript": "~6.0.3",
-    "viem": "^2.57.11"
+    "viem": "^2.57.11",
+    "truffle": "^5.11.5"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.6.1"
+    "@openzeppelin/contracts": "^5.6.1",
+    "web3": "^4.16.0",
+    "express": "^4.21.2",
+    "cors": "^2.8.5"
   }
 }
